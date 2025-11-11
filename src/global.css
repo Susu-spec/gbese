@@ -1,0 +1,59 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/**
+ * @example
+ * --color-white: #FFFFFF;
+ * --color-black: #000000;
+ * --size-xs: .625rem;
+ *
+ * @use
+ * <div className="font-white font-xs">
+ *
+ */
+
+@theme {
+  --size-xs: .625rem;
+}
+
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  cursor: default;
+  box-sizing: border-box;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+@layer utilities {
+  /* utility classes go here */
+  /* Low-level helpers like margin, padding, color, font-size */
+  /* Single responsibility */
+}
+
+@layer components {
+  /* component-level styles belong here */
+}
