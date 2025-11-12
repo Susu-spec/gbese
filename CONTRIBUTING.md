@@ -86,3 +86,6 @@ export default function Dashboard() {
   return <Tabs items={dashboardTabs} />;
 }
 ```
+- **Always run a production build before pushing or opening a PR.**
+    - Run `npm run build` to verify the project compiles successfully.
+    - Builds catch issues that may not appear during `npm run dev`.
