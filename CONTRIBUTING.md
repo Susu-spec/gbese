@@ -10,7 +10,6 @@ Quick guide for working on Gbese.
 - `feat/<desc>` -> New features
 - `fix/<desc>` -> Bug or layout fixes
 - `chore/<desc>` -> Cleanup, configs, or dependency additions
-
 ### Examples
 ```bash
 feat/debt-transfer-flow
@@ -31,7 +30,6 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 | `refactor:` | Code rework without logic change |
 | `chore:` | Maintenance or dependencies |
 | `docs:` | Documentation updates |
-
 ### Examples
 ```bash
 <type>(<scope>): <short summary>
