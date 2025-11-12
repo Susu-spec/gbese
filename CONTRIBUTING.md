@@ -34,16 +34,16 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 ```bash
 <type>(<scope>): <short summary>
 
-style(payments): fix responsive layout for donation cards
-feat(auth): add password reset email
-fix(api): handle expired tokens
+style(payments): fixes responsive layout for donation cards
+feat(auth): adds password reset email
+fix(api): handles expired tokens
 ```
 #### Note:
 We can omit scopes for small or general commits
 ```bash
-style: adjust navbar spacing
-fix: prevent button double click
-chore: update dependencies
+style: adjusts navbar spacing
+fix: prevents button double click
+chore: updates dependencies
 ```
 
 
