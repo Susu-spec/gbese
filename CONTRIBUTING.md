@@ -87,3 +87,4 @@ export default function Dashboard() {
 - **Always run a production build before pushing or opening a PR.**
     - Run `npm run build` to verify the project compiles successfully.
     - Builds catch issues that may not appear during `npm run dev`.
+- **Issues:** Create issues to track bugs, planned improvements, or anything noticed that might need fixing later.
