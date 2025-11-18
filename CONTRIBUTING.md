@@ -18,6 +18,20 @@ chore/update-tailwind
 ```
 
 
+## Naming conventions
+### Components, Hooks & Files
+| Element | Convention | Example |
+|----------|-------------|----------|
+| **Components** | PascalCase | `UserCard.tsx`, `PaymentTabs.tsx` |
+| **Hooks** | camelCase (start with `use`) | `useAuth.ts`, `useFormState.ts` |
+| **Utility files** | camelCase | `formatCurrency.ts`, `fetchData.ts` |
+| **Config/constants** | lowerCamelCase | `colorPalette.ts`, `routesConfig.ts` |
+| **CSS/Module files** | kebab-case | `navbar.module.css` |
+
+### Branches
+Use lowercase and hyphens (`-`) for separators.
+
+
 ## Commits
 
 Follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)

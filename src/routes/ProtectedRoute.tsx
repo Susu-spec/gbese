@@ -1,9 +1,9 @@
-import { Navigate, Outlet } from "react-router";
+import { Navigate } from "react-router";
 
-export default function ProtectedRoute() {
+export default function ProtectedRoute({ children }: { children: React.ReactElement }) {
 //   const user = useAppSelector((state) => state.auth.user);
 //   const isAuthenticated = !!user;
-    const isAuthenticated = true
+    const isAuthenticated = false;
 
-    return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
+    return isAuthenticated ? children : <Navigate to="/" replace />;
 }
