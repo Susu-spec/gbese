@@ -5,31 +5,31 @@ import MainLayout from "@/layouts/MainLayout";
 import { protectedRoutes } from "./protected";
 import KYCLayout from "@/layouts/KYCLayout";
 import ProtectedRoute from "./ProtectedRoute";
+import LandingPage from "@/pages/landing";
 
 export const router = createBrowserRouter([
     {
         path: "/",
+        element: <LandingPage />
+    },
+    {
         element: <AuthLayout />,
         children: authRoutes
     },
     {
-        path: "/",
         element: <KYCLayout />,
         children: kycRoutes
     },
     {
-        path: "/",
         element: (
             <ProtectedRoute>
                 <MainLayout />
             </ProtectedRoute>
         ),
-        children: [
-            {
-                index: true,
-                element: <Navigate to="/dashboard" replace />,
-            },
-            ...protectedRoutes
-        ]
-    }
+        children: protectedRoutes
+    },
+    {
+        path: "*",
+        element: <Navigate to="/" replace />,
+    },
 ])
