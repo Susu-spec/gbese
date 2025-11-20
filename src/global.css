@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 /*---break---
@@ -54,33 +55,40 @@
 }
 
 @theme {
-  /* In Tailwind config to create utilities e.g., text-primary-900, text-poppins */
+  /* Font tokens */
   --font-poppins: "Poppins", sans-serif;
   --font-public-sans: "Public Sans", sans-serif;
   --font-sora: "Sora", sans-serif;
 
-  --color-primary-100: #010B2A;
-  --color-primary-200: #ACBCF0;
-  --color-primary-300: #839AE8;
-  --color-primary-600: #262E3E;
+  /* Primary palette (50–900) */
+  --color-primary-50: #CDD7F6;
+  --color-primary-100: #ACBCF0;
+  --color-primary-200: #839AE8;
+  --color-primary-300: #5A78E1;
+  --color-primary-400: #3057D9;
+  --color-primary-500: #0735D2; /* Brand base */
+  --color-primary-600: #062CAF;
   --color-primary-700: #05238C;
   --color-primary-800: #031A69;
   --color-primary-900: #021346;
-  --color-gbese-background: #F1F4FF;
-  --color-gbese-neutrals-100: #8C8C8C;
-  --color-gbese-neutrals-200: #EBF0FF;
-  --color-gbese-black: #111111;
+
+  /* Custom neutrals */
   --color-gbese-white: #F9FAFB;
-  --color-gbese-orange: #E17700;
+  --color-gbese-neutrals-200: #CFD0D1;
+  --color-gbese-grey-200: #D1D1D1;
+  --color-gbese-neutrals-100: #8C8C8C;
+  --color-gbese-black: #111111;
+
+  /* Gbese custom colors */
+  --color-gbese-background: #F1F4FF;
+  --color-gbese-warning: #D89802;
   --color-gbese-green: #00A81C;
   --color-gbese-lilac: #E6ECFD;
-  --color-gbese-success: #66CB9F;
-  --color-gbese-red: #FF0D05;
+  --color-gbese-success: #34A67B;
+  --color-gbese-error: #EF4444;
   --color-gbese-grey-100: #696969;
-  --color-gbese-grey-200: #7E7D7D;
   --color-gbese-grey-300: #111111CC;
   --color-gbese-pari: #002824;
-  
 
 }
 
@@ -110,7 +118,16 @@ a {
 }
 
 @layer components {
-  /* component-level styles belong here */
+  /* Typography utilities */
+  .h1 { @apply font-sora font-bold text-[24px] leading-[36px] md:text-[80px] md:leading-[120px]; }
+  .h2 { @apply font-sora font-semibold text-[20px] leading-[30px] md:text-[60px] md:leading-[90px]; }
+  .h3 { @apply font-sora font-medium text-[18px] leading-[27px] md:text-[48px] md:leading-[72px]; }
+  /* H4 only for desktop (no mobile variant as requested) */
+  .h4 { @apply font-sora font-medium md:text-[32px] md:leading-[42px]; }
+  .body { @apply font-poppins font-normal text-[16px] leading-[24px] md:text-[24px] md:leading-[36px]; }
+  .body-sm { @apply font-poppins font-normal text-[14px] leading-[21px]; }
+  .label { @apply font-poppins font-normal text-[12px] leading-[18px] md:text-[18px] md:leading-[27px]; }
+  .caption { @apply font-poppins font-normal text-[12px] leading-[18px] md:text-[14px] md:leading-[21px]; }
 }
 
 /*---break---
