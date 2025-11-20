@@ -7,9 +7,12 @@ export default function MainLayout() {
     return (
         <SidebarProvider>
             <DashboardSidebar />
-            <main className="w-full bg-blue-200">
-                <Header />
-                <Outlet/>
+            <main className="w-full bg-primary-200">
+                <Header/>
+                <div className="pt-14">
+                    <Outlet/>
+                </div>
+                
             </main>
         </SidebarProvider>
   )
