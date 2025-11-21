@@ -32,49 +32,29 @@ export default function CTASection() {
     return (
         <section
             id="cta"
-            className="w-full bg-gbese-white"
+            className="w-full bg-gbese-white py-20 px-5 md:py-20 md:px-[180px]"
             style={{
-                paddingTop: "80px",
-                paddingRight: "180px",
-                paddingBottom: "80px",
-                paddingLeft: "180px",
                 borderBottom: "1px solid var(--color-primary-200)",
             }}
         >
-            <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-14">
-                {/* Heading */}
-                <h2
-                    className="font-sora font-semibold text-center text-primary-900"
-                    style={{
-                        fontSize: "48px",
-                        lineHeight: "72px",
-                        maxWidth: "974px",
-                    }}
-                >
+            <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-10 md:gap-14">
+                <h2 className="font-sora font-semibold text-center text-primary-900 text-[28px] leading-10 md:text-[48px] md:leading-[72px] max-w-[335px] md:max-w-[974px]">
                     Your Gbese Adventure Starts Here.
                 </h2>
 
-                {/* Subtitle */}
-                <p
-                    className="font-poppins font-medium text-center text-gbese-black"
-                    style={{
-                        fontSize: "24px",
-                        lineHeight: "42px",
-                        maxWidth: "974px",
-                    }}
-                >
-                    Earn XP. Trade debt. Spin wheels. Collect NFTs. It's debt; but make it fun.
+                <p className="font-poppins font-medium text-center text-gbese-black text-lg leading-9 md:text-[24px] md:leading-[42px] max-w-[335px] md:max-w-[974px]">
+                    Earn XP. Trade debt. Spin wheels. Collect NFTs. It’s debt; but make it fun.
                 </p>
 
-                {/* Tiles Grid */}
-                <div className="flex flex-col md:flex-row gap-8 justify-center items-stretch">
-                    {tiles.map((tile, index) => (
+                <div className="w-full overflow-x-auto md:overflow-x-visible">
+                    <div className="flex gap-5 md:gap-8 justify-start md:justify-center items-stretch px-5 md:px-0 pb-4 md:pb-0">
+                        {tiles.map((tile, index) => (
                         <div
                             key={index}
-                            className="flex flex-col items-center rounded-[30px]"
+                            className="flex flex-col items-center rounded-[30px] shrink-0 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl cursor-pointer"
                             style={{
-                                width: "350px",
-                                minHeight: "346px",
+                                width: "305px",
+                                height: "346px",
                                 backgroundColor: tile.bgColor,
                                 border: `0.5px solid ${tile.borderColor}`,
                                 boxShadow: `0px 2px 2px 1px ${tile.shadowColor}`,
@@ -85,7 +65,6 @@ export default function CTASection() {
                                 gap: "8px",
                             }}
                         >
-                            {/* Tile Image */}
                             <img
                                 src={tile.image}
                                 alt={tile.title}
@@ -93,41 +72,26 @@ export default function CTASection() {
                                 draggable={false}
                             />
 
-                            {/* Tile Heading */}
-                            <h3
-                                className="font-sora font-semibold text-center text-gbese-black mt-4"
-                                style={{
-                                    fontSize: "24px",
-                                    lineHeight: "36px",
-                                    maxWidth: "301px",
-                                }}
-                            >
+                            <h3 className="font-sora font-semibold text-center text-gbese-black mt-4 text-xl leading-9 md:text-2xl md:leading-9 max-w-[301px]">
                                 {tile.title}
                             </h3>
 
-                            {/* Tile Description */}
-                            <p
-                                className="font-poppins font-normal text-center text-gbese-black/80"
-                                style={{
-                                    fontSize: "18px",
-                                    lineHeight: "27px",
-                                    maxWidth: "279px",
-                                }}
-                            >
+                            <p className="font-poppins font-normal text-center text-gbese-black/80 text-lg leading-[27px] max-w-[279px]">
                                 {tile.description}
                             </p>
                         </div>
                     ))}
+                    </div>
                 </div>
 
-                {/* CTA Button */}
                 <Link to="/sign-up">
                     <Button
-                        className="bg-primary-900 hover:bg-primary-800 text-white font-poppins font-semibold rounded-lg"
+                        className="bg-primary-900 hover:bg-primary-800 text-white font-poppins font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
                         style={{
                             width: "304px",
                             height: "60px",
-                            fontSize: "18px",
+                            fontSize: "16px",
+                            lineHeight: "27px",
                             paddingTop: "12px",
                             paddingRight: "24px",
                             paddingBottom: "12px",
