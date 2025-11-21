@@ -33,33 +33,27 @@ export default function WhyChooseGbeseSection() {
     return (
         <section
             id="why-choose-gbese"
-            className="w-full bg-gbese-white"
-            style={{ padding: '80px', borderBottom: '1px solid rgba(179, 179, 179, 1)' }}
+            className="w-full bg-gbese-white py-16 px-5 md:py-20 md:px-20"
+            style={{ borderBottom: '1px solid rgba(179, 179, 179, 1)' }}
         >
             <div className="mx-auto max-w-[1440px]">
-                {/* Section Header */}
-                <h2 className="mx-auto max-w-[1140px] text-center font-sora text-[28px] font-semibold leading-[42px] text-primary-900 md:text-[60px] md:leading-[90px]">
+                <h2 className="mx-auto max-w-[337px] md:max-w-[1140px] text-center font-sora text-[28px] font-semibold leading-10 text-primary-900 md:text-[60px] md:leading-[90px]">
                     Why Choose Gbese?
                 </h2>
 
-                {/* Subtitle */}
-                <p className="mx-auto mt-4 max-w-[1140px] text-center font-poppins text-base font-medium leading-6 text-gbese-black/80 md:mt-6 md:text-[24px] md:leading-9">
+                <p className="mx-auto mt-4 max-w-[337px] md:max-w-[1140px] text-center font-poppins text-lg font-medium leading-9 text-gbese-black/80 md:mt-6 md:text-[24px]">
                     One app to manage, repay, transfer, and stay on top of your debt game — with ease and style.
                 </p>
 
-                {/* Content Container */}
-                <div className="mt-12 flex flex-col items-center justify-center gap-8 md:mt-16 md:flex-row">
-                    {/* Bar Chart */}
+                <div className="mt-12 flex flex-col items-center justify-center gap-11 md:mt-16 md:flex-row md:gap-8">
                     <DebtManagementChart />
 
-                    {/* Slider Section */}
                     <div className="flex w-full flex-col items-center gap-10 md:w-auto">
-                        {/* Slider Items Container */}
-                        <div className="flex items-start gap-4">
-                            {/* Sliding Indicator Bar */}
-                            <div className="relative h-[614px] w-3 shrink-0 overflow-hidden rounded-full bg-gray-200">
+                        <div className="flex items-start gap-3 md:gap-4">
+                            {/* Sliding indicator bar */}
+                            <div className="relative h-[746px] md:h-[614px] w-[11px] md:w-3 shrink-0 overflow-hidden rounded-[20px] md:rounded-full bg-gray-200">
                                 <div
-                                    className="absolute w-full rounded-full bg-primary-500 transition-all duration-300 ease-in-out"
+                                    className="absolute w-full rounded-[20px] md:rounded-full bg-primary-500 transition-all duration-300 ease-in-out"
                                     style={{
                                         height: `${100 / slides.length}%`,
                                         top: `${(activeSlide * 100) / slides.length}%`,
@@ -67,16 +61,15 @@ export default function WhyChooseGbeseSection() {
                                 />
                             </div>
 
-                            {/* Slider Content */}
-                            <div className="flex max-w-[540px] flex-col gap-8">
+                            <div className="flex w-[306px] md:w-auto md:max-w-[540px] flex-col gap-3 md:gap-8">
                                 {slides.map((slide, index) => (
                                     <button
                                         key={index}
                                         onClick={() => setActiveSlide(index)}
-                                        className={`flex items-start gap-4 rounded-lg p-6 text-left transition-all duration-300 ${
+                                        className={`flex items-start gap-[22px] md:gap-4 rounded-[20px] md:rounded-lg py-6 px-[10px] md:p-6 text-left transition-all duration-300 ${
                                             activeSlide === index
-                                                ? 'border-2 border-primary-500 bg-primary-50'
-                                                : 'border-2 border-transparent bg-transparent hover:bg-gray-50'
+                                                ? 'border border-primary-500 md:border-2 bg-primary-50'
+                                                : 'border border-transparent md:border-2 bg-transparent hover:bg-gray-50'
                                         }`}
                                     >
                                         <Icon
@@ -85,8 +78,8 @@ export default function WhyChooseGbeseSection() {
                                             width={32}
                                             height={32}
                                         />
-                                        <div>
-                                            <h3 className={`mb-2 font-poppins text-[20px] font-bold leading-[150%] ${
+                                        <div className="flex flex-col gap-2">
+                                            <h3 className={`font-poppins text-lg md:text-[20px] font-bold leading-[150%] ${
                                                 activeSlide === index ? 'text-primary-600' : 'text-gbese-black'
                                             }`}>
                                                 {slide.title}
@@ -102,10 +95,9 @@ export default function WhyChooseGbeseSection() {
                             </div>
                         </div>
 
-                        {/* CTA Button */}
-                        <Link to="/sign-up">
+                        <Link to="/sign-up" className="w-full md:w-auto">
                             <Button
-                                className="h-[60px] rounded-lg bg-primary-900 px-6 font-poppins text-lg font-semibold text-white hover:bg-primary-800"
+                                className="w-full md:w-auto h-[60px] rounded-lg bg-primary-900 px-6 font-poppins text-lg font-semibold text-white hover:bg-primary-800 transition-all duration-300 hover:scale-105 hover:shadow-xl"
                             >
                                 Join Gbese Now
                             </Button>

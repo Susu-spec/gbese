@@ -31,7 +31,7 @@ export default function DebtManagementChart() {
 
     return (
         <div
-            className="relative w-full max-w-[630px] shrink-0 rounded-[20px] bg-white p-6 shadow-sm"
+            className="relative w-full max-w-[345px] md:max-w-[630px] shrink-0 rounded-[10.95px] md:rounded-[20px] bg-white p-[10.95px] md:p-6 shadow-sm"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
@@ -39,7 +39,7 @@ export default function DebtManagementChart() {
                 How Gbese Members Are Thriving
             </h3>
             <div className="relative">
-                <ChartContainer config={chartConfig} className="min-h-[520px] w-full">
+                <ChartContainer config={chartConfig} className="min-h-[285px] md:min-h-[520px] w-full">
                     <BarChart
                         accessibilityLayer
                         data={chartData}
