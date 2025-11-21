@@ -81,21 +81,21 @@ export default function Navbar() {
                         <nav className="flex flex-col gap-4">
                             <a
                                 href="#how-it-works"
-                                className="text-gbese-white/90 hover:text-gbese-white transition-colors font-poppins font-medium text-base"
+                                className="text-gbese-white/90 hover:text-gbese-white transition-colors font-medium text-base"
                                 onClick={closeMenu}
                             >
                                 About Us
                             </a>
                             <a
                                 href="#contact"
-                                className="text-gbese-white/90 hover:text-gbese-white transition-colors font-poppins font-medium text-base"
+                                className="text-gbese-white/90 hover:text-gbese-white transition-colors font-medium text-base"
                                 onClick={closeMenu}
                             >
                                 Contact
                             </a>
                             <a
                                 href="#faqs"
-                                className="text-gbese-white/90 hover:text-gbese-white transition-colors font-poppins font-medium text-base"
+                                className="text-gbese-white/90 hover:text-gbese-white transition-colors font-medium text-base"
                                 onClick={closeMenu}
                             >
                                 FAQs

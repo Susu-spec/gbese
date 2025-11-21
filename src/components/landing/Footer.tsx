@@ -44,7 +44,7 @@ export default function Footer() {
                             className="w-[105px] h-[34px]"
                         />
 
-                        <p className="font-poppins font-medium text-gbese-white text-sm leading-6 md:text-base w-full sm:w-56 md:w-60">
+                        <p className="font-medium text-gbese-white text-sm leading-6 md:text-base w-full sm:w-56 md:w-60">
                             No Carry Debt Alone – Join Our Squad!
                         </p>
 
@@ -67,7 +67,7 @@ export default function Footer() {
                     <div className="flex flex-col md:flex-row w-full md:w-auto gap-10 md:gap-6 order-3 md:order-0">
                         <div className="flex gap-6 md:gap-6">
                             <div className="flex flex-col flex-1 sm:w-32 md:w-32 gap-3">
-                                <h3 className="font-poppins font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
+                                <h3 className="font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
                                     Quick Links
                                 </h3>
                                 <nav className="flex flex-col gap-3">
@@ -75,7 +75,7 @@ export default function Footer() {
                                         <a
                                             key={link.label}
                                             href={link.href}
-                                            className="font-poppins font-medium text-gbese-white hover:text-primary-100 transition-colors text-sm leading-6 md:text-base"
+                                            className="font-medium text-gbese-white hover:text-primary-100 transition-colors text-sm leading-6 md:text-base"
                                         >
                                             {link.label}
                                         </a>
@@ -84,7 +84,7 @@ export default function Footer() {
                             </div>
 
                             <div className="flex flex-col flex-1 sm:w-48 md:w-52 gap-3">
-                                <h3 className="font-poppins font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
+                                <h3 className="font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
                                     Trust & Social Proof
                                 </h3>
                                 <nav className="flex flex-col gap-3">
@@ -92,7 +92,7 @@ export default function Footer() {
                                         <a
                                             key={link.label}
                                             href={link.href}
-                                            className="font-poppins font-medium text-gbese-white hover:text-primary-100 transition-colors text-sm leading-6 md:text-base"
+                                            className="font-medium text-gbese-white hover:text-primary-100 transition-colors text-sm leading-6 md:text-base"
                                         >
                                             {link.label}
                                         </a>
@@ -102,7 +102,7 @@ export default function Footer() {
                         </div>
 
                         <div className="flex flex-col w-full sm:w-48 md:w-52 gap-3">
-                            <h3 className="font-poppins font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
+                            <h3 className="font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
                                 Contact
                             </h3>
                             <div className="flex flex-col gap-3">
@@ -111,12 +111,12 @@ export default function Footer() {
                                         {info.href ? (
                                             <a
                                                 href={info.href}
-                                                className="font-poppins font-medium text-gbese-white hover:text-primary-100 transition-colors text-sm leading-6 md:text-base"
+                                                className="font-medium text-gbese-white hover:text-primary-100 transition-colors text-sm leading-6 md:text-base"
                                             >
                                                 {info.value}
                                             </a>
                                         ) : (
-                                            <p className="font-poppins font-medium text-gbese-white text-sm leading-6 md:text-base">
+                                            <p className="font-medium text-gbese-white text-sm leading-6 md:text-base">
                                                 {info.value}
                                             </p>
                                         )}
@@ -127,10 +127,10 @@ export default function Footer() {
                     </div>
 
                     <div className="flex flex-col w-full sm:w-80 md:w-96 gap-5 order-2 md:order-0">
-                        <h3 className="font-poppins font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
+                        <h3 className="font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
                             Newsletter
                         </h3>
-                        <p className="font-poppins font-medium text-gbese-white text-sm leading-6 md:text-base">
+                        <p className="font-medium text-gbese-white text-sm leading-6 md:text-base">
                             No Miss Update Again! Subscribe for GBESE Gist & Quick Loans.
                         </p>
 
@@ -153,7 +153,7 @@ export default function Footer() {
 
             <div className="w-full py-10">
                 <div className="mx-auto max-w-screen-2xl px-5 sm:px-10 md:px-[100px] flex items-center justify-center">
-                    <p className="font-poppins font-medium text-gbese-white text-center text-sm leading-6 md:text-base">
+                    <p className="font-medium text-gbese-white text-center text-sm leading-6 md:text-base">
                         © {new Date().getFullYear()} Gbese. <br></br>All rights reserved.
                     </p>
                 </div>

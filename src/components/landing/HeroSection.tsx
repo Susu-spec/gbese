@@ -15,7 +15,7 @@ export default function HeroSection() {
                 </h1>
 
                 {/* Subheading */}
-                <p className="font-poppins font-medium text-base leading-7 md:text-[1.5rem] md:leading-9 text-center text-gbese-white/90 max-w-sm sm:max-w-xl md:max-w-full mx-auto mt-5 md:mt-6">
+                <p className="font-medium text-base leading-7 md:text-[1.5rem] md:leading-9 text-center text-gbese-white/90 max-w-sm sm:max-w-xl md:max-w-full mx-auto mt-5 md:mt-6">
                     GBESE lets you transfer loans to willing helpers, negotiate better <br className="hidden md:inline" />terms, earn and exchange crypto rewards and breathe easy.
                 </p>
 
@@ -25,7 +25,7 @@ export default function HeroSection() {
                         <Link to="/sign-up" className="w-full sm:w-auto">
                             <Button
                                 size="lg"
-                                className="relative bg-gbese-white hover:bg-gbese-white/90 text-primary-600 font-poppins font-semibold h-[60px] rounded-lg w-full transition-all duration-300 hover:scale-105 hover:shadow-2xl text-base leading-[1.688rem] px-6 py-3 hero-btn-shadow"
+                                className="relative bg-gbese-white hover:bg-gbese-white/90 text-primary-600 font-semibold h-[60px] rounded-lg w-full transition-all duration-300 hover:scale-105 hover:shadow-2xl text-base leading-[1.688rem] px-6 py-3 hero-btn-shadow"
                             >
                                 Start Passing Debt Now
                             </Button>

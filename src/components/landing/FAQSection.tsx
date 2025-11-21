@@ -35,7 +35,7 @@ export default function FAQSection() {
                     Got Gbese Questions?
                 </h2>
 
-                <p className="font-poppins font-medium text-center text-gbese-black text-lg leading-9 md:text-[1.5rem] md:leading-[2.625rem] max-w-sm sm:max-w-md md:max-w-full md:-mt-12">
+                <p className="font-medium text-center text-lg leading-9 md:text-[1.5rem] md:leading-[2.625rem] max-w-sm sm:max-w-md md:max-w-full md:-mt-12">
                     All your burning questions answered. No long talk.
                 </p>
 
@@ -50,10 +50,10 @@ export default function FAQSection() {
                             value={`item-${index}`}
                             className="border border-gbese-neutrals-200 rounded-2xl md:rounded-lg p-2.5 md:px-10 mb-4 data-[state=closed]:bg-[rgba(242,242,242,1)] data-[state=open]:bg-gbese-lilac transition-all duration-300 hover:shadow-md"
                         >
-                            <AccordionTrigger className="font-poppins font-medium md:font-semibold text-gbese-black hover:no-underline py-3 md:py-6 text-sm md:text-[1.5rem] leading-5 md:leading-[2.625rem]">
+                            <AccordionTrigger className="font-medium md:font-semibold hover:no-underline py-3 md:py-6 text-sm md:text-[1.5rem] leading-5 md:leading-[2.625rem]">
                                 {faq.question}
                             </AccordionTrigger>
-                            <AccordionContent className="font-poppins font-medium text-gbese-black/80 pb-3 md:pb-6 text-sm md:text-[1.5rem] leading-5 md:leading-[2.625rem]">
+                            <AccordionContent className="font-medium text-gbese-black/80 pb-3 md:pb-6 text-sm md:text-[1.5rem] leading-5 md:leading-[2.625rem]">
                                 {faq.answer}
                             </AccordionContent>
                         </AccordionItem>

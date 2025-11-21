@@ -31,11 +31,11 @@ export default function DebtManagementChart() {
 
     return (
         <div
-            className="relative w-full max-w-sm sm:max-w-md md:max-w-2xl shrink-0 rounded-[10.95px] md:rounded-[20px] bg-white p-[10.95px] md:p-6 shadow-sm"
+            className="relative w-full max-w-sm sm:max-w-xl md:max-w-4xl shrink-0 rounded-[10.95px] md:rounded-[20px] bg-white p-[10.95px] md:p-6 shadow-sm"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <h3 className="mb-6 font-sora text-[1.25rem] font-semibold leading-7.5 text-gbese-black">
+            <h3 className="mb-6 font-sora text-[1.25rem] font-semibold leading-7.5">
                 How Gbese Members Are Thriving
             </h3>
             <div className="relative">
@@ -43,7 +43,9 @@ export default function DebtManagementChart() {
                     <BarChart
                         accessibilityLayer
                         data={chartData}
-                        margin={{ left: 20, right: 20, top: 10, bottom: 40 }}
+                        margin={{ left: 10, right: 10, top: 10, bottom: 40 }}
+                        barGap={8}
+                        barCategoryGap={24}
                     >
                         <CartesianGrid vertical={false} strokeDasharray="3 3" />
                         <XAxis
@@ -66,13 +68,11 @@ export default function DebtManagementChart() {
                             dataKey="debtsManaged"
                             fill="var(--color-debtsManaged)"
                             radius={[8, 8, 0, 0]}
-                            barSize={40}
                         />
                         <Bar
                             dataKey="transfers"
                             fill="var(--color-transfers)"
                             radius={[8, 8, 0, 0]}
-                            barSize={40}
                         />
                     </BarChart>
                 </ChartContainer>
@@ -91,7 +91,7 @@ export default function DebtManagementChart() {
                                     <h4 className="font-sora text-lg font-semibold text-gbese-black">
                                         Community Growth
                                     </h4>
-                                    <p className="font-poppins text-sm text-gbese-black/60">
+                                    <p className="text-sm text-gbese-black/60">
                                         Jan - Apr 2025
                                     </p>
                                 </div>
@@ -102,18 +102,18 @@ export default function DebtManagementChart() {
                                 <div className="rounded-lg bg-primary-50 p-4">
                                     <div className="mb-1 flex items-center gap-2">
                                         <div className="h-3 w-3 rounded-full bg-primary-500"></div>
-                                        <p className="font-poppins text-xs text-gbese-black/70">Debts Managed</p>
+                                        <p className="text-xs text-gbese-black/70">Debts Managed</p>
                                     </div>
-                                    <p className="font-poppins text-2xl font-bold text-primary-600">898</p>
-                                    <p className="mt-1 font-poppins text-xs text-green-600">↑ 23% growth</p>
+                                    <p className="text-2xl font-bold text-primary-600">898</p>
+                                    <p className="mt-1 text-xs text-green-600">↑ 23% growth</p>
                                 </div>
                                 <div className="rounded-lg bg-primary-50 p-4">
                                     <div className="mb-1 flex items-center gap-2">
                                         <div className="h-3 w-3 rounded-full bg-primary-100"></div>
-                                        <p className="font-poppins text-xs text-gbese-black/70">Transfers</p>
+                                        <p className="text-xs text-gbese-black/70">Transfers</p>
                                     </div>
-                                    <p className="font-poppins text-2xl font-bold text-primary-400">690</p>
-                                    <p className="mt-1 font-poppins text-xs text-green-600">↑ 18% growth</p>
+                                    <p className="text-2xl font-bold text-primary-400">690</p>
+                                    <p className="mt-1 text-xs text-green-600">↑ 18% growth</p>
                                 </div>
                             </div>
 
@@ -122,10 +122,10 @@ export default function DebtManagementChart() {
                                 <div className="flex items-start gap-2">
                                     <Icon icon="mdi:lightbulb" width={20} height={20} className="mt-0.5 shrink-0 text-primary-600" />
                                     <div>
-                                        <p className="mb-1 font-poppins text-sm font-semibold text-gbese-black">
+                                        <p className="mb-1 text-sm font-semibold">
                                             Key Insight
                                         </p>
-                                        <p className="font-poppins text-xs leading-relaxed text-gbese-black/70">
+                                        <p className="text-xs leading-relaxed text-gbese-black/70">
                                             Members who use debt transfers are 2.5x more likely to pay on time and earn rewards faster.
                                         </p>
                                     </div>
