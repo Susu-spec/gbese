@@ -36,15 +36,15 @@ export default function Footer() {
                 id="contact"
                 className="w-full border-b border-gbese-white/50 py-[60px] px-5 md:px-[100px] md:pr-[120px]"
             >
-                <div className="mx-auto flex flex-col md:flex-row max-w-[1440px] gap-10 md:gap-[60px]">
-                    <div className="flex flex-col w-full md:w-[229px] gap-5">
+                <div className="mx-auto flex flex-col md:flex-row max-w-screen-2xl gap-10 md:gap-[60px]">
+                    <div className="flex flex-col w-full sm:w-56 md:w-60 gap-5">
                         <img
                             src="/Logo Dark BG.png"
                             alt="Gbese Logo"
                             className="w-[105px] h-[34px]"
                         />
 
-                        <p className="font-poppins font-medium text-gbese-white text-sm leading-6 md:text-base w-full md:w-[229px]">
+                        <p className="font-poppins font-medium text-gbese-white text-sm leading-6 md:text-base w-full sm:w-56 md:w-60">
                             No Carry Debt Alone – Join Our Squad!
                         </p>
 
@@ -66,7 +66,7 @@ export default function Footer() {
 
                     <div className="flex flex-col md:flex-row w-full md:w-auto gap-10 md:gap-6 order-3 md:order-0">
                         <div className="flex gap-6 md:gap-6">
-                            <div className="flex flex-col flex-1 md:w-[120px] gap-3">
+                            <div className="flex flex-col flex-1 sm:w-32 md:w-32 gap-3">
                                 <h3 className="font-poppins font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
                                     Quick Links
                                 </h3>
@@ -83,7 +83,7 @@ export default function Footer() {
                                 </nav>
                             </div>
 
-                            <div className="flex flex-col flex-1 md:w-[203px] gap-3">
+                            <div className="flex flex-col flex-1 sm:w-48 md:w-52 gap-3">
                                 <h3 className="font-poppins font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
                                     Trust & Social Proof
                                 </h3>
@@ -101,7 +101,7 @@ export default function Footer() {
                             </div>
                         </div>
 
-                        <div className="flex flex-col w-full md:w-[203px] gap-3">
+                        <div className="flex flex-col w-full sm:w-48 md:w-52 gap-3">
                             <h3 className="font-poppins font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
                                 Contact
                             </h3>
@@ -126,7 +126,7 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <div className="flex flex-col w-full md:w-[358px] gap-5 order-2 md:order-0">
+                    <div className="flex flex-col w-full sm:w-80 md:w-96 gap-5 order-2 md:order-0">
                         <h3 className="font-poppins font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
                             Newsletter
                         </h3>
@@ -134,11 +134,11 @@ export default function Footer() {
                             No Miss Update Again! Subscribe for GBESE Gist & Quick Loans.
                         </p>
 
-                        <form className="flex items-center w-full md:w-[341px]">
+                        <form className="flex items-center w-full sm:w-80 md:w-[341px]">
                             <Input
                                 type="email"
                                 placeholder="Email Address"
-                                className="text-gbese-white border-none rounded-r-none placeholder:text-gbese-neutrals-100 h-11 flex-1 md:w-[211px] glass-input"
+                                className="text-gbese-white border-none rounded-r-none placeholder:text-gbese-neutrals-100 h-11 flex-1 sm:w-48 md:w-52 glass-input"
                             />
                             <Button
                                 type="submit"
@@ -152,7 +152,7 @@ export default function Footer() {
             </div>
 
             <div className="w-full py-10">
-                <div className="mx-auto max-w-[1440px] px-5 md:px-[100px] flex items-center justify-center">
+                <div className="mx-auto max-w-screen-2xl px-5 sm:px-10 md:px-[100px] flex items-center justify-center">
                     <p className="font-poppins font-medium text-gbese-white text-center text-sm leading-6 md:text-base">
                         © {new Date().getFullYear()} Gbese. <br></br>All rights reserved.
                     </p>

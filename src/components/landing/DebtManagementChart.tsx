@@ -31,11 +31,11 @@ export default function DebtManagementChart() {
 
     return (
         <div
-            className="relative w-full max-w-[345px] md:max-w-[630px] shrink-0 rounded-[10.95px] md:rounded-[20px] bg-white p-[10.95px] md:p-6 shadow-sm"
+            className="relative w-full max-w-sm sm:max-w-md md:max-w-2xl shrink-0 rounded-[10.95px] md:rounded-[20px] bg-white p-[10.95px] md:p-6 shadow-sm"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <h3 className="mb-6 font-sora text-[1.25rem] font-semibold leading-[1.875rem] text-gbese-black">
+            <h3 className="mb-6 font-sora text-[1.25rem] font-semibold leading-7.5 text-gbese-black">
                 How Gbese Members Are Thriving
             </h3>
             <div className="relative">

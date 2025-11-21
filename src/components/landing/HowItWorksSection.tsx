@@ -6,16 +6,16 @@ export default function HowItWorksSection() {
             id="how-it-works" 
             className="w-full bg-gbese-white py-16 md:py-24 border-b border-[rgba(179,179,179,1)]"
         >
-            <div className="mx-auto max-w-[1440px] px-5 md:px-20">
-                <h2 className="font-sora font-semibold text-[1.75rem] leading-[2.625rem] md:text-[3.75rem] md:leading-[5.625rem] text-center text-primary-900">
+            <div className="mx-auto max-w-screen-2xl px-5 sm:px-10 md:px-20">
+                <h2 className="font-sora font-semibold text-[1.75rem] leading-10.5 md:text-[3.75rem] md:leading-22.5 text-center text-primary-900">
                     How Gbese Works
                 </h2>
                 
-                <p className="font-poppins font-medium text-base leading-6 md:text-[1.5rem] md:leading-9 text-center text-gbese-black/80 max-w-[962px] mx-auto mt-4 md:mt-6">
+                <p className="font-poppins font-medium text-base leading-6 md:text-[1.5rem] md:leading-9 text-center text-gbese-black/80 max-w-sm sm:max-w-2xl md:max-w-4xl mx-auto mt-4 md:mt-6">
                     From debt requests to repayments, Gbese makes every step simple, social, and secure. Here's how you stay in control.
                 </p>
 
-                <div className="mt-12 md:mt-16 flex flex-col md:flex-row gap-14 md:gap-8 justify-center items-stretch max-w-[1234px] mx-auto">
+                <div className="mt-12 md:mt-16 flex flex-col md:flex-row gap-14 md:gap-8 justify-center items-stretch max-w-screen-xl mx-auto">
                     <div className="flex-1 flex flex-col items-center text-center py-4 md:py-[18px] px-6 transition-all duration-300 hover:transform hover:-translate-y-2">
                         <div 
                             className="w-20 h-20 rounded-full flex items-center justify-center mb-6 transition-all duration-300 hover:scale-110 hover:rotate-12 icon-bg-primary p-3.5"
@@ -27,7 +27,7 @@ export default function HowItWorksSection() {
                             Step 1: Start or Accept a Gbese
                         </h3>
                         
-                        <p className="font-poppins font-normal text-base leading-6 md:text-[1.25rem] md:leading-[1.875rem] text-gbese-black/70">
+                        <p className="font-poppins font-normal text-base leading-6 md:text-[1.25rem] md:leading-7.5 text-gbese-black/70">
                             Send or accept a debt. Whether you're owing or helping out, it begins with one simple agreement.
                         </p>
                     </div>
@@ -45,7 +45,7 @@ export default function HowItWorksSection() {
                         </h3>
                         
                         {/* Step Description */}
-                        <p className="font-poppins font-normal text-base leading-6 md:text-[1.25rem] md:leading-[1.875rem] text-gbese-black/70">
+                        <p className="font-poppins font-normal text-base leading-6 md:text-[1.25rem] md:leading-7.5 text-gbese-black/70">
                             Need help? Shift the debt to someone else. Ready to pay back? Clear it in a tap.
                         </p>
                     </div>
@@ -63,7 +63,7 @@ export default function HowItWorksSection() {
                         </h3>
                         
                         {/* Step Description */}
-                        <p className="font-poppins font-normal text-base leading-6 md:text-[1.25rem] md:leading-[1.875rem] text-gbese-black/70">
+                        <p className="font-poppins font-normal text-base leading-6 md:text-[1.25rem] md:leading-7.5 text-gbese-black/70">
                             Make smart money moves, climb ranks, and unlock rewards in the community.
                         </p>
                     </div>
