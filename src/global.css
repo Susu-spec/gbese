@@ -92,7 +92,9 @@
 
 }
 
-html, body {
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 119px;
   overflow-x: hidden;
 }
 
@@ -101,6 +103,7 @@ body {
   padding: 0;
   cursor: default;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 a, button {
