@@ -36,7 +36,7 @@ export default function WhyChooseGbeseSection() {
             className="w-full bg-gbese-white py-16 px-5 md:py-20 md:px-10 lg:px-20 border-b border-[rgba(179,179,179,1)]"
         >
             <div className="mx-auto max-w-screen-2xl px-5 sm:px-6 md:px-8 lg:px-20">
-                <h2 className="mx-auto max-w-sm sm:max-w-2xl md:max-w-5xl text-center font-sora text-[1.75rem] font-semibold leading-10 text-primary-900 md:text-[3.75rem] md:leading-[5.625rem]">
+                <h2 className="mx-auto max-w-sm sm:max-w-2xl md:max-w-5xl text-center font-sora text-[1.75rem] font-semibold leading-10 text-primary-900 md:text-[3.75rem] md:leading-22.5">
                     Why Choose Gbese?
                 </h2>
 
@@ -96,7 +96,8 @@ export default function WhyChooseGbeseSection() {
 
                         <Link to="/sign-up" className="w-full lg:w-auto">
                             <Button
-                                className="w-full lg:w-auto h-[60px] rounded-lg bg-primary-900 px-6 text-lg font-semibold text-white hover:bg-primary-800 transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                                size="lg"
+                                className="w-full lg:w-auto rounded-lg bg-primary-900 text-lg font-semibold text-white hover:bg-primary-800 transition-all duration-300 hover:scale-105 hover:shadow-xl"
                             >
                                 Join Gbese Now
                             </Button>

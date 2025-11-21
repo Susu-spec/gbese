@@ -104,7 +104,7 @@ export default function Navbar() {
 
                         {/* Mobile Auth Buttons */}
                         <div className="flex flex-col gap-3 pt-4 border-t border-gbese-white/10">
-                            <Link to="/sign-in" onClick={closeMenu}>
+                            <Link to="/sign-in" onClick={closeMenu} className="w-full">
                                 <Button
                                     variant="ghost"
                                     className="w-full text-gbese-white hover:text-primary-200 transition-colors"
@@ -112,7 +112,7 @@ export default function Navbar() {
                                     Login
                                 </Button>
                             </Link>
-                            <Link to="/sign-up" onClick={closeMenu}>
+                            <Link to="/sign-up" onClick={closeMenu} className="w-full">
                                 <Button className="w-full bg-primary-500 hover:bg-primary-600 text-white">
                                     Sign Up
                                 </Button>

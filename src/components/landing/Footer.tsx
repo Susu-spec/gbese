@@ -138,11 +138,11 @@ export default function Footer() {
                             <Input
                                 type="email"
                                 placeholder="Email Address"
-                                className="text-gbese-white bg-gbese-white/10 backdrop-blur-2xl border border-gbese-white/30 rounded-r-none placeholder:text-gbese-neutrals-100 h-11 flex-1 sm:w-48 md:w-52 focus:border-gbese-white/50 focus:bg-gbese-white/15"
+                                className="text-gbese-white bg-gbese-white/10 backdrop-blur-2xl border border-gbese-white/30 rounded-r-none placeholder:text-gbese-neutrals-100 flex-1 focus:border-gbese-white/50 focus:bg-gbese-white/15"
                             />
                             <Button
                                 type="submit"
-                                className="bg-gbese-white hover:bg-gbese-white/90 text-primary-500 rounded-l-none rounded-r-lg h-11 px-6 py-3 transition-all duration-300 hover:shadow-lg"
+                                className="bg-gbese-white hover:bg-gbese-white/90 text-primary-500 rounded-l-none rounded-r-lg shrink-0 transition-all duration-300 hover:shadow-lg"
                             >
                                 Subscribe
                             </Button>

@@ -26,7 +26,7 @@ export default function HeroSection() {
                         <Link to="/sign-up" className="w-full sm:w-auto">
                             <Button
                                 size="lg"
-                                className="relative bg-gbese-white hover:bg-gbese-white/90 text-primary-600 font-semibold h-[60px] rounded-lg w-full transition-all duration-300 hover:scale-105 hover:shadow-2xl text-base leading-[1.688rem] px-6 py-3 hero-btn-shadow"
+                                className="relative bg-gbese-white hover:bg-gbese-white/90 text-primary-600 font-semibold rounded-lg w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:shadow-2xl hero-btn-shadow"
                             >
                                 Start Passing Debt Now
                             </Button>

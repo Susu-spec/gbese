@@ -14,7 +14,7 @@ export default function CTASection() {
             className="w-full bg-gbese-white py-20 px-0 md:py-20 md:px-10 lg:px-[180px] border-b border-primary-200"
         >
             <div className="mx-auto flex max-w-screen-2xl flex-col items-center gap-10 md:gap-14">
-                <h2 className="font-sora font-semibold text-center text-primary-900 text-[1.75rem] leading-10 md:text-[3rem] md:leading-[4.5rem] max-w-sm sm:max-w-xl md:max-w-4xl">
+                <h2 className="font-sora font-semibold text-center text-primary-900 text-[1.75rem] leading-10 md:text-[3rem] md:leading-18 max-w-sm sm:max-w-xl md:max-w-4xl">
                     Your Gbese Adventure Starts Here.
                 </h2>
 
@@ -50,7 +50,8 @@ export default function CTASection() {
 
                 <Link to="/sign-up">
                     <Button
-                        className="bg-primary-900 hover:bg-primary-800 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl w-full sm:w-80 h-[60px] text-base leading-[1.688rem] px-6 py-3"
+                        size="lg"
+                        className="bg-primary-900 hover:bg-primary-800 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl w-full sm:w-80"
                     >
                         Get in, Let's go
                     </Button>
