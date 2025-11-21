@@ -6,7 +6,7 @@ export default function HowItWorksSection() {
             id="how-it-works" 
             className="w-full bg-gbese-white py-16 md:py-24 border-b border-[rgba(179,179,179,1)]"
         >
-            <div className="mx-auto max-w-screen-2xl px-5 sm:px-10 md:px-20">
+            <div className="mx-auto max-w-7xl px-5 sm:px-10 md:px-20">
                 <h2 className="font-sora font-semibold text-[1.75rem] leading-10.5 md:text-[3.75rem] md:leading-22.5 text-center text-primary-900">
                     How Gbese Works
                 </h2>
