@@ -1,23 +1,32 @@
+import { useState } from "react";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const closeMenu = () => setIsMenuOpen(false);
+
     return (
         <nav
             className="sticky top-0 z-50 w-full bg-primary-900 text-gbese-white"
             aria-label="Main navigation"
         >
-            <div className="mx-auto flex max-w-[1440px] items-center justify-between px-8 md:px-20 h-20 md:h-[119px]">
+            <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 md:px-20 h-[66px] md:h-[119px]">
                 {/* Logo */}
-                <Link to="/" className="flex items-center gap-2" aria-label="Gbese Home">
+                <Link to="/" className="flex items-center" aria-label="Gbese Home" onClick={closeMenu}>
                     <img
                         src="/Logo Dark BG.png"
                         alt="Gbese Logo"
-                        className="h-8 md:h-9 w-auto select-none"
+                        style={{ width: "105px", height: "34px" }}
+                        className="select-none"
                         draggable={false}
                     />
                 </Link>
-                {/* Center nav links */}
+
+                {/* Desktop Navigation */}
                 <ul className="hidden md:flex items-center gap-6 h-10">
                     <li>
                         <a href="#how-it-works" className="body-sm md:body text-gbese-white/90 hover:text-gbese-white transition-colors">
@@ -35,9 +44,10 @@ export default function Navbar() {
                         </a>
                     </li>
                 </ul>
-                {/* Auth actions */}
-                <div className="flex items-center gap-6">
-                    <Link to="/sign-in" className="hidden md:inline-flex">
+
+                {/* Desktop Auth Buttons */}
+                <div className="hidden md:flex items-center gap-6">
+                    <Link to="/sign-in">
                         <Button
                             variant="ghost"
                             size="sm"
@@ -47,12 +57,72 @@ export default function Navbar() {
                         </Button>
                     </Link>
                     <Link to="/sign-up">
-                        <Button size="sm" className="bg-primary-500 hover:bg-primary-600 text-white">
+                        <Button size="sm" className="bg-primary-500 hover:bg-primary-600 text-white transition-all duration-300 hover:scale-105">
                             Sign Up
                         </Button>
                     </Link>
                 </div>
+
+                {/* Mobile Hamburger Menu */}
+                <button
+                    onClick={toggleMenu}
+                    className="md:hidden flex items-center justify-center text-gbese-white transition-transform duration-300 hover:scale-110"
+                    style={{ width: "28px", height: "28px" }}
+                    aria-label="Toggle menu"
+                    aria-expanded={isMenuOpen}
+                >
+                    {isMenuOpen ? <X size={28} className="transition-transform duration-200" /> : <Menu size={28} className="transition-transform duration-200" />}
+                </button>
             </div>
+
+            {/* Mobile Dropdown Menu */}
+            {isMenuOpen && (
+                <div className="md:hidden bg-primary-900 border-t border-gbese-white/10 animate-in slide-in-from-top duration-300">
+                    <div className="px-5 py-6 flex flex-col gap-6">
+                        {/* Mobile Navigation Links */}
+                        <nav className="flex flex-col gap-4">
+                            <a
+                                href="#how-it-works"
+                                className="text-gbese-white/90 hover:text-gbese-white transition-colors font-poppins font-medium text-base"
+                                onClick={closeMenu}
+                            >
+                                About Us
+                            </a>
+                            <a
+                                href="#contact"
+                                className="text-gbese-white/90 hover:text-gbese-white transition-colors font-poppins font-medium text-base"
+                                onClick={closeMenu}
+                            >
+                                Contact
+                            </a>
+                            <a
+                                href="#faqs"
+                                className="text-gbese-white/90 hover:text-gbese-white transition-colors font-poppins font-medium text-base"
+                                onClick={closeMenu}
+                            >
+                                FAQs
+                            </a>
+                        </nav>
+
+                        {/* Mobile Auth Buttons */}
+                        <div className="flex flex-col gap-3 pt-4 border-t border-gbese-white/10">
+                            <Link to="/sign-in" onClick={closeMenu}>
+                                <Button
+                                    variant="ghost"
+                                    className="w-full text-gbese-white hover:text-primary-200 transition-colors"
+                                >
+                                    Login
+                                </Button>
+                            </Link>
+                            <Link to="/sign-up" onClick={closeMenu}>
+                                <Button className="w-full bg-primary-500 hover:bg-primary-600 text-white">
+                                    Sign Up
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            )}
         </nav>
     );
 }
