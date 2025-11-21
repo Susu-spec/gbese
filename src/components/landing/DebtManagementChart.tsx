@@ -31,7 +31,7 @@ export default function DebtManagementChart() {
 
     return (
         <div
-            className="relative w-full max-w-sm sm:max-w-xl md:max-w-4xl shrink-0 rounded-[10.95px] md:rounded-[20px] bg-white p-[10.95px] md:p-6 shadow-sm"
+            className="relative w-full max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-2xl shrink-0 rounded-[10.95px] md:rounded-[20px] bg-white p-[10.95px] md:p-6 shadow-sm"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >

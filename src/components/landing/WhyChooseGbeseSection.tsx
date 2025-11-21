@@ -50,7 +50,7 @@ export default function WhyChooseGbeseSection() {
                     <div className="flex w-full flex-col items-center gap-10 lg:w-auto">
                         <div className="flex items-start gap-2 lg:gap-4">
                             {/* Sliding indicator bar */}
-                            <div className="relative h-[746px] lg:h-[614px] w-3 md:w-4 lg:w-4 shrink-0 overflow-hidden rounded-[20px] md:rounded-full bg-gray-200">
+                            <div className="relative self-stretch w-3 md:w-4 lg:w-4 shrink-0 overflow-hidden rounded-[20px] md:rounded-full bg-gray-200">
                                 <div
                                     className="absolute w-full rounded-[20px] md:rounded-full bg-primary-500 transition-all duration-300 ease-in-out"
                                     style={{
@@ -60,7 +60,7 @@ export default function WhyChooseGbeseSection() {
                                 />
                             </div>
 
-                            <div className="flex w-full md:max-w-3xl lg:w-auto lg:max-w-[540px] flex-col gap-3 lg:gap-8">
+                            <div className="flex w-full md:max-w-3xl lg:w-auto lg:max-w-2xl flex-col gap-3 lg:gap-8">
                                 {slides.map((slide, index) => (
                                     <button
                                         key={index}
