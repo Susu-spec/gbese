@@ -31,7 +31,7 @@ export default function DebtManagementChart() {
 
     return (
         <div
-            className="relative w-full max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-2xl shrink-0 rounded-[10.95px] md:rounded-[20px] bg-white p-[10.95px] md:p-6 shadow-sm"
+            className="relative w-full max-w-sm sm:max-w-xl md:max-w-3xl lg:max-w-4xl xl:max-w-2xl shrink-0 rounded-[10.95px] md:rounded-[20px] bg-white p-[10.95px] md:p-6 shadow-sm"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
@@ -79,7 +79,10 @@ export default function DebtManagementChart() {
 
                 {/* Hover Overlay */}
                 {isHovered && (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center rounded-lg bg-white/95 p-8 transition-opacity duration-300">
+                    <div 
+                        className="absolute inset-0 flex flex-col items-center justify-center rounded-lg bg-white/95 p-8 transition-opacity duration-300"
+                        onMouseLeave={() => setIsHovered(false)}
+                    >
                         {/* Main Stats Card */}
                         <div className="w-full max-w-md rounded-2xl border-2 border-primary-500 bg-white p-6 shadow-lg">
                             {/* Header */}
