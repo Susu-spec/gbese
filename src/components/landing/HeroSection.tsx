@@ -9,7 +9,7 @@ export default function HeroSection() {
         >
             <div className="mx-auto max-w-screen-2xl px-5 sm:px-10 md:px-20 pt-12 md:pt-24 pb-12 md:pb-20">
                 {/* Headline */}
-                <h1 className="font-sora font-bold text-[1.5rem] leading-9 md:text-[4.5rem] md:leading-[5.625rem] text-center text-gbese-white max-w-sm sm:max-w-xl md:max-w-full mx-auto">
+                <h1 className="font-sora font-bold text-[1.5rem] leading-9 md:text-[4.5rem] md:leading-22.5 text-center text-gbese-white max-w-sm sm:max-w-xl md:max-w-full mx-auto">
                     Shift Debt Like a Pro<br />
                     No Bank Stress, No Wahala!
                 </h1>

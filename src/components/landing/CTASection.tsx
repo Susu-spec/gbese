@@ -18,7 +18,7 @@ export default function CTASection() {
                     Your Gbese Adventure Starts Here.
                 </h2>
 
-                <p className="font-medium text-center text-lg leading-9 md:text-[1.5rem] md:leading-[2.625rem] max-w-sm sm:max-w-xl md:max-w-4xl">
+                <p className="font-medium text-center text-lg leading-9 md:text-[1.5rem] md:leading-10.5 max-w-sm sm:max-w-xl md:max-w-4xl">
                     Earn XP. Trade debt. Spin wheels. Collect NFTs. It's debt; but make it fun.
                 </p>
 

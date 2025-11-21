@@ -15,7 +15,7 @@ export default function HowItWorksSection() {
                     From debt requests to repayments, Gbese makes every step simple, social, and secure. Here's how you stay in control.
                 </p>
 
-                <div className="mt-12 md:mt-16 flex flex-col md:flex-row gap-14 md:gap-8 justify-center items-stretch max-w-screen-xl mx-auto">
+                <div className="mt-12 md:mt-16 flex flex-col md:flex-row gap-14 md:gap-8 justify-center items-stretch max-w-7xl mx-auto">
                     <div className="flex-1 flex flex-col items-center text-center py-4 md:py-[18px] px-6 transition-all duration-300 hover:transform hover:-translate-y-2">
                         <div 
                             className="w-20 h-20 rounded-full flex items-center justify-center mb-6 transition-all duration-300 hover:scale-110 hover:rotate-12 icon-bg-primary p-3.5"
