@@ -44,15 +44,15 @@ export default function WhyChooseGbeseSection() {
                     One app to manage, repay, transfer, and stay on top of your debt game — with ease and style.
                 </p>
 
-                <div className="mt-12 flex flex-col items-center justify-center gap-11 md:mt-16 md:flex-row md:gap-8">
+                <div className="mt-12 flex flex-col items-center justify-center gap-11 lg:mt-16 lg:flex-row lg:gap-8">
                     <DebtManagementChart />
 
-                    <div className="flex w-full flex-col items-center gap-10 md:w-auto">
-                        <div className="flex items-start gap-3 md:gap-4">
+                    <div className="flex w-full flex-col items-center gap-10 lg:w-auto">
+                        <div className="flex items-start gap-3 lg:gap-4">
                             {/* Sliding indicator bar */}
-                            <div className="relative h-[746px] md:h-[614px] w-[11px] md:w-3 shrink-0 overflow-hidden rounded-[20px] md:rounded-full bg-gray-200">
+                            <div className="relative h-[746px] lg:h-[614px] w-[11px] lg:w-3 shrink-0 overflow-hidden rounded-[20px] lg:rounded-full bg-gray-200">
                                 <div
-                                    className="absolute w-full rounded-[20px] md:rounded-full bg-primary-500 transition-all duration-300 ease-in-out"
+                                    className="absolute w-full rounded-[20px] lg:rounded-full bg-primary-500 transition-all duration-300 ease-in-out"
                                     style={{
                                         height: `${100 / slides.length}%`,
                                         top: `${(activeSlide * 100) / slides.length}%`,
@@ -60,15 +60,15 @@ export default function WhyChooseGbeseSection() {
                                 />
                             </div>
 
-                            <div className="flex w-[306px] md:w-auto md:max-w-[540px] flex-col gap-3 md:gap-8">
+                            <div className="flex w-[306px] lg:w-auto lg:max-w-[540px] flex-col gap-3 lg:gap-8">
                                 {slides.map((slide, index) => (
                                     <button
                                         key={index}
                                         onClick={() => setActiveSlide(index)}
-                                        className={`flex items-start gap-[22px] md:gap-4 rounded-[20px] md:rounded-lg py-6 px-2.5 md:p-6 text-left transition-all duration-300 ${
+                                        className={`flex items-start gap-[22px] lg:gap-4 rounded-[20px] lg:rounded-lg py-6 px-2.5 lg:p-6 text-left transition-all duration-300 ${
                                             activeSlide === index
-                                                ? 'border border-primary-500 md:border-2 bg-primary-50'
-                                                : 'border border-transparent md:border-2 bg-transparent hover:bg-gray-50'
+                                                ? 'border border-primary-500 lg:border-2 bg-primary-50'
+                                                : 'border border-transparent lg:border-2 bg-transparent hover:bg-gray-50'
                                         }`}
                                     >
                                         <Icon
@@ -78,7 +78,7 @@ export default function WhyChooseGbeseSection() {
                                             height={32}
                                         />
                                         <div className="flex flex-col gap-2">
-                                            <h3 className={`font-poppins text-lg md:text-[1.25rem] font-bold leading-[150%] ${
+                                            <h3 className={`font-poppins text-lg lg:text-[1.25rem] font-bold leading-[150%] ${
                                                 activeSlide === index ? 'text-primary-600' : 'text-gbese-black'
                                             }`}>
                                                 {slide.title}
@@ -94,9 +94,9 @@ export default function WhyChooseGbeseSection() {
                             </div>
                         </div>
 
-                        <Link to="/sign-up" className="w-full md:w-auto">
+                        <Link to="/sign-up" className="w-full lg:w-auto">
                             <Button
-                                className="w-full md:w-auto h-[60px] rounded-lg bg-primary-900 px-6 font-poppins text-lg font-semibold text-white hover:bg-primary-800 transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                                className="w-full lg:w-auto h-[60px] rounded-lg bg-primary-900 px-6 font-poppins text-lg font-semibold text-white hover:bg-primary-800 transition-all duration-300 hover:scale-105 hover:shadow-xl"
                             >
                                 Join Gbese Now
                             </Button>

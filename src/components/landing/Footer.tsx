@@ -138,7 +138,7 @@ export default function Footer() {
                             <Input
                                 type="email"
                                 placeholder="Email Address"
-                                className="text-gbese-white border-none rounded-r-none placeholder:text-gbese-neutrals-100 h-11 flex-1 sm:w-48 md:w-52 glass-input"
+                                className="text-gbese-white bg-gbese-white/10 backdrop-blur-2xl border border-gbese-white/30 rounded-r-none placeholder:text-gbese-neutrals-100 h-11 flex-1 sm:w-48 md:w-52 focus:border-gbese-white/50 focus:bg-gbese-white/15"
                             />
                             <Button
                                 type="submit"

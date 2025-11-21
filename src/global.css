@@ -149,9 +149,6 @@ a {
   .icon-bg-primary { background: var(--color-primary-100); }
   .icon-bg-transfer { background: rgba(223,255,249,1); }
   .icon-bg-reward { background: rgba(231,206,255,0.35); }
-
-  /* Newsletter glass input */
-  .glass-input { background: rgba(205,215,246,0.2); backdrop-filter: blur(24px); }
   .shadow-tile-transition { transition: box-shadow .3s, transform .3s; }
 }
 

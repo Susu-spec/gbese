@@ -28,17 +28,17 @@ export default function Navbar() {
                 {/* Desktop Navigation */}
                 <ul className="hidden md:flex items-center gap-6 h-10">
                     <li>
-                        <a href="#how-it-works" className="body-sm md:body text-gbese-white/90 hover:text-gbese-white transition-colors">
+                        <a href="#how-it-works" className="font-sora font-semibold text-sm sm:text-base leading-none text-gbese-white/90 hover:text-gbese-white transition-colors">
                             About Us
                         </a>
                     </li>
                     <li>
-                        <a href="#contact" className="body-sm md:body text-gbese-white/90 hover:text-gbese-white transition-colors">
+                        <a href="#contact" className="font-sora font-semibold text-sm sm:text-base leading-none text-gbese-white/90 hover:text-gbese-white transition-colors">
                             Contact
                         </a>
                     </li>
                     <li>
-                        <a href="#faqs" className="body-sm md:body text-gbese-white/90 hover:text-gbese-white transition-colors">
+                        <a href="#faqs" className="font-sora font-semibold text-sm sm:text-base leading-none text-gbese-white/90 hover:text-gbese-white transition-colors">
                             FAQs
                         </a>
                     </li>
