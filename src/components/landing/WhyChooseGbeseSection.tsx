@@ -36,11 +36,11 @@ export default function WhyChooseGbeseSection() {
             className="w-full bg-gbese-white py-16 px-5 md:py-20 md:px-20 border-b border-[rgba(179,179,179,1)]"
         >
             <div className="mx-auto max-w-[1440px]">
-                <h2 className="mx-auto max-w-[337px] md:max-w-[1140px] text-center font-sora text-[28px] font-semibold leading-10 text-primary-900 md:text-[60px] md:leading-[90px]">
+                <h2 className="mx-auto max-w-[337px] md:max-w-[1140px] text-center font-sora text-[1.75rem] font-semibold leading-10 text-primary-900 md:text-[3.75rem] md:leading-[5.625rem]">
                     Why Choose Gbese?
                 </h2>
 
-                <p className="mx-auto mt-4 max-w-[337px] md:max-w-[1140px] text-center font-poppins text-lg font-medium leading-9 text-gbese-black/80 md:mt-6 md:text-[24px]">
+                <p className="mx-auto mt-4 max-w-[337px] md:max-w-[1140px] text-center font-poppins text-lg font-medium leading-9 text-gbese-black/80 md:mt-6 md:text-[1.5rem]">
                     One app to manage, repay, transfer, and stay on top of your debt game — with ease and style.
                 </p>
 
@@ -78,7 +78,7 @@ export default function WhyChooseGbeseSection() {
                                             height={32}
                                         />
                                         <div className="flex flex-col gap-2">
-                                            <h3 className={`font-poppins text-lg md:text-[20px] font-bold leading-[150%] ${
+                                            <h3 className={`font-poppins text-lg md:text-[1.25rem] font-bold leading-[150%] ${
                                                 activeSlide === index ? 'text-primary-600' : 'text-gbese-black'
                                             }`}>
                                                 {slide.title}

@@ -14,12 +14,12 @@ export default function CTASection() {
             className="w-full bg-gbese-white py-20 px-5 md:py-20 md:px-[180px] border-b border-primary-200"
         >
             <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-10 md:gap-14">
-                <h2 className="font-sora font-semibold text-center text-primary-900 text-[28px] leading-10 md:text-[48px] md:leading-[72px] max-w-[335px] md:max-w-[974px]">
+                <h2 className="font-sora font-semibold text-center text-primary-900 text-[1.75rem] leading-10 md:text-[3rem] md:leading-[4.5rem] max-w-[335px] md:max-w-[974px]">
                     Your Gbese Adventure Starts Here.
                 </h2>
 
-                <p className="font-poppins font-medium text-center text-gbese-black text-lg leading-9 md:text-[24px] md:leading-[42px] max-w-[335px] md:max-w-[974px]">
-                    Earn XP. Trade debt. Spin wheels. Collect NFTs. It’s debt; but make it fun.
+                <p className="font-poppins font-medium text-center text-gbese-black text-lg leading-9 md:text-[1.5rem] md:leading-[2.625rem] max-w-[335px] md:max-w-[974px]">
+                    Earn XP. Trade debt. Spin wheels. Collect NFTs. It's debt; but make it fun.
                 </p>
 
                 <div className="w-full overflow-x-auto md:overflow-x-visible">
@@ -40,7 +40,7 @@ export default function CTASection() {
                                 {tile.title}
                             </h3>
 
-                            <p className="font-poppins font-normal text-center text-gbese-black/80 text-lg leading-[27px] max-w-[279px]">
+                            <p className="font-poppins font-normal text-center text-gbese-black/80 text-lg leading-[1.688rem] max-w-[279px]">
                                 {tile.description}
                             </p>
                         </div>
@@ -50,7 +50,7 @@ export default function CTASection() {
 
                 <Link to="/sign-up">
                     <Button
-                        className="bg-primary-900 hover:bg-primary-800 text-white font-poppins font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl w-[304px] h-[60px] text-base leading-[27px] px-6 py-3"
+                        className="bg-primary-900 hover:bg-primary-800 text-white font-poppins font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl w-[304px] h-[60px] text-base leading-[1.688rem] px-6 py-3"
                     >
                         Get in, Let's go
                     </Button>

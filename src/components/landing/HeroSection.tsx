@@ -9,13 +9,13 @@ export default function HeroSection() {
         >
             <div className="mx-auto max-w-[1440px] px-5 md:px-20 pt-12 md:pt-24 pb-12 md:pb-20">
                 {/* Headline */}
-                <h1 className="font-sora font-bold text-[24px] leading-9 md:text-[72px] md:leading-[90px] text-center text-gbese-white max-w-[335px] md:max-w-[1440px] mx-auto">
+                <h1 className="font-sora font-bold text-[1.5rem] leading-9 md:text-[4.5rem] md:leading-[5.625rem] text-center text-gbese-white max-w-[335px] md:max-w-[1440px] mx-auto">
                     Shift Debt Like a Pro<br />
                     No Bank Stress, No Wahala!
                 </h1>
 
                 {/* Subheading */}
-                <p className="font-poppins font-medium text-[16px] leading-7 md:text-[24px] md:leading-9 text-center text-gbese-white/90 max-w-[335px] md:max-w-[1440px] mx-auto mt-5 md:mt-6">
+                <p className="font-poppins font-medium text-base leading-7 md:text-[1.5rem] md:leading-9 text-center text-gbese-white/90 max-w-[335px] md:max-w-[1440px] mx-auto mt-5 md:mt-6">
                     GBESE lets you transfer loans to willing helpers, negotiate better <br className="hidden md:inline" />terms, earn and exchange crypto rewards and breathe easy.
                 </p>
 
@@ -25,7 +25,7 @@ export default function HeroSection() {
                         <Link to="/sign-up" className="w-full max-w-[304px] md:max-w-none md:w-auto">
                             <Button
                                 size="lg"
-                                className="relative bg-gbese-white hover:bg-gbese-white/90 text-primary-600 font-poppins font-semibold h-[60px] rounded-lg w-full transition-all duration-300 hover:scale-105 hover:shadow-2xl text-base leading-[27px] px-6 py-3 hero-btn-shadow"
+                                className="relative bg-gbese-white hover:bg-gbese-white/90 text-primary-600 font-poppins font-semibold h-[60px] rounded-lg w-full transition-all duration-300 hover:scale-105 hover:shadow-2xl text-base leading-[1.688rem] px-6 py-3 hero-btn-shadow"
                             >
                                 Start Passing Debt Now
                             </Button>

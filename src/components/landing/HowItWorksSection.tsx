@@ -7,11 +7,11 @@ export default function HowItWorksSection() {
             className="w-full bg-gbese-white py-16 md:py-24 border-b border-[rgba(179,179,179,1)]"
         >
             <div className="mx-auto max-w-[1440px] px-5 md:px-20">
-                <h2 className="font-sora font-semibold text-[28px] leading-[42px] md:text-[60px] md:leading-[90px] text-center text-primary-900">
+                <h2 className="font-sora font-semibold text-[1.75rem] leading-[2.625rem] md:text-[3.75rem] md:leading-[5.625rem] text-center text-primary-900">
                     How Gbese Works
                 </h2>
                 
-                <p className="font-poppins font-medium text-base leading-6 md:text-[24px] md:leading-9 text-center text-gbese-black/80 max-w-[962px] mx-auto mt-4 md:mt-6">
+                <p className="font-poppins font-medium text-base leading-6 md:text-[1.5rem] md:leading-9 text-center text-gbese-black/80 max-w-[962px] mx-auto mt-4 md:mt-6">
                     From debt requests to repayments, Gbese makes every step simple, social, and secure. Here's how you stay in control.
                 </p>
 
@@ -23,11 +23,11 @@ export default function HowItWorksSection() {
                             <Send className="w-full h-full text-primary-600 transition-transform duration-300" />
                         </div>
                         
-                        <h3 className="font-poppins font-semibold text-lg leading-7 md:text-[24px] md:leading-9 text-gbese-black mb-3">
+                        <h3 className="font-poppins font-semibold text-lg leading-7 md:text-[1.5rem] md:leading-9 text-gbese-black mb-3">
                             Step 1: Start or Accept a Gbese
                         </h3>
                         
-                        <p className="font-poppins font-normal text-base leading-6 md:text-[20px] md:leading-[30px] text-gbese-black/70">
+                        <p className="font-poppins font-normal text-base leading-6 md:text-[1.25rem] md:leading-[1.875rem] text-gbese-black/70">
                             Send or accept a debt. Whether you're owing or helping out, it begins with one simple agreement.
                         </p>
                     </div>
@@ -40,12 +40,12 @@ export default function HowItWorksSection() {
                         </div>
                         
                         {/* Step Title */}
-                        <h3 className="font-poppins font-semibold text-lg leading-7 md:text-[24px] md:leading-9 text-gbese-black mb-3">
+                        <h3 className="font-poppins font-semibold text-lg leading-7 md:text-[1.5rem] md:leading-9 text-gbese-black mb-3">
                             Step 2: Transfer or Repay
                         </h3>
                         
                         {/* Step Description */}
-                        <p className="font-poppins font-normal text-base leading-6 md:text-[20px] md:leading-[30px] text-gbese-black/70">
+                        <p className="font-poppins font-normal text-base leading-6 md:text-[1.25rem] md:leading-[1.875rem] text-gbese-black/70">
                             Need help? Shift the debt to someone else. Ready to pay back? Clear it in a tap.
                         </p>
                     </div>
@@ -58,12 +58,12 @@ export default function HowItWorksSection() {
                         </div>
                         
                         {/* Step Title */}
-                        <h3 className="font-poppins font-semibold text-lg leading-7 md:text-[24px] md:leading-9 text-gbese-black mb-3">
+                        <h3 className="font-poppins font-semibold text-lg leading-7 md:text-[1.5rem] md:leading-9 text-gbese-black mb-3">
                             Step 3: Earn XP & Trust
                         </h3>
                         
                         {/* Step Description */}
-                        <p className="font-poppins font-normal text-base leading-6 md:text-[20px] md:leading-[30px] text-gbese-black/70">
+                        <p className="font-poppins font-normal text-base leading-6 md:text-[1.25rem] md:leading-[1.875rem] text-gbese-black/70">
                             Make smart money moves, climb ranks, and unlock rewards in the community.
                         </p>
                     </div>

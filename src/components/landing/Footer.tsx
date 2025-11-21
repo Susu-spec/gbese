@@ -67,7 +67,7 @@ export default function Footer() {
                     <div className="flex flex-col md:flex-row w-full md:w-auto gap-10 md:gap-6 order-3 md:order-0">
                         <div className="flex gap-6 md:gap-6">
                             <div className="flex flex-col flex-1 md:w-[120px] gap-3">
-                                <h3 className="font-poppins font-semibold text-gbese-white text-sm leading-[27px] md:text-xl md:leading-6">
+                                <h3 className="font-poppins font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
                                     Quick Links
                                 </h3>
                                 <nav className="flex flex-col gap-3">
@@ -84,7 +84,7 @@ export default function Footer() {
                             </div>
 
                             <div className="flex flex-col flex-1 md:w-[203px] gap-3">
-                                <h3 className="font-poppins font-semibold text-gbese-white text-sm leading-[27px] md:text-xl md:leading-6">
+                                <h3 className="font-poppins font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
                                     Trust & Social Proof
                                 </h3>
                                 <nav className="flex flex-col gap-3">
@@ -102,7 +102,7 @@ export default function Footer() {
                         </div>
 
                         <div className="flex flex-col w-full md:w-[203px] gap-3">
-                            <h3 className="font-poppins font-semibold text-gbese-white text-sm leading-[27px] md:text-xl md:leading-6">
+                            <h3 className="font-poppins font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
                                 Contact
                             </h3>
                             <div className="flex flex-col gap-3">
@@ -127,7 +127,7 @@ export default function Footer() {
                     </div>
 
                     <div className="flex flex-col w-full md:w-[358px] gap-5 order-2 md:order-0">
-                        <h3 className="font-poppins font-semibold text-gbese-white text-sm leading-[27px] md:text-xl md:leading-6">
+                        <h3 className="font-poppins font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
                             Newsletter
                         </h3>
                         <p className="font-poppins font-medium text-gbese-white text-sm leading-6 md:text-base">

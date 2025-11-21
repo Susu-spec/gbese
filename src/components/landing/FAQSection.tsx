@@ -31,11 +31,11 @@ export default function FAQSection() {
             className="w-full bg-gbese-white border-t border-gbese-neutrals-200 py-20 px-5 md:py-20 md:px-20"
         >
             <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-[30px] md:gap-[79px]">
-                <h2 className="font-sora font-semibold text-center text-primary-900 text-[28px] leading-10 md:text-[48px] md:leading-[72px] max-w-[336px] md:max-w-[669px]">
+                <h2 className="font-sora font-semibold text-center text-primary-900 text-[1.75rem] leading-10 md:text-[3rem] md:leading-[4.5rem] max-w-[336px] md:max-w-[669px]">
                     Got Gbese Questions?
                 </h2>
 
-                <p className="font-poppins font-medium text-center text-gbese-black text-lg leading-9 md:text-[24px] md:leading-[42px] max-w-[336px] md:max-w-full md:-mt-12">
+                <p className="font-poppins font-medium text-center text-gbese-black text-lg leading-9 md:text-[1.5rem] md:leading-[2.625rem] max-w-[336px] md:max-w-full md:-mt-12">
                     All your burning questions answered. No long talk.
                 </p>
 
@@ -50,10 +50,10 @@ export default function FAQSection() {
                             value={`item-${index}`}
                             className="border border-gbese-neutrals-200 rounded-2xl md:rounded-lg p-2.5 md:px-10 mb-4 data-[state=closed]:bg-[rgba(242,242,242,1)] data-[state=open]:bg-gbese-lilac transition-all duration-300 hover:shadow-md"
                         >
-                            <AccordionTrigger className="font-poppins font-medium md:font-semibold text-gbese-black hover:no-underline py-3 md:py-6 text-sm md:text-[24px] leading-5 md:leading-[42px]">
+                            <AccordionTrigger className="font-poppins font-medium md:font-semibold text-gbese-black hover:no-underline py-3 md:py-6 text-sm md:text-[1.5rem] leading-5 md:leading-[2.625rem]">
                                 {faq.question}
                             </AccordionTrigger>
-                            <AccordionContent className="font-poppins font-medium text-gbese-black/80 pb-3 md:pb-6 text-sm md:text-[24px] leading-5 md:leading-[42px]">
+                            <AccordionContent className="font-poppins font-medium text-gbese-black/80 pb-3 md:pb-6 text-sm md:text-[1.5rem] leading-5 md:leading-[2.625rem]">
                                 {faq.answer}
                             </AccordionContent>
                         </AccordionItem>

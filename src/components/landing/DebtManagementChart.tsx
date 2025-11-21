@@ -35,7 +35,7 @@ export default function DebtManagementChart() {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <h3 className="mb-6 font-sora text-[20px] font-semibold leading-[30px] text-gbese-black">
+            <h3 className="mb-6 font-sora text-[1.25rem] font-semibold leading-[1.875rem] text-gbese-black">
                 How Gbese Members Are Thriving
             </h3>
             <div className="relative">
