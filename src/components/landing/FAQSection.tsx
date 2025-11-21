@@ -42,8 +42,7 @@ export default function FAQSection() {
                 <Accordion
                     type="single"
                     collapsible
-                    className="w-full max-w-[376px] md:max-w-7xl"
-                    style={{ gap: "16px" }}
+                    className="w-full max-w-[376px] md:max-w-7xl flex flex-col gap-4"
                 >
                     {faqs.map((faq, index) => (
                         <AccordionItem

@@ -20,8 +20,7 @@ export default function Navbar() {
                     <img
                         src="/Logo Dark BG.png"
                         alt="Gbese Logo"
-                        style={{ width: "105px", height: "34px" }}
-                        className="select-none"
+                        className="select-none w-[105px] h-[34px]"
                         draggable={false}
                     />
                 </Link>
@@ -66,8 +65,7 @@ export default function Navbar() {
                 {/* Mobile Hamburger Menu */}
                 <button
                     onClick={toggleMenu}
-                    className="md:hidden flex items-center justify-center text-gbese-white transition-transform duration-300 hover:scale-110"
-                    style={{ width: "28px", height: "28px" }}
+                    className="md:hidden flex items-center justify-center text-gbese-white transition-transform duration-300 hover:scale-110 w-7 h-7"
                     aria-label="Toggle menu"
                     aria-expanded={isMenuOpen}
                 >

@@ -4,8 +4,7 @@ export default function HowItWorksSection() {
     return (
         <section 
             id="how-it-works" 
-            className="w-full bg-gbese-white py-16 md:py-24"
-            style={{ borderBottom: '1px solid rgba(179, 179, 179, 1)' }}
+            className="w-full bg-gbese-white py-16 md:py-24 border-b border-[rgba(179,179,179,1)]"
         >
             <div className="mx-auto max-w-[1440px] px-5 md:px-20">
                 <h2 className="font-sora font-semibold text-[28px] leading-[42px] md:text-[60px] md:leading-[90px] text-center text-primary-900">
@@ -19,11 +18,7 @@ export default function HowItWorksSection() {
                 <div className="mt-12 md:mt-16 flex flex-col md:flex-row gap-14 md:gap-8 justify-center items-stretch max-w-[1234px] mx-auto">
                     <div className="flex-1 flex flex-col items-center text-center py-4 md:py-[18px] px-6 transition-all duration-300 hover:transform hover:-translate-y-2">
                         <div 
-                            className="w-20 h-20 rounded-full flex items-center justify-center mb-6 transition-all duration-300 hover:scale-110 hover:rotate-12"
-                            style={{ 
-                                background: 'var(--color-primary-100)',
-                                padding: '14px'
-                            }}
+                            className="w-20 h-20 rounded-full flex items-center justify-center mb-6 transition-all duration-300 hover:scale-110 hover:rotate-12 icon-bg-primary p-3.5"
                         >
                             <Send className="w-full h-full text-primary-600 transition-transform duration-300" />
                         </div>
@@ -39,13 +34,9 @@ export default function HowItWorksSection() {
 
                     <div className="flex-1 flex flex-col items-center text-center py-4 md:py-[18px] px-6 transition-all duration-300 hover:transform hover:-translate-y-2">
                         <div 
-                            className="w-20 h-20 rounded-full flex items-center justify-center mb-6 transition-all duration-300 hover:scale-110"
-                            style={{ 
-                                background: 'rgba(223, 255, 249, 1)',
-                                padding: '14px'
-                            }}
+                            className="w-20 h-20 rounded-full flex items-center justify-center mb-6 transition-all duration-300 hover:scale-110 icon-bg-transfer p-3.5"
                         >
-                            <ArrowLeftRight className="w-full h-full transition-transform duration-300 hover:translate-x-1" style={{ color: 'rgba(0, 150, 136, 1)' }} />
+                            <ArrowLeftRight className="w-full h-full transition-transform duration-300 hover:translate-x-1 text-[rgba(0,150,136,1)]" />
                         </div>
                         
                         {/* Step Title */}
@@ -61,13 +52,9 @@ export default function HowItWorksSection() {
 
                     <div className="flex-1 flex flex-col items-center text-center py-4 md:py-[18px] px-6 transition-all duration-300 hover:transform hover:-translate-y-2">
                         <div 
-                            className="w-20 h-20 rounded-full flex items-center justify-center mb-6 transition-all duration-300 hover:scale-110 hover:rotate-12"
-                            style={{ 
-                                background: 'rgba(231, 206, 255, 0.35)',
-                                padding: '14px'
-                            }}
+                            className="w-20 h-20 rounded-full flex items-center justify-center mb-6 transition-all duration-300 hover:scale-110 hover:rotate-12 icon-bg-reward p-3.5"
                         >
-                            <Award className="w-full h-full transition-transform duration-300" style={{ color: 'rgba(147, 51, 234, 1)' }} />
+                            <Award className="w-full h-full transition-transform duration-300 text-[rgba(147,51,234,1)]" />
                         </div>
                         
                         {/* Step Title */}

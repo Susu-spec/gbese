@@ -5,20 +5,17 @@ export default function HeroSection() {
     return (
         <section
             id="hero"
-            className="relative w-full bg-primary-900 text-gbese-white"
-            style={{
-                background: 'linear-gradient(180deg, #021346 0%, rgba(2, 19, 70, 0.9) 50%, #021346 100%)'
-            }}
+            className="relative w-full bg-primary-900 hero-bg text-gbese-white"
         >
             <div className="mx-auto max-w-[1440px] px-5 md:px-20 pt-12 md:pt-24 pb-12 md:pb-20">
                 {/* Headline */}
-                <h1 className="font-sora font-bold text-[24px] leading-[36px] md:text-[72px] md:leading-[90px] text-center text-gbese-white max-w-[335px] md:max-w-[1440px] mx-auto">
+                <h1 className="font-sora font-bold text-[24px] leading-9 md:text-[72px] md:leading-[90px] text-center text-gbese-white max-w-[335px] md:max-w-[1440px] mx-auto">
                     Shift Debt Like a Pro<br />
                     No Bank Stress, No Wahala!
                 </h1>
 
                 {/* Subheading */}
-                <p className="font-poppins font-medium text-[16px] leading-[28px] md:text-[24px] md:leading-9 text-center text-gbese-white/90 max-w-[335px] md:max-w-[1440px] mx-auto mt-5 md:mt-6">
+                <p className="font-poppins font-medium text-[16px] leading-7 md:text-[24px] md:leading-9 text-center text-gbese-white/90 max-w-[335px] md:max-w-[1440px] mx-auto mt-5 md:mt-6">
                     GBESE lets you transfer loans to willing helpers, negotiate better <br className="hidden md:inline" />terms, earn and exchange crypto rewards and breathe easy.
                 </p>
 
@@ -28,16 +25,7 @@ export default function HeroSection() {
                         <Link to="/sign-up" className="w-full max-w-[304px] md:max-w-none md:w-auto">
                             <Button
                                 size="lg"
-                                className="relative bg-gbese-white hover:bg-gbese-white/90 text-primary-600 font-poppins font-semibold h-[60px] rounded-lg shadow-xl w-full transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-                                style={{
-                                    fontSize: '16px',
-                                    lineHeight: '27px',
-                                    paddingTop: '12px',
-                                    paddingRight: '24px',
-                                    paddingBottom: '12px',
-                                    paddingLeft: '24px',
-                                    boxShadow: '0 20px 80px rgba(205, 215, 246, 0.4), 0 10px 40px rgba(205, 215, 246, 0.3), 0 4px 12px rgba(0, 0, 0, 0.1)'
-                                }}
+                                className="relative bg-gbese-white hover:bg-gbese-white/90 text-primary-600 font-poppins font-semibold h-[60px] rounded-lg w-full transition-all duration-300 hover:scale-105 hover:shadow-2xl text-base leading-[27px] px-6 py-3 hero-btn-shadow"
                             >
                                 Start Passing Debt Now
                             </Button>
@@ -45,66 +33,21 @@ export default function HeroSection() {
                     </div>
                     
                     <div 
-                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 md:mt-4 pointer-events-none w-[300px] max-w-[85vw] md:w-[600px]"
-                        style={{
-                            height: '1.5px',
-                            background: 'linear-gradient(to right, transparent 0%, rgba(131, 154, 232, 0.5) 10%, rgba(131, 154, 232, 0.7) 20%, rgba(131, 154, 232, 0.8) 50%, rgba(131, 154, 232, 0.7) 80%, rgba(131, 154, 232, 0.5) 90%, transparent 100%)',
-                            filter: 'blur(1px)',
-                            zIndex: 2,
-                        }}
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 md:mt-4 pointer-events-none w-[300px] max-w-[85vw] md:w-[600px] hero-divider-line z-20"
                     />
                     {/* Refined radial glow spreading upward only */}
                     <div 
-                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 md:mt-4 pointer-events-none overflow-hidden h-[120px] md:h-[200px]"
-                        style={{
-                            width: '100vw',
-                            background: `
-                                radial-gradient(ellipse 100% 35% at center 100%, 
-                                    rgba(131, 154, 232, 0.3) 0%, 
-                                    rgba(131, 154, 232, 0.25) 3%, 
-                                    rgba(131, 154, 232, 0.2) 8%, 
-                                    rgba(131, 154, 232, 0.15) 15%, 
-                                    rgba(131, 154, 232, 0.1) 25%, 
-                                    rgba(131, 154, 232, 0.06) 35%, 
-                                    rgba(131, 154, 232, 0.03) 50%, 
-                                    transparent 75%
-                                )
-                            `,
-                            filter: 'blur(20px)',
-                            zIndex: 1,
-                            transform: 'translateY(-100%)',
-                        }}
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 md:mt-4 pointer-events-none overflow-hidden h-[120px] md:h-[200px] w-screen hero-glow-main z-10"
                     />
                     {/* Additional soft glow layer for depth */}
                     <div 
-                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 md:mt-4 pointer-events-none overflow-hidden h-[100px] md:h-[150px]"
-                        style={{
-                            width: '100vw',
-                            background: `
-                                radial-gradient(ellipse 100% 30% at center 100%, 
-                                    rgba(131, 154, 232, 0.12) 0%, 
-                                    rgba(131, 154, 232, 0.09) 5%, 
-                                    rgba(131, 154, 232, 0.06) 12%, 
-                                    rgba(131, 154, 232, 0.04) 22%, 
-                                    rgba(131, 154, 232, 0.02) 35%, 
-                                    transparent 60%
-                                )
-                            `,
-                            filter: 'blur(25px)',
-                            zIndex: 1,
-                            transform: 'translateY(-100%)',
-                        }}
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 md:mt-4 pointer-events-none overflow-hidden h-[100px] md:h-[150px] w-screen hero-glow-secondary z-10"
                     />
                 </div>
                 {/* Dashboard Mockup */}
                 <div className="relative mt-24 md:mt-40 flex justify-center px-5 md:px-0 mb-0 md:mb-4">
                     <div
-                        className="relative w-full max-w-[330px] md:max-w-[1025px] overflow-hidden rounded-t-[12.57px] md:rounded-t-[40px] transition-transform duration-500 hover:scale-[1.02]"
-                        style={{ 
-                            borderTop: '6.29px solid rgba(6, 44, 175, 1)',
-                            borderRight: '6.29px solid rgba(6, 44, 175, 1)',
-                            borderLeft: '6.29px solid rgba(6, 44, 175, 1)',
-                        }}
+                        className="relative w-full max-w-[330px] md:max-w-[1025px] overflow-hidden rounded-t-[12.57px] md:rounded-t-[40px] transition-transform duration-500 hover:scale-[1.02] border-t-[6.29px] border-l-[6.29px] border-r-[6.29px] border-[rgba(6,44,175,1)]"
                     >
                         <img
                             src="/Dashboard-image.png"
@@ -119,14 +62,7 @@ export default function HeroSection() {
             {/* Section divider */}
             <div className="w-full flex justify-center relative">
                 <div 
-                    className="relative w-full"
-                    style={{
-                        width: '1440px',
-                        maxWidth: '100%',
-                        height: '64px',
-                        background: 'rgba(2, 19, 71, 1)',
-                        overflow: 'hidden',
-                    }}
+                    className="relative w-full max-w-[1440px] h-16 bg-[rgba(2,19,71,1)] overflow-hidden"
                 >
                     {/* Swirl pattern SVG */}
                     <svg 

@@ -1,5 +1,5 @@
 // Centralized static data for landing page sections.
-// Extracted per review feedback to avoid recreating arrays on each render.
+
 
 export const heroCtaText = "Start Passing Debt Now";
 

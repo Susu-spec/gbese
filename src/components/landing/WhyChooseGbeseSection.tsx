@@ -33,8 +33,7 @@ export default function WhyChooseGbeseSection() {
     return (
         <section
             id="why-choose-gbese"
-            className="w-full bg-gbese-white py-16 px-5 md:py-20 md:px-20"
-            style={{ borderBottom: '1px solid rgba(179, 179, 179, 1)' }}
+            className="w-full bg-gbese-white py-16 px-5 md:py-20 md:px-20 border-b border-[rgba(179,179,179,1)]"
         >
             <div className="mx-auto max-w-[1440px]">
                 <h2 className="mx-auto max-w-[337px] md:max-w-[1140px] text-center font-sora text-[28px] font-semibold leading-10 text-primary-900 md:text-[60px] md:leading-[90px]">
@@ -66,7 +65,7 @@ export default function WhyChooseGbeseSection() {
                                     <button
                                         key={index}
                                         onClick={() => setActiveSlide(index)}
-                                        className={`flex items-start gap-[22px] md:gap-4 rounded-[20px] md:rounded-lg py-6 px-[10px] md:p-6 text-left transition-all duration-300 ${
+                                        className={`flex items-start gap-[22px] md:gap-4 rounded-[20px] md:rounded-lg py-6 px-2.5 md:p-6 text-left transition-all duration-300 ${
                                             activeSlide === index
                                                 ? 'border border-primary-500 md:border-2 bg-primary-50'
                                                 : 'border border-transparent md:border-2 bg-transparent hover:bg-gray-50'

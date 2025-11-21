@@ -138,18 +138,11 @@ export default function Footer() {
                             <Input
                                 type="email"
                                 placeholder="Email Address"
-                                className="text-gbese-white border-none rounded-r-none placeholder:text-gbese-neutrals-100 h-11 flex-1 md:w-[211px]"
-                                style={{ 
-                                    background: "rgba(205, 215, 246, 0.2)",
-                                    backdropFilter: "blur(24px)"
-                                }}
+                                className="text-gbese-white border-none rounded-r-none placeholder:text-gbese-neutrals-100 h-11 flex-1 md:w-[211px] glass-input"
                             />
                             <Button
                                 type="submit"
-                                className="bg-gbese-white hover:bg-gbese-white/90 text-primary-500 rounded-l-none h-11 px-6 py-3 transition-all duration-300 hover:shadow-lg"
-                                style={{
-                                    borderRadius: "8px",
-                                }}
+                                className="bg-gbese-white hover:bg-gbese-white/90 text-primary-500 rounded-l-none rounded-r-lg h-11 px-6 py-3 transition-all duration-300 hover:shadow-lg"
                             >
                                 Subscribe
                             </Button>
