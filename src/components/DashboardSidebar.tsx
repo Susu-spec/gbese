@@ -15,6 +15,7 @@ import {
 
 export function DashboardSidebar() {
     const location = useLocation();
+
     return (
         <Sidebar>
             <SidebarHeader className="mb-4 text-white">Gbese</SidebarHeader>
@@ -22,19 +23,22 @@ export function DashboardSidebar() {
                 <SidebarGroup >
                     <SidebarGroupContent>
                         <SidebarMenu  className="gap-4" >
-                            {protectedRoutes.map((item) => {
-                                const active = location.pathname === `/${item.path}`;
-                                return(
-                                    <SidebarMenuItem key={item.path} className="text-white hover:bg-white hover:rounded-md">
-                                        <SidebarMenuButton asChild isActive={active} >
-                                            <a href={item.path}>
-                                            <item.icon />
-                                            <span >{item.label}</span>
-                                            </a>
-                                        </SidebarMenuButton>
-                                    </SidebarMenuItem>
-                                )
-                            })}
+                            {protectedRoutes
+                                .filter(item => item.path !== "profile" && item.path !== "notifications")
+                                .map((item) => {
+                                    const active = location.pathname === `/${item.path}`;
+                                    return(
+                                        <SidebarMenuItem key={item.path} className="text-white hover:bg-white hover:rounded-md">
+                                            <SidebarMenuButton asChild isActive={active} >
+                                                <a href={item.path}>
+                                                <item.icon />
+                                                <span >{item.label}</span>
+                                                </a>
+                                            </SidebarMenuButton>
+                                        </SidebarMenuItem>
+                                    )
+                                }
+                            )}
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
