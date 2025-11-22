@@ -4,26 +4,9 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
+import { faqs } from "./landingData";
 
 export default function FAQSection() {
-    const faqs = [
-        {
-            question: "What is GBESE?",
-            answer: "GBESE is a peer-to-peer credit transfer platform that lets you move your debt (aka gbese) to someone else — with their consent. It flips traditional credit models by decentralising who holds debt, giving people more freedom and control.",
-        },
-        {
-            question: "Why would someone accept someone else's debt?",
-            answer: "Because it comes with perks. Receivers can earn incentives (cash, tokens, or reputation points), improve their credit profile, or gain influence in our governance system. For users with strong financial capacity, absorbing gbese is a way to give back or game the system.",
-        },
-        {
-            question: "How secure is Gbese?",
-            answer: "Gbese uses bank-level encryption to protect all your data and transactions. We're compliant with all financial regulations and never store your sensitive banking information on our servers.",
-        },
-        {
-            question: "What is the \"Wealth Redistribution Index\"?",
-            answer: "It's a gamified metric that tracks how much gbese you've shifted upward — from those with less capacity to those with more. It celebrates users who help rebalance the system. You'll see stats, rankings, and community milestones in real time.",
-        },
-    ];
 
     return (
         <section

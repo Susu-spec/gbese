@@ -1,34 +1,9 @@
 import { Icon } from "@iconify/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { quickLinks, trustLinks, contactInfo, socialIcons } from "./landingData";
 
 export default function Footer() {
-    const quickLinks = [
-        { label: "Product", href: "#product" },
-        { label: "Company", href: "#company" },
-        { label: "Web3", href: "#web3" },
-        { label: "Legal", href: "#legal" },
-    ];
-
-    const trustLinks = [
-        { label: "Privacy Policy", href: "#privacy" },
-        { label: "Terms of Service", href: "#terms" },
-        { label: "Security", href: "#security" },
-        { label: "Testimonials", href: "#testimonials" },
-    ];
-
-    const contactInfo = [
-        { label: "Email", value: "hello@gbese.com", href: "mailto:hello@gbese.com" },
-        { label: "Phone", value: "+234 800 000 0000", href: "tel:+2348000000000" },
-        { label: "Address", value: "Lagos, Nigeria" },
-    ];
-
-    const socialIcons = [
-        { icon: "proicons:x-twitter", href: "#", label: "Twitter" },
-        { icon: "ic:baseline-facebook", href: "#", label: "Facebook" },
-        { icon: "ic:baseline-telegram", href: "#", label: "Telegram" },
-        { icon: "mdi:instagram", href: "#", label: "Instagram" },
-    ];
 
     return (
         <footer className="w-full bg-primary-900 text-gbese-white">

@@ -3,32 +3,10 @@ import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@iconify/react";
 import DebtManagementChart from "./DebtManagementChart";
+import { whyChooseSlides } from "./landingData";
 
 export default function WhyChooseGbeseSection() {
     const [activeSlide, setActiveSlide] = useState(0);
-
-    const slides = [
-        {
-            icon: "flat-color-icons:debt",
-            title: "Debt Made Simple",
-            description: "Track your debt, set reminders, and automate payments. No drama, no long talk.",
-        },
-        {
-            icon: "ic:baseline-transfer-within-a-station",
-            title: "Transfer Debts",
-            description: "Need help paying? Let someone else cover you (with their consent). Stay accountable without the pressure.",
-        },
-        {
-            icon: "token-branded:trust",
-            title: "Built for Trust",
-            description: "Use cash or crypto; your choice. Smart contracts keep repayments secure on-chain when you want extra peace of mind.",
-        },
-        {
-            icon: "tabler:award",
-            title: "Earn While You Help",
-            description: "Every good gbe$e deed earns you XP. Transfer debts, pay on time, help others, then watch your rewards rack up.",
-        },
-    ];
 
     return (
         <section
@@ -54,14 +32,14 @@ export default function WhyChooseGbeseSection() {
                                 <div
                                     className="absolute w-full rounded-[20px] md:rounded-full bg-primary-500 transition-all duration-300 ease-in-out"
                                     style={{
-                                        height: `${100 / slides.length}%`,
-                                        top: `${(activeSlide * 100) / slides.length}%`,
+                                        height: `${100 / whyChooseSlides.length}%`,
+                                        top: `${(activeSlide * 100) / whyChooseSlides.length}%`,
                                     }}
                                 />
                             </div>
 
                             <div className="flex w-full md:max-w-3xl lg:max-w-3xl xl:w-auto xl:max-w-2xl flex-col gap-3 lg:gap-6 xl:gap-8">
-                                {slides.map((slide, index) => (
+                                {whyChooseSlides.map((slide, index) => (
                                     <button
                                         key={index}
                                         onClick={() => setActiveSlide(index)}

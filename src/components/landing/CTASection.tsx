@@ -1,12 +1,8 @@
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
+import { ctaTiles } from "./landingData";
 
 export default function CTASection() {
-    const tiles = [
-        { title: "Rack up XPs", description: "Earn XP for every smart move. Debt transfers, and helping others.", image: "/xp-tile.png", variant: "xp" },
-        { title: "Spin to Win", description: "Use XP to spin the rewards wheel and unlock NFTs, perks, and fun surprises.", image: "/spin-the-wheel-tile.png", variant: "spin" },
-        { title: "Badge Up", description: "Show off profile badges that highlight your cred and activity in the community.", image: "/badge-tile.png", variant: "badge" },
-    ];
 
     return (
         <section
@@ -24,10 +20,10 @@ export default function CTASection() {
 
                 <div className="w-full overflow-x-auto lg:overflow-x-visible">
                     <div className="flex gap-5 lg:gap-8 justify-start lg:justify-center items-stretch pl-5 pr-5 lg:px-0 pb-4 lg:pb-0">
-                        {tiles.map((tile, index) => (
+                        {ctaTiles.map((tile, index) => (
                         <div
                             key={index}
-                            className={`flex flex-col items-center rounded-[30px] shrink-0 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer gap-2 ${tile.variant === 'xp' ? 'tile-xp' : tile.variant === 'spin' ? 'tile-spin' : 'tile-badge'}`}
+                            className={`flex flex-col items-center rounded-[30px] shrink-0 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer gap-2 ${index === 0 ? 'tile-xp' : index === 1 ? 'tile-spin' : 'tile-badge'}`}
                         >
                             <img
                                 src={tile.image}
