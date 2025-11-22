@@ -1,6 +1,8 @@
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
+import { heroCtaText } from "./landingData";
 import SwirlPattern from "./SwirlPattern";
+import DashboardImage from "@/components/assets/images/Dashboard-image.png";
 
 export default function HeroSection() {
     return (
@@ -28,30 +30,30 @@ export default function HeroSection() {
                                 size="lg"
                                 className="relative bg-gbese-white hover:bg-gbese-white/90 text-primary-600 font-semibold rounded-lg w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:shadow-2xl hero-btn-shadow"
                             >
-                                Start Passing Debt Now
+                                {heroCtaText}
                             </Button>
                         </Link>
                     </div>
                     
                     <div 
-                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 md:mt-4 pointer-events-none w-[75vw] sm:w-96 md:w-[600px] hero-divider-line z-20"
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 md:mt-4 pointer-events-none w-[75vw] sm:w-96 md:w-150 hero-divider-line z-20"
                     />
                     {/* Refined radial glow spreading upward only */}
                     <div 
-                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 md:mt-4 pointer-events-none overflow-hidden h-[120px] md:h-[200px] w-screen hero-glow-main z-10"
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 md:mt-4 pointer-events-none overflow-hidden h-[7.5rem] md:h-50 w-screen hero-glow-main z-10"
                     />
                     {/* Additional soft glow layer for depth */}
                     <div 
-                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 md:mt-4 pointer-events-none overflow-hidden h-[100px] md:h-[150px] w-screen hero-glow-secondary z-10"
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 md:mt-4 pointer-events-none overflow-hidden h-[6.25rem] md:h-38 w-screen hero-glow-secondary z-10"
                     />
                 </div>
                 {/* Dashboard Mockup */}
                 <div className="relative mt-24 md:mt-40 flex justify-center px-5 md:px-0 mb-0 md:mb-4">
                     <div
-                        className="relative w-full max-w-sm sm:max-w-lg md:max-w-4xl overflow-hidden rounded-t-[12.57px] md:rounded-t-[40px] transition-transform duration-500 hover:scale-[1.02] border-t-[6.29px] border-l-[6.29px] border-r-[6.29px] border-[rgba(6,44,175,1)]"
+                        className="relative w-full max-w-sm sm:max-w-lg md:max-w-4xl overflow-hidden rounded-t-xl md:rounded-t-[2.5rem] transition-transform duration-500 hover:scale-[1.02] border-[6px] border-[rgba(6,44,175,1)]"
                     >
                         <img
-                            src="/Dashboard-image.png"
+                            src={DashboardImage}
                             alt="Gbese Dashboard"
                             className="w-full h-auto select-none"
                             draggable={false}
