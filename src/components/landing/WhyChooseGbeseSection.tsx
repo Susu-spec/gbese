@@ -14,11 +14,11 @@ export default function WhyChooseGbeseSection() {
             className="w-full bg-gbese-white py-16 px-5 md:py-20 md:px-10 lg:px-20 border-b border-[rgba(179,179,179,1)]"
         >
             <div className="mx-auto max-w-screen-2xl px-5 sm:px-6 md:px-8 lg:px-20">
-                <h2 className="mx-auto max-w-sm sm:max-w-2xl md:max-w-5xl text-center font-sora text-[1.75rem] font-semibold leading-10 text-primary-900 md:text-[3.75rem] md:leading-22.5">
+                <h2 className="mx-auto max-w-sm sm:max-w-2xl md:max-w-5xl text-center font-sora text-3xl font-semibold leading-10 text-primary-900 md:text-6xl md:leading-tight">
                     Why Choose Gbese?
                 </h2>
 
-                <p className="mx-auto mt-4 max-w-sm sm:max-w-2xl md:max-w-5xl text-center text-lg font-medium leading-9 text-gbese-black/80 md:mt-6 md:text-[1.5rem]">
+                <p className="mx-auto mt-4 max-w-sm sm:max-w-2xl md:max-w-5xl text-center text-lg font-medium leading-9 text-gbese-black/80 md:mt-6 md:text-2xl">
                     One app to manage, repay, transfer, and stay on top of your debt game — with ease and style.
                 </p>
 
