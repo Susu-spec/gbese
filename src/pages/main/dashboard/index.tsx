@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Button } from "@/components/ui/button";
+import { Award, Wallet } from "lucide-react";
 
 
 export default function DashboardPage() {
@@ -27,14 +28,34 @@ export default function DashboardPage() {
                 <p>Time to balance your gbese and stack some XP. No slackin’ today</p>
             </div>
             <div className="flex gap-3 w-full p-3">
-                {mockItems.length > 0 ? mockItems.map((item, index) => (
-                    <Card key={index} className="p-2 w-full h-[150px]">
-                        <img src={item.icon} alt={item.title} />
-                        <CardTitle>{item.title}</CardTitle>
-                        <p>{item.amount}</p>
-                        <a href={item.href}>{item.href}</a>
-                    </Card>
-                )) : (
+                {mockItems.length > 0 ? (
+                    <div className="flex w-full gap-3">
+                        <Card className="w-full h-[150px] p-2">
+                            <div>
+                                <Wallet />
+                            </div>
+                            <CardTitle>Balance</CardTitle>
+                            <p>&#8358; 0.00</p>
+                            <p>Fund Wallet</p>
+                        </Card>
+                        <Card className="w-full h-[150px] p-2">
+                            <div>
+                                <Wallet />
+                            </div>
+                            <CardTitle>Balance</CardTitle>
+                            <p>&#8358; 0.00</p>
+                            <p>Fund Wallet</p>
+                        </Card>
+                        <Card className="w-full h-[150px] p-2">
+                            <div>
+                                <Award />
+                            </div>
+                            <CardTitle>Balance</CardTitle>
+                            <p>&#8358; 0.00</p>
+                            <p>Fund Wallet</p>
+                        </Card>
+                    </div>
+                ) : (
                     <div className="flex w-full gap-3">
                         <Card className="w-full h-[150px] p-2">
                             <Skeleton className="h-8 w-8 rounded-full "/>
@@ -64,8 +85,8 @@ export default function DashboardPage() {
                 )}
             </div>
 
-            <div className="grid grid-cols-3 p-2 gap-3">
-                <Card className="col-span-2">
+            <div className="grid grid-cols-1 p-2 gap-2 lg:grid-cols-3 xl:grid-cols-3 lg:gap-3">
+                <Card className="xl:col-span-2">
                     <CardHeader>
                         <CardTitle>Activity Breakdown</CardTitle>
                         <CardAction>
@@ -92,8 +113,8 @@ export default function DashboardPage() {
                         </div>
                     )}
                 </Card>
-                <Card className="col-span-1">Falling</Card>
-                <Card className="col-span-2">
+                <Card className="col-span-1 p-2">There is meant to be something here but I dont think I want to put any spinning thing here</Card>
+                <Card className="xl:col-span-2">
                     <CardHeader>
                         <CardTitle>Transaction History</CardTitle>
                     </CardHeader>
