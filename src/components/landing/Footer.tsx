@@ -2,6 +2,7 @@ import { Icon } from "@iconify/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { quickLinks, trustLinks, contactInfo, socialIcons } from "./landingData";
+import LogoDarkBG from "@/components/assets/images/Logo Dark BG.png";
 
 export default function Footer() {
 
@@ -14,7 +15,7 @@ export default function Footer() {
                 <div className="mx-auto flex flex-col lg:flex-row max-w-screen-2xl gap-4 lg:gap-15">
                     <div className="flex flex-col w-full sm:w-56 md:w-60 gap-4">
                         <img
-                            src="/Logo Dark BG.png"
+                            src={LogoDarkBG}
                             alt="Gbese Logo"
                             className="w-[105px] h-[34px]"
                         />
@@ -109,7 +110,7 @@ export default function Footer() {
                             No Miss Update Again! Subscribe for GBESE Gist & Quick Loans.
                         </p>
 
-                        <form className="flex items-center w-full sm:w-80 lg:w-[341px]">
+                        <form className="flex items-center w-full sm:w-80 lg:w-85.25">
                             <Input
                                 type="email"
                                 placeholder="Email Address"
@@ -126,7 +127,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="w-full py-10">
+            <div className="w-full py-5">
                 <div className="mx-auto max-w-screen-2xl px-5 sm:px-10 lg:px-25 flex items-center justify-center">
                     <p className="font-medium text-gbese-white text-center text-sm leading-6 md:text-base">
                         © {new Date().getFullYear()} Gbese. <br></br>All rights reserved.

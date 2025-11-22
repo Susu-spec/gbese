@@ -1,4 +1,5 @@
 import { Send, ArrowLeftRight, Award } from "lucide-react";
+import { howItWorksSteps } from "./landingData";
 
 export default function HowItWorksSection() {
     return (
@@ -16,57 +17,34 @@ export default function HowItWorksSection() {
                 </p>
 
                 <div className="mt-12 md:mt-16 flex flex-col md:flex-row gap-14 md:gap-8 justify-center items-stretch max-w-7xl mx-auto">
-                    <div className="flex-1 flex flex-col items-center text-center py-4 md:py-[18px] px-6 transition-all duration-300 hover:transform hover:-translate-y-2">
-                        <div 
-                            className="w-20 h-20 rounded-full flex items-center justify-center mb-6 transition-all duration-300 hover:scale-110 hover:rotate-12 icon-bg-primary p-3.5"
-                        >
-                            <Send className="w-full h-full text-primary-600 transition-transform duration-300" />
-                        </div>
-                        
-                        <h3 className="font-semibold text-lg leading-7 md:text-[1.5rem] md:leading-9 mb-3">
-                            Step 1: Start or Accept a Gbese
-                        </h3>
-                        
-                        <p className="font-normal text-base leading-6 md:text-[1.25rem] md:leading-7.5 text-gbese-black/70">
-                            Send or accept a debt. Whether you're owing or helping out, it begins with one simple agreement.
-                        </p>
-                    </div>
-
-                    <div className="flex-1 flex flex-col items-center text-center py-4 md:py-[18px] px-6 transition-all duration-300 hover:transform hover:-translate-y-2">
-                        <div 
-                            className="w-20 h-20 rounded-full flex items-center justify-center mb-6 transition-all duration-300 hover:scale-110 icon-bg-transfer p-3.5"
-                        >
-                            <ArrowLeftRight className="w-full h-full transition-transform duration-300 hover:translate-x-1 text-[rgba(0,150,136,1)]" />
-                        </div>
-                        
-                        {/* Step Title */}
-                        <h3 className="font-semibold text-lg leading-7 md:text-[1.5rem] md:leading-9 mb-3">
-                            Step 2: Transfer or Repay
-                        </h3>
-                        
-                        {/* Step Description */}
-                        <p className="font-normal text-base leading-6 md:text-[1.25rem] md:leading-7.5 text-gbese-black/70">
-                            Need help? Shift the debt to someone else. Ready to pay back? Clear it in a tap.
-                        </p>
-                    </div>
-
-                    <div className="flex-1 flex flex-col items-center text-center py-4 md:py-[18px] px-6 transition-all duration-300 hover:transform hover:-translate-y-2">
-                        <div 
-                            className="w-20 h-20 rounded-full flex items-center justify-center mb-6 transition-all duration-300 hover:scale-110 hover:rotate-12 icon-bg-reward p-3.5"
-                        >
-                            <Award className="w-full h-full transition-transform duration-300 text-[rgba(147,51,234,1)]" />
-                        </div>
-                        
-                        {/* Step Title */}
-                        <h3 className="font-semibold text-lg leading-7 md:text-[1.5rem] md:leading-9 mb-3">
-                            Step 3: Earn XP & Trust
-                        </h3>
-                        
-                        {/* Step Description */}
-                        <p className="font-normal text-base leading-6 md:text-[1.25rem] md:leading-7.5 text-gbese-black/70">
-                            Make smart money moves, climb ranks, and unlock rewards in the community.
-                        </p>
-                    </div>
+                    {howItWorksSteps.map((step, idx) => {
+                        const iconWrapClasses = [
+                            "icon-bg-primary",
+                            "icon-bg-transfer",
+                            "icon-bg-reward",
+                        ][idx] || "icon-bg-primary";
+                        return (
+                            <div key={step.step} className="flex-1 flex flex-col items-center text-center py-4 md:py-[18px] px-6 transition-all duration-300 hover:transform hover:-translate-y-2">
+                                <div className={`w-20 h-20 rounded-full flex items-center justify-center mb-6 transition-all duration-300 hover:scale-110 ${idx === 0 ? 'hover:rotate-12' : ''} ${iconWrapClasses} p-3.5`}>
+                                    {step.icon === 'send' && (
+                                        <Send className="w-full h-full text-primary-600 transition-transform duration-300" />
+                                    )}
+                                    {step.icon === 'arrow-left-right' && (
+                                        <ArrowLeftRight className="w-full h-full transition-transform duration-300 hover:translate-x-1 text-[rgba(0,150,136,1)]" />
+                                    )}
+                                    {step.icon === 'award' && (
+                                        <Award className="w-full h-full transition-transform duration-300 text-[rgba(147,51,234,1)]" />
+                                    )}
+                                </div>
+                                <h3 className="font-semibold text-lg leading-7 md:text-[1.5rem] md:leading-9 mb-3">
+                                    {`Step ${step.step}: ${step.title}`}
+                                </h3>
+                                <p className="font-normal text-base leading-6 md:text-[1.25rem] md:leading-7.5 text-gbese-black/70">
+                                    {step.description}
+                                </p>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </section>

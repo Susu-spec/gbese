@@ -1,5 +1,7 @@
 // Centralized static data for landing page sections.
-
+import XPTileImage from "@/components/assets/images/xp-tile.png";
+import SpinWheelTileImage from "@/components/assets/images/spin-the-wheel-tile.png";
+import BadgeTileImage from "@/components/assets/images/badge-tile.png";
 
 export const heroCtaText = "Start Passing Debt Now";
 
@@ -51,7 +53,7 @@ export const ctaTiles = [
   {
     title: "Rack up XPs",
     description: "Earn XP for every smart move. Debt transfers, and helping others.",
-    image: "/xp-tile.png",
+    image: XPTileImage,
     bgColor: "rgba(244, 242, 255, 1)",
     borderColor: "rgba(93, 46, 255, 1)",
     shadowColor: "rgba(135, 67, 226, 0.1)",
@@ -59,7 +61,7 @@ export const ctaTiles = [
   {
     title: "Spin to Win",
     description: "Use XP to spin the rewards wheel and unlock NFTs, perks, and fun surprises.",
-    image: "/spin-the-wheel-tile.png",
+    image: SpinWheelTileImage,
     bgColor: "rgba(255, 250, 235, 1)",
     borderColor: "rgba(243, 167, 18, 1)",
     shadowColor: "rgba(250, 183, 121, 0.1)",
@@ -67,7 +69,7 @@ export const ctaTiles = [
   {
     title: "Badge Up",
     description: "Show off profile badges that highlight your cred and activity in the community.",
-    image: "/badge-tile.png",
+    image: BadgeTileImage,
     bgColor: "rgba(255, 242, 234, 1)",
     borderColor: "rgba(255, 128, 0, 1)",
     shadowColor: "rgba(240, 25, 17, 0.1)",

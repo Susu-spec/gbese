@@ -39,7 +39,7 @@ export default function DebtManagementChart() {
                 How Gbese Members Are Thriving
             </h3>
             <div className="relative">
-                <ChartContainer config={chartConfig} className="min-h-[285px] md:min-h-[520px] w-full">
+                <ChartContainer config={chartConfig} className="min-h-72 md:min-h-128 w-full">
                     <BarChart
                         accessibilityLayer
                         data={chartData}

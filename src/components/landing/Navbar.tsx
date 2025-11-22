@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import LogoDarkBG from "@/components/assets/images/Logo Dark BG.png";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,11 +15,11 @@ export default function Navbar() {
             className="sticky top-0 z-50 w-full bg-primary-900 text-gbese-white"
             aria-label="Main navigation"
         >
-            <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 md:px-20 h-[66px] md:h-[119px]">
+            <div className="mx-auto flex max-w-360 items-center justify-between px-5 md:px-20 h-16.5 md:h-[7.438rem]">
                 {/* Logo */}
                 <Link to="/" className="flex items-center" aria-label="Gbese Home" onClick={closeMenu}>
                     <img
-                        src="/Logo Dark BG.png"
+                        src={LogoDarkBG}
                         alt="Gbese Logo"
                         className="select-none w-[105px] h-[34px]"
                         draggable={false}

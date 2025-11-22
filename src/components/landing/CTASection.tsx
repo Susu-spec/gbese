@@ -7,7 +7,7 @@ export default function CTASection() {
     return (
         <section
             id="cta"
-            className="w-full bg-gbese-white py-20 px-0 md:py-20 md:px-10 lg:px-[180px] border-b border-primary-200"
+            className="w-full bg-gbese-white py-20 px-0 md:py-20 md:px-10 lg:px-[11.25rem] border-b border-primary-200"
         >
             <div className="mx-auto flex max-w-screen-2xl flex-col items-center gap-10 md:gap-14">
                 <h2 className="font-sora font-semibold text-center text-primary-900 text-[1.75rem] leading-10 md:text-[3rem] md:leading-18 max-w-sm sm:max-w-xl md:max-w-4xl">
@@ -28,7 +28,7 @@ export default function CTASection() {
                             <img
                                 src={tile.image}
                                 alt={tile.title}
-                                className="w-32 sm:w-36 md:w-[150px] h-32 sm:h-36 md:h-[150px] object-contain"
+                                className="w-32 sm:w-36 md:w-[9.375rem] h-32 sm:h-36 md:h-[9.375rem] object-contain"
                                 draggable={false}
                             />
 
@@ -36,7 +36,7 @@ export default function CTASection() {
                                 {tile.title}
                             </h3>
 
-                            <p className="font-normal text-center text-gbese-black/80 text-lg leading-[1.688rem] max-w-[260px] sm:max-w-xs">
+                            <p className="font-normal text-center text-gbese-black/80 text-lg leading-[1.688rem] max-w-[16.25rem] sm:max-w-xs">
                                 {tile.description}
                             </p>
                         </div>
