@@ -9,17 +9,17 @@ export default function Footer() {
         <footer className="w-full bg-primary-900 text-gbese-white">
             <div
                 id="contact"
-                className="w-full border-b border-gbese-white/50 py-[60px] px-5 md:px-10 lg:px-[100px] lg:pr-[120px]"
+                className="w-full border-b border-gbese-white/50 py-8 px-5 md:px-10 lg:px-25 lg:pr-30"
             >
-                <div className="mx-auto flex flex-col lg:flex-row max-w-screen-2xl gap-10 lg:gap-[60px]">
-                    <div className="flex flex-col w-full sm:w-56 md:w-60 gap-5">
+                <div className="mx-auto flex flex-col lg:flex-row max-w-screen-2xl gap-4 lg:gap-15">
+                    <div className="flex flex-col w-full sm:w-56 md:w-60 gap-4">
                         <img
                             src="/Logo Dark BG.png"
                             alt="Gbese Logo"
                             className="w-[105px] h-[34px]"
                         />
 
-                        <p className="font-medium text-gbese-white text-sm leading-6 md:text-base w-full sm:w-56 md:w-60">
+                        <p className="font-medium text-gbese-white text-sm leading-5 md:text-base w-full sm:w-56 md:w-60">
                             No Carry Debt Alone – Join Our Squad!
                         </p>
 
@@ -39,18 +39,18 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <div className="flex flex-col lg:flex-row w-full lg:w-auto gap-10 lg:gap-6 order-3 lg:order-0">
+                    <div className="flex flex-col lg:flex-row w-full lg:w-auto gap-8 lg:gap-6 order-3 lg:order-0">
                         <div className="flex gap-6 lg:gap-6">
-                            <div className="flex flex-col flex-1 sm:w-32 md:w-32 gap-3">
-                                <h3 className="font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
+                            <div className="flex flex-col flex-1 sm:w-32 md:w-32 gap-2">
+                                <h3 className="font-semibold text-gbese-white text-sm leading-snug md:text-xl md:leading-snug">
                                     Quick Links
                                 </h3>
-                                <nav className="flex flex-col gap-3">
+                                <nav className="flex flex-col gap-2">
                                     {quickLinks.map((link) => (
                                         <a
                                             key={link.label}
                                             href={link.href}
-                                            className="font-medium text-gbese-white hover:text-primary-100 transition-colors text-sm leading-6 md:text-base"
+                                            className="font-medium text-gbese-white hover:text-primary-100 transition-colors text-sm leading-5 md:text-base"
                                         >
                                             {link.label}
                                         </a>
@@ -58,16 +58,16 @@ export default function Footer() {
                                 </nav>
                             </div>
 
-                            <div className="flex flex-col flex-1 sm:w-48 md:w-52 gap-3">
-                                <h3 className="font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
+                            <div className="flex flex-col flex-1 sm:w-48 md:w-52 gap-2">
+                                <h3 className="font-semibold text-gbese-white text-sm leading-snug md:text-xl md:leading-snug">
                                     Trust & Social Proof
                                 </h3>
-                                <nav className="flex flex-col gap-3">
+                                <nav className="flex flex-col gap-2">
                                     {trustLinks.map((link) => (
                                         <a
                                             key={link.label}
                                             href={link.href}
-                                            className="font-medium text-gbese-white hover:text-primary-100 transition-colors text-sm leading-6 md:text-base"
+                                            className="font-medium text-gbese-white hover:text-primary-100 transition-colors text-sm leading-5 md:text-base"
                                         >
                                             {link.label}
                                         </a>
@@ -76,22 +76,22 @@ export default function Footer() {
                             </div>
                         </div>
 
-                        <div className="flex flex-col w-full sm:w-48 md:w-52 gap-3">
-                            <h3 className="font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
+                        <div className="flex flex-col w-full sm:w-48 md:w-52 gap-2 order-2 lg:order-0">
+                            <h3 className="font-semibold text-gbese-white text-sm leading-snug md:text-xl md:leading-snug">
                                 Contact
                             </h3>
-                            <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-2">
                                 {contactInfo.map((info) => (
                                     <div key={info.label}>
                                         {info.href ? (
                                             <a
                                                 href={info.href}
-                                                className="font-medium text-gbese-white hover:text-primary-100 transition-colors text-sm leading-6 md:text-base"
+                                                className="font-medium text-gbese-white hover:text-primary-100 transition-colors text-sm leading-5 md:text-base"
                                             >
                                                 {info.value}
                                             </a>
                                         ) : (
-                                            <p className="font-medium text-gbese-white text-sm leading-6 md:text-base">
+                                            <p className="font-medium text-gbese-white text-sm leading-5 md:text-base">
                                                 {info.value}
                                             </p>
                                         )}
@@ -101,11 +101,11 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <div className="flex flex-col w-full sm:w-80 lg:w-96 gap-5 order-2 lg:order-0">
-                        <h3 className="font-semibold text-gbese-white text-sm leading-[1.688rem] md:text-xl md:leading-6">
+                        <div className="flex flex-col w-full sm:w-80 lg:w-96 gap-3 order-1 lg:order-0">
+                        <h3 className="font-semibold text-gbese-white text-sm leading-snug md:text-xl md:leading-snug">
                             Newsletter
                         </h3>
-                        <p className="font-medium text-gbese-white text-sm leading-6 md:text-base">
+                        <p className="font-medium text-gbese-white text-sm leading-5 md:text-base">
                             No Miss Update Again! Subscribe for GBESE Gist & Quick Loans.
                         </p>
 
@@ -127,7 +127,7 @@ export default function Footer() {
             </div>
 
             <div className="w-full py-10">
-                <div className="mx-auto max-w-screen-2xl px-5 sm:px-10 lg:px-[100px] flex items-center justify-center">
+                <div className="mx-auto max-w-screen-2xl px-5 sm:px-10 lg:px-25 flex items-center justify-center">
                     <p className="font-medium text-gbese-white text-center text-sm leading-6 md:text-base">
                         © {new Date().getFullYear()} Gbese. <br></br>All rights reserved.
                     </p>
