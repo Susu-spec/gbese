@@ -12,6 +12,7 @@ import {
     WealthIndexIcon, 
     WithdrawFundsIcon 
 } from "@/components/shared/sidebar-icons";
+import { Bell, User } from "lucide-react";
 
 export const protectedRoutes = [
     { 
@@ -120,6 +121,24 @@ export const protectedRoutes = [
         async lazy() {
             const module = await import("@/pages/main/wealth-index");
             return { Component: module.default }
+        }
+    },
+    {
+        path: "profile",
+        label: "Profile",
+        icon: User,
+        async lazy() {
+            const module = await import("@/pages/main/profile");
+            return {Component: module.default}
+        }
+    },
+    {
+        path: "notifications",
+        label: "Notifications",
+        icon: Bell,
+        async lazy() {
+            const module = await import("@/pages/main/notifications");
+            return {Component: module.default}
         }
     }
 ]
