@@ -1,5 +1,5 @@
 import { protectedRoutes } from "@/routes/protected"
-import { useLocation } from "react-router"
+import { Link, useLocation } from "react-router"
 
 import {
   Sidebar,
@@ -29,12 +29,12 @@ export function DashboardSidebar() {
                                     const active = location.pathname === `/${item.path}`;
                                     return(
                                         <SidebarMenuItem key={item.path} className="text-white hover:bg-white hover:rounded-md">
-                                            <SidebarMenuButton asChild isActive={active} >
-                                                <a href={item.path}>
-                                                <item.icon />
-                                                <span >{item.label}</span>
-                                                </a>
-                                            </SidebarMenuButton>
+                                                <SidebarMenuButton asChild isActive={active} >
+                                                    <Link to={`/${item.path}`}>
+                                                        <item.icon />
+                                                        <span >{item.label}</span>
+                                                    </Link>
+                                                </SidebarMenuButton>
                                         </SidebarMenuItem>
                                     )
                                 }

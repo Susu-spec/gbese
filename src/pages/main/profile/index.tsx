@@ -2,7 +2,9 @@
 
 const Profile = () => {
     return (
-        <div></div>
+        <div>
+            Say cheese
+        </div>
     )
 }
 
