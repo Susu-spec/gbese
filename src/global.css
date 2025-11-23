@@ -10,7 +10,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: var(--color-primary-800);
+  color: var(--color-gbese-black);
   background-color: var(--color-gbese-background);
 
   font-synthesis: none;
@@ -20,24 +20,24 @@
 
   /* These utilities were added by shadcn, can be used for direct CSS access */
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: var(--color-gbese-background);
+  --foreground: var(--color-gbese-black);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
+  --primary: var(--color-primary-700);
+  --primary-foreground: var(--color-gbese-white);
+  --secondary: var(--color-gbese-white);
+  --secondary-foreground: var(--color-primary-900);
+  --muted: var(--color-gbese-neutrals-100);
+  --muted-foreground: var(--color-gbese-neutrals-200);
+  --accent: var(--color-gbese-neutrals-100);
+  --accent-foreground: var(--color-gbese-white);
+  --destructive: var(--color-gbese-error);
   --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --input: var(--color-gbese-neutrals-200);
+  --ring: var(--color-gbese-neutrals-200);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -68,17 +68,22 @@
   --color-primary-900: #021346;
   --color-gbese-background: #F1F4FF;
   --color-gbese-neutrals-100: #8C8C8C;
-  --color-gbese-neutrals-200: #EBF0FF;
+  --color-gbese-neutrals-200: #B3B3B3;
+  --color-gbese-neutrals-300: #EBF0FF;
   --color-gbese-black: #111111;
   --color-gbese-white: #F9FAFB;
-  --color-gbese-orange: #E17700;
+  --color-gbese-warning: #E17700;
   --color-gbese-green: #00A81C;
   --color-gbese-lilac: #E6ECFD;
   --color-gbese-success: #66CB9F;
-  --color-gbese-red: #FF0D05;
+  --color-gbese-error: #FF0D05;
+  --color-gbese-light-grey: #CFD0D1;
+  --color-gbese-dark-grey: #8C8C8C;
+  --color-gbese-grey: #D1D1D1;
   --color-gbese-grey-100: #696969;
   --color-gbese-grey-200: #7E7D7D;
   --color-gbese-grey-300: #111111CC;
+  --color-gbese-grey-400: #6D6D6D;
   --color-gbese-pari: #002824;
   
 
@@ -103,6 +108,17 @@ a {
   text-decoration: none;
 }
 
+/* globals.css or tailwind base layer */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px hsl(var(--input)) inset !important;
+  -webkit-text-fill-color: hsl(var(--foreground)) !important;
+  transition: background-color 9999s ease-in-out 0s; /* prevents flicker */
+}
+
+
 @layer utilities {
   /* utility classes go here */
   /* Low-level helpers like margin, padding, color, font-size */
@@ -111,6 +127,26 @@ a {
 
 @layer components {
   /* component-level styles belong here */
+  .oauth-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    border: 1px solid var(--color-gbese-grey);
+    width: 100%;
+    border-radius: .5rem;
+  }
+
+  .oauth-button span {
+    font-weight: 500;
+    color: black;
+  }
+
+  .signup-input {
+    padding: 1rem;
+    font-size: .875rem;
+    border-radius: .5rem;
+  }
 }
 
 /*---break---
@@ -201,5 +237,16 @@ a {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .signup-input {
+    padding: .75rem .5rem;
+    font-size: .75rem;
+  }
+
+  .oauth-button {
+    font-size: .875rem
   }
 }
