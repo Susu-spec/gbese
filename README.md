@@ -1,3 +1,0 @@
-# Gbese - Peer-to-Peer Credit Transfer System
-
-Gbese is a peer-to-peer credit transfer platform built to disrupt conventional debt systems. It leverages modern fintech architecture to enable secure, consent-based debt transfers between verified users. Designed for transparency and scalability, Gbese reduces friction in debt restructuring while maintaining auditability, user consent integrity, and compliance-ready transaction tracking.
