@@ -27,7 +27,7 @@ export default function DashboardPage() {
                 <h2 className="text-3xl font-semibold text-primary-800">How Far, Charles!</h2>
                 <p>Time to balance your gbese and stack some XP. No slackin’ today</p>
             </div>
-            <div className="flex gap-3 w-full p-3">
+            <div className="flex gap-3 w-full mb-6">
                 {mockItems.length > 0 ? (
                     <div className="flex w-full gap-3">
                         <Card className="w-full h-[150px] p-2">
@@ -57,7 +57,7 @@ export default function DashboardPage() {
                     </div>
                 ) : (
                     <div className="flex w-full gap-3">
-                        <Card className="w-full h-[150px] p-2">
+                        <Card className="w-full h-38 p-2">
                             <Skeleton className="h-8 w-8 rounded-full "/>
                             <Skeleton className="h-20 w-full mt-2"/>
                             <div>
@@ -65,7 +65,7 @@ export default function DashboardPage() {
                                 <Skeleton className="h-2 w-1/2 mt-2"/>
                             </div>
                         </Card>
-                        <Card className="w-full h-[150px] p-2">
+                        <Card className="w-full h-38 p-2">
                             <Skeleton className="h-8 w-8 rounded-full "/>
                             <Skeleton className="h-20 w-full mt-2"/>
                             <div>
@@ -73,7 +73,7 @@ export default function DashboardPage() {
                                 <Skeleton className="h-2 w-1/2 mt-2"/>
                             </div>
                         </Card>
-                        <Card className="w-full h-[150px] p-2">
+                        <Card className="w-full h-38 p-2">
                             <Skeleton className="h-8 w-8 rounded-full "/>
                             <Skeleton className="h-20 w-full mt-2"/>
                             <div>
@@ -85,7 +85,7 @@ export default function DashboardPage() {
                 )}
             </div>
 
-            <div className="grid grid-cols-1 p-2 gap-2 lg:grid-cols-3 xl:grid-cols-3 lg:gap-3">
+            <div className="grid grid-cols-1 gap-2 lg:grid-cols-3 xl:grid-cols-3 lg:gap-3">
                 <Card className="xl:col-span-2">
                     <CardHeader>
                         <CardTitle>Activity Breakdown</CardTitle>
@@ -133,7 +133,7 @@ export default function DashboardPage() {
                     )) : (
                         <div className="flex flex-col text-center items-center justify-center p-4">
                             <p>No gbese requests for now. Send one yourself!</p>
-                            <Button className="bg-primary-800 mt-4 w-full">Send Request</Button>
+                            <Button className="bg-primary-800 mt-4 w-fit">Send Request</Button>
                         </div>
                     )}
                 </Card>
