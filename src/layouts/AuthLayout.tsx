@@ -6,7 +6,7 @@ export default function AuthLayout() {
         <div className="flex min-h-screen overflow-y-auto">
             <Sidebar />
             <main className="w-full flex-1">
-                <div className="mx-auto max-w-142 py-15.75">
+                <div className="mx-6 md:mx-auto md:max-w-142 py-15.75">
                     <Outlet />
                 </div>
             </main>
