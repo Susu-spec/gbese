@@ -27,7 +27,7 @@ export default function DashboardPage() {
                 <h2 className="text-3xl font-semibold text-primary-800">How Far, Charles!</h2>
                 <p>Time to balance your gbese and stack some XP. No slackin’ today</p>
             </div>
-            <div className="flex gap-3 w-full mb-6">
+            <div className="flex gap-3 w-full overflow-x-auto hide-scrollbar mb-6">
                 {mockItems.length > 0 ? (
                     <div className="flex w-full gap-3">
                         <Card className="w-full h-[150px] p-2">
@@ -56,8 +56,8 @@ export default function DashboardPage() {
                         </Card>
                     </div>
                 ) : (
-                    <div className="flex w-full gap-3">
-                        <Card className="w-full h-38 p-2">
+                    <div className="flex justify-between overscroll-x-auto hide-scrollbar gap-3">
+                        <Card className="xl:w-86 md:w-86 w-44 flex-none h-38 p-2">
                             <Skeleton className="h-8 w-8 rounded-full "/>
                             <Skeleton className="h-20 w-full mt-2"/>
                             <div>
@@ -65,7 +65,7 @@ export default function DashboardPage() {
                                 <Skeleton className="h-2 w-1/2 mt-2"/>
                             </div>
                         </Card>
-                        <Card className="w-full h-38 p-2">
+                        <Card className="xl:w-86 md:w-86 w-44 flex-none h-38 p-2">
                             <Skeleton className="h-8 w-8 rounded-full "/>
                             <Skeleton className="h-20 w-full mt-2"/>
                             <div>
@@ -73,7 +73,7 @@ export default function DashboardPage() {
                                 <Skeleton className="h-2 w-1/2 mt-2"/>
                             </div>
                         </Card>
-                        <Card className="w-full h-38 p-2">
+                        <Card className="xl:w-86 md:w-86 w-44 flex-none h-38 p-2">
                             <Skeleton className="h-8 w-8 rounded-full "/>
                             <Skeleton className="h-20 w-full mt-2"/>
                             <div>
@@ -85,7 +85,7 @@ export default function DashboardPage() {
                 )}
             </div>
 
-            <div className="grid grid-cols-1 gap-2 lg:grid-cols-3 xl:grid-cols-3 lg:gap-3">
+            <div className="grid grid-cols-1 gap-2 lg:grid-cols-2 xl:grid-cols-3 lg:gap-3">
                 <Card className="xl:col-span-2">
                     <CardHeader>
                         <CardTitle>Activity Breakdown</CardTitle>
@@ -109,7 +109,7 @@ export default function DashboardPage() {
                     )) : (
                         <div className="flex flex-col text-center items-center justify-center">
                             <img src={Analytics} alt="Analytics" />
-                            <p className="w-[450px] text-gbese-grey-100">Your activity will show here once you start borrowing, repaying, or transferring gbese.</p>
+                            <p className="xl:w-92 md:w-72 w-64 text-gbese-grey-100">Your activity will show here once you start borrowing, repaying, or transferring gbese.</p>
                         </div>
                     )}
                 </Card>
@@ -123,7 +123,7 @@ export default function DashboardPage() {
                     )) : (      
                         <div className="flex flex-col text-center items-center justify-center">
                             <img src={WalletSvg} alt="Wallet-svg" />
-                            <p className="w-[450px] text-gbese-grey-100">No transactions yet. Once you start flipping gbese, your history will appear here.</p>
+                            <p className="xl:w-92 md:w-72 w-64 text-gbese-grey-100">No transactions yet. Once you start flipping gbese, your history will appear here.</p>
                         </div>
                     )}
                 </Card>
