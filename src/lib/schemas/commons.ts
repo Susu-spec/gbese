@@ -10,6 +10,6 @@ export const phoneSchema = z.string()
 
 export const phoneWithCountrySchema = z.string()
   .refine((val) => isValidPhoneNumber(val, 'NG'), {
-    message: "Invalid US phone number"
+    message: "Invalid phone number"
 });
 
