@@ -11,7 +11,7 @@ export default function Sidebar() {
                 lg:flex flex-col
             "
         >
-            <div className="flex flex-col justify-between items-center h-full">
+            <div className="flex flex-col justify-between h-full">
                 <div className="w-full flex items-start">
                     <img src={GbeseLogo} alt="Gbese" className="h-auto w-26.5" />
                 </div>
@@ -20,7 +20,7 @@ export default function Sidebar() {
                     <img src={GbeseBrandImage} alt="Mock screen of activity dashboard" />
                 </div>
 
-                <div className="text-center flex flex-col gap-4.75 text-gbese-white">
+                <div className="text-center flex flex-col gap-4.75 text-gbese-white max-w-98.5">
                     <h1 className="text-[2rem] font-sora font-semibold leading-10.5">
                         Shift Your Debt, Breathe Again.
                     </h1>
