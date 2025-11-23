@@ -5,8 +5,8 @@ export default function Sidebar() {
     return (
         <aside 
             className="
-                hidden md:max-w-100
-                lg:max-w-123.5 min-h-screen
+                hidden md:max-w-1.5/5
+                lg:max-w-2/5 min-h-screen
                 bg-primary-900 px-11 py-9.5
                 lg:flex flex-col
             "
