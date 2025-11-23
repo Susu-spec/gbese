@@ -15,7 +15,7 @@ export function AuthHeader({
 
         <p className="text-sm md:text-lg flex flex-wrap gap-1 justify-center">
             {subtitle}
-            <Link to={linkTo} className="text-primary-900 font-semibold">
+            <Link to={linkTo} className="text-primary-900 font-semibold focus-visible:outline-0">
                 {linkText}
             </Link>
         </p>
