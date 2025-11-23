@@ -2,9 +2,10 @@ import { FormFieldWrapper } from "@/components/shared/form";
 import { Button } from "@/components/ui/button";
 import { FieldGroup } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { signupSchema } from "@/lib/schemas/signupSchema";
 import { useForm } from "@tanstack/react-form";
 import { useAuth } from "../hooks/useAuth";
+import { Spinner } from "@/components/ui/spinner";
+import { signupSchema } from "../schemas/signupSchema";
 
 const defaultValues = {
     email: "",
@@ -140,14 +141,21 @@ export default function SignUpForm() {
             <div className="flex flex-col gap-2.25 md:gap-4 justify-center items-center">
                 <Button 
                     variant={!form.state.isValid ? "secondary" : "default"} 
-                    disabled={!form.state.isValid || form.state.isSubmitting}
+                    disabled={!form.state.isValid || signUp.isPending}
                     className="w-full py-3 px-6 h-fit">
-                    Create Account
+                    {signUp.isPending ?
+                        <span className="flex items-center gap-1">
+                            <span>Give us a second</span>
+                            <Spinner />
+                        </span> 
+                            : 
+                        "Create Account"
+                    }
                 </Button>
-                <p className="text-sm leading-5.25">
+                <p className="text-sm leading-5.25 text-center">
                     By signing up, you agree to our 
                     <span className="font-bold cursor-pointer">
-                        Terms & Conditions
+                        &nbsp;Terms & Conditions
                     </span>
                 </p>
             </div>

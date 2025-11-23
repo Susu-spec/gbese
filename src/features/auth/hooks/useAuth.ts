@@ -5,64 +5,45 @@ import { clearUser, setUser } from "../authSlice";
 import { toast } from "sonner";
 import { AxiosError } from "axios";
 import type {  AxiosResponse } from "axios";
-import type { User } from "@/utils/types";
-
-interface SignUpInterface {
-    first_name: string,
-    last_name: string,
-    email: string,
-    password: string,
-    phone_number: string
-}
-
-interface SignUpResponse {
-  user: User;
-  token: string;
-}
-
-interface SignInInterface {
-    email: string,
-    password: string
-}
-
-interface SignInResponse {
-    
-}
+import { useNavigate } from "react-router";
+import { handleApiError } from "@/lib/utils";
+import type { SignInPayload, SignInResponse, SignUpPayload, SignUpResponse } from "../types";
 
 export function useAuth() {
     const dispatch = useAppDispatch();
     const queryClient = useQueryClient();
+    const navigate = useNavigate();
 
     const signUp = useMutation<
         AxiosResponse<SignUpResponse>,
         AxiosError,
-        SignUpInterface>
+        SignUpPayload>
     ({
         mutationFn: (data) => api.post("/auth/register", data),
         onSuccess: (response) => {
             dispatch(setUser(response.data.user));
             localStorage.setItem("token", response.data.token)
             toast.info("You've successfully signed up! Welcome to Gbese")
+            navigate("/dashboard");
         },
-        onError: (error: AxiosError) => {
-            if (error.message) {
-                toast.error(error.message)
-            }
-        }
+        onError: (error: AxiosError) => handleApiError(error)
     });
 
-    const signIn = useMutation({
+    const signIn = useMutation<
+        AxiosResponse<SignInResponse>,
+        AxiosError,
+        SignInPayload
+    >({
         mutationFn: (data) => api.post("/auth/login", data),
         onSuccess: (response) => {
-            dispatch(setUser(response.data.user));
-            localStorage.setItem("token", response.data.token)
-            toast.info(`Welcome back, ${response.data.user?.name}`)
+            const { data } = response;
+            dispatch(setUser(data.data.user));
+            localStorage.setItem("access_token", data.data.access_token)
+            localStorage.setItem("refresh_token", data.data.refresh_token)
+            toast.info(`Welcome back, ${data.data.user?.full_name}`)
+            navigate("/dashboard")
         },
-        onError: (error) => {
-            if (error.message) {
-                toast.error(error.message)
-            }
-        }
+        onError: (error: AxiosError) => handleApiError(error)
     })
 
 
@@ -70,7 +51,8 @@ export function useAuth() {
         mutationFn: () => api.post("/auth/signout"),
         onSuccess: () => {
             dispatch(clearUser());
-            localStorage.removeItem("token");
+            localStorage.removeItem("access_token");
+            localStorage.removeItem("refresh_token");
             queryClient.invalidateQueries();
         },
         onError: (response) => {

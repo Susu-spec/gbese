@@ -2,11 +2,10 @@ import { FormFieldWrapper } from "@/components/shared/form"
 import { Button } from "@/components/ui/button"
 import { FieldGroup } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { loginSchema } from "@/lib/schemas/loginSchema"
+import { loginSchema } from "@/features/auth/schemas/loginSchema"
 import { useForm } from "@tanstack/react-form"
 import { useAuth } from "../hooks/useAuth"
-import { useState } from "react"
-
+import { Spinner } from "@/components/ui/spinner"
 
 const defaultValues = {
     email: "",
@@ -16,7 +15,6 @@ const defaultValues = {
 export default function LoginForm() {
     const { signIn } = useAuth();
 
-    const [_value, _setValue] = useState()
     const form = useForm({
         defaultValues: defaultValues,
         validators: {
@@ -24,11 +22,10 @@ export default function LoginForm() {
             onChange: loginSchema
         },
         onSubmit: async ({ value }) => {
-            // signIn.mutate({
-            //     email: value.email,
-            //     password: value.password
-            // })
-            
+            signIn.mutate({
+                email: value.email,
+                password: value.password
+            }) 
         }
     })
 
@@ -82,14 +79,21 @@ export default function LoginForm() {
             <div className="flex flex-col gap-2.25 md:gap-4 justify-center items-center">
                 <Button
                     variant={!form.state.isValid ? "secondary" : "default"} 
-                    disabled={!form.state.isValid || form.state.isSubmitting}
+                    disabled={!form.state.isValid || signIn.isPending}
                     className="w-full py-3 px-6 h-fit">
-                    Sign In
+                        {signIn.isPending ?
+                            <span className="flex items-center gap-1">
+                                <span>Signing in</span>
+                                <Spinner />
+                            </span> 
+                                : 
+                            "Sign In"
+                        }
                 </Button>
-                <p className="text-sm leading-5.25">
+                <p className="text-sm leading-5.25 text-center">
                     By signing up, you agree to our 
                     <span className="font-bold cursor-pointer">
-                        Terms & Conditions
+                        &nbsp;Terms & Conditions
                     </span>
                 </p>
             </div>        
