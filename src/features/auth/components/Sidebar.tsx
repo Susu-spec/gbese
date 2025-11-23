@@ -11,12 +11,12 @@ export default function Sidebar() {
                 lg:flex flex-col
             "
         >
-            <div className="flex flex-col justify-between h-full">
-                <div>
+            <div className="flex flex-col justify-between items-center h-full">
+                <div className="w-full flex items-start">
                     <img src={GbeseLogo} alt="Gbese" className="h-auto w-26.5" />
                 </div>
 
-                <div>
+                <div className="w-full flex items-start">
                     <img src={GbeseBrandImage} alt="Mock screen of activity dashboard" />
                 </div>
 
