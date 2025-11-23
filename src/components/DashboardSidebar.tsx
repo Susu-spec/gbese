@@ -17,19 +17,19 @@ export function DashboardSidebar() {
     const location = useLocation();
 
     return (
-        <Sidebar>
+        <Sidebar className="z-40">
             <SidebarHeader className="mb-4 text-white">Gbese</SidebarHeader>
             <SidebarContent>
                 <SidebarGroup >
                     <SidebarGroupContent>
-                        <SidebarMenu  className="gap-4" >
+                        <SidebarMenu  className="gap-3" >
                             {protectedRoutes
                                 .filter(item => item.path !== "profile" && item.path !== "notifications")
                                 .map((item) => {
                                     const active = location.pathname === `/${item.path}`;
                                     return(
                                         <SidebarMenuItem key={item.path} className="text-white hover:bg-white hover:rounded-md">
-                                                <SidebarMenuButton asChild isActive={active} >
+                                                <SidebarMenuButton asChild isActive={active} className="p-2 ">
                                                     <Link to={`/${item.path}`}>
                                                         <item.icon />
                                                         <span >{item.label}</span>
