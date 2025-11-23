@@ -112,11 +112,17 @@ a {
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
+input:-webkit-autofill:active,
+input:-webkit-autofill::selection {
   -webkit-box-shadow: 0 0 0 1000px hsl(var(--input)) inset !important;
-  -webkit-text-fill-color: hsl(var(--foreground)) !important;
+  -webkit-text-fill-color: var(--color-gbese-black) !important;
   transition: background-color 9999s ease-in-out 0s; /* prevents flicker */
 }
+
+.dark input:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-gbese-black) !important;
+}
+
 
 
 @layer utilities {
@@ -135,6 +141,8 @@ input:-webkit-autofill:active {
     border: 1px solid var(--color-gbese-grey);
     width: 100%;
     border-radius: .5rem;
+    padding-block: 1.0625rem;
+    width: 100%;
   }
 
   .oauth-button span {
@@ -247,6 +255,8 @@ input:-webkit-autofill:active {
   }
 
   .oauth-button {
-    font-size: .875rem
+    font-size: .875rem;
+    padding-block: .5rem;
+    padding-inline: 1rem;
   }
 }
