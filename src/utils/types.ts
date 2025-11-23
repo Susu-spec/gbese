@@ -1,5 +1,9 @@
 export interface User {
-    email: string,
-    password: string,
-    first_name: string
+  id: string;
+  email: string;
+  fullName?: string;
+  kycStatus?: string;
+  twoFactorRequired?: boolean;
+  verificationRequired?: boolean;
+  verificationMethods?: string[];
 }
