@@ -4,6 +4,7 @@ import { FieldGroup } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { signupSchema } from "@/lib/schemas/signupSchema";
 import { useForm } from "@tanstack/react-form";
+import { useAuth } from "../hooks/useAuth";
 
 const defaultValues = {
     email: "",
@@ -14,14 +15,24 @@ const defaultValues = {
 }
 
 export default function SignUpForm() {
+    const { signUp } = useAuth();
+
     const form = useForm({
         defaultValues: defaultValues,
         validators: {
             onSubmit: signupSchema,
             onChange: signupSchema
         },
-        onSubmit: async (values) => {
-            console.log(values)
+        onSubmit: async ({ value }) => {
+            signUp.mutate({
+                email: value.email,
+                password: value.password,
+                first_name: value.firstName,
+                last_name: value.lastName,
+                phone_number: value.phoneNumber.startsWith("+")
+                ? value.phoneNumber
+                : `+${value.phoneNumber}`,
+            });
         }
     })
 
@@ -32,9 +43,9 @@ export default function SignUpForm() {
                 e.preventDefault();
                 form.handleSubmit()
             }}
-            className="w-full flex flex-col gap-20"
+            className="w-full flex flex-col gap-11.5 md:gap-20"
         >
-            <FieldGroup className="flex flex-col gap-2.25 md:gap-5">
+            <FieldGroup className="flex flex-col gap-3 md:gap-5">
                 <FormFieldWrapper
                     form={form}
                     label="First Name"
@@ -49,7 +60,7 @@ export default function SignUpForm() {
                             onChange={(e) => field.handleChange(e.target.value)}
                             type="text"
                             placeholder="Enter your first name"
-                            className={`${isInvalid ? 'border-red-500' : ''} py-2 px-3 md:py-4 md:px-4 rounded-md`}
+                            className={`${isInvalid ? 'border-red-500' : ''} text-xs md:text-sm py-3 px-2 md:py-4 md:px-4 rounded-md`}
                         />
                     )}
                 </FormFieldWrapper>
@@ -66,7 +77,7 @@ export default function SignUpForm() {
                             onBlur={field.handleBlur}
                             onChange={(e) => field.handleChange(e.target.value)}
                             placeholder="Enter your last name"
-                            className={`${isInvalid ? 'border-red-500' : ''} py-2 px-3 md:py-4 md:px-4 rounded-md`}
+                            className={`${isInvalid ? 'border-red-500' : ''} text-xs md:text-sm py-3 px-2 md:py-4 md:px-4 rounded-md`}
                         />
                     )}
                 </FormFieldWrapper>
@@ -84,7 +95,7 @@ export default function SignUpForm() {
                             onChange={(e) => field.handleChange(e.target.value)}
                             type="email"
                             placeholder="Enter your email"
-                            className={`${isInvalid ? 'border-red-500' : ''} py-2 px-3 md:py-4 md:px-4 rounded-md`}
+                            className={`${isInvalid ? 'border-red-500' : ''} text-xs md:text-sm py-3 px-2 md:py-4 md:px-4 rounded-md`}
                         />
                     )}
                 </FormFieldWrapper>
@@ -102,7 +113,7 @@ export default function SignUpForm() {
                             onChange={(e) => field.handleChange(e.target.value)}
                             type="text"
                             placeholder="Enter your phone number"
-                            className={`${isInvalid ? 'border-red-500' : ''} py-2 px-3 md:py-4 md:px-4 rounded-md`}
+                            className={`${isInvalid ? 'border-red-500' : ''} text-xs md:text-sm py-3 px-2 md:py-4 md:px-4 rounded-md`}
                         />
                     )}
                 </FormFieldWrapper>
@@ -120,21 +131,24 @@ export default function SignUpForm() {
                             onChange={(e) => field.handleChange(e.target.value)}
                             type="password"
                             placeholder="Enter your password"
-                            className={`${isInvalid ? 'border-red-500' : ''} py-2 px-3 md:py-4 md:px-4 rounded-md`}
+                            className={`${isInvalid ? 'border-red-500' : ''} text-xs md:text-sm py-3 px-2 md:py-4 md:px-4 rounded-md`}
                         />
                     )}
                 </FormFieldWrapper>
             </FieldGroup>
 
-            <div className="flex flex-col gap-4 justify-center items-center">
+            <div className="flex flex-col gap-2.25 md:gap-4 justify-center items-center">
                 <Button 
                     variant={!form.state.isValid ? "secondary" : "default"} 
                     disabled={!form.state.isValid || form.state.isSubmitting}
-                    className="w-full py-3 px-6">
+                    className="w-full py-3 px-6 h-fit">
                     Create Account
                 </Button>
                 <p className="text-sm leading-5.25">
-                    By signing up, you agree to our <span className="font-bold">Terms & Conditions</span>
+                    By signing up, you agree to our 
+                    <span className="font-bold cursor-pointer">
+                        Terms & Conditions
+                    </span>
                 </p>
             </div>
         </form>
