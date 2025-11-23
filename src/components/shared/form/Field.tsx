@@ -21,14 +21,13 @@ export default function FormFieldWrapper({
             children={(field: any) => {
                 const isInvalid =
                 field.state.meta.isTouched && !field.state.meta.isValid;
-                const hasError = field.state.meta.errors.length > 0;
 
                 return (
                     <Field data-invalid={isInvalid} className="flex flex-col gap-2 md:gap-3">
                         {label && (
                             <FieldLabel 
                                 htmlFor={field.name}
-                                className={`${hasError ? "text-gbese-error" : "text-gbese-grey-400"} font-normal`}
+                                className={`text-gbese-grey-400 font-normal`}
                             >
                                 {label}
                             </FieldLabel>
