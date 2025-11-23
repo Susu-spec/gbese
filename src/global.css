@@ -103,6 +103,11 @@ a {
   text-decoration: none;
 }
 
+.hide-scrollbar{
+  -webkit-scrollbar-width: none; /* For Chrome, Safari, and Opera */
+  scrollbar-width: none; /* For Firefox */
+}
+
 @layer utilities {
   /* utility classes go here */
   /* Low-level helpers like margin, padding, color, font-size */
