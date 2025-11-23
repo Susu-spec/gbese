@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import LogoDarkBG from "@/components/assets/images/Logo Dark BG.png";
+import LogoDarkBG from "@/assets/images/logo-dark-bg.png";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
