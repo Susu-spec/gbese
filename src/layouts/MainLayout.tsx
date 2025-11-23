@@ -7,7 +7,7 @@ export default function MainLayout() {
     return (
         <SidebarProvider>
             <DashboardSidebar />
-            <main className="w-full bg-primary-200">
+            <main className="w-full bg-gbese-background p-4">
                 <Header/>
                 <div className="pt-14">
                     <Outlet/>
