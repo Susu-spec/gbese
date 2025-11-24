@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import { heroCtaText } from "./landingData";
 import SwirlPattern from "./SwirlPattern";
-import DashboardImage from "@/components/assets/images/Dashboard-image.png";
+import DashboardImage from "@/assets/images/dashboard-image.png";
 
 export default function HeroSection() {
     return (

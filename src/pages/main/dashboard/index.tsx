@@ -2,8 +2,8 @@ import { Card, CardAction, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import type { DashboardCardProps } from "@/utils/types"
 import { useState } from "react";
-import Analytics from "@/assets/cuate.svg";
-import WalletSvg from "@/assets/rafiki.svg"
+import Analytics from "@/assets/images/cuate.svg";
+import WalletSvg from "@/assets/images/rafiki.svg"
 import {
   Select,
   SelectContent,
@@ -17,10 +17,10 @@ import { Award, Wallet } from "lucide-react";
 
 
 export default function DashboardPage() {
-    const [mockItems, setMockItems] = useState<DashboardCardProps[]>([]);
-    const [activity, setActivity] = useState<any[]>([]);
-    const [transactions, setTransactions] = useState<any[]>([]);
-    const [debtRequests, setDebtRequests] = useState<any[]>([]);
+    const [mockItems, _setMockItems] = useState<DashboardCardProps[]>([]);
+    const [activity, _setActivity] = useState<any[]>([]);
+    const [transactions, _setTransactions] = useState<any[]>([]);
+    const [debtRequests, _setDebtRequests] = useState<any[]>([]);
     return (
         <div>
             <div className="mb-4">

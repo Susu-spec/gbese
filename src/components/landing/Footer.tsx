@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { quickLinks, trustLinks, contactInfo, socialIcons } from "./landingData";
-import LogoDarkBG from "@/components/assets/images/Logo Dark BG.png";
+import LogoDarkBG from "@/assets/images/logo-dark-bg.png";
 
 export default function Footer() {
 

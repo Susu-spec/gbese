@@ -1,7 +1,7 @@
-import { Button } from "../ui/button";
+import { Button } from "../../components/ui/button";
 import { Bell } from "lucide-react";
 import { User } from "lucide-react";
-import { SidebarTrigger } from "../ui/sidebar";
+import { SidebarTrigger } from "../../components/ui/sidebar";
 import { Link } from "react-router";
 
 const Header = () =>  {
