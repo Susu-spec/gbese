@@ -56,7 +56,7 @@ export default function DashboardPage() {
                         </Card>
                     </div>
                 ) : (
-                    <div className="flex justify-between overscroll-x-auto hide-scrollbar gap-3">
+                    <div className="flex justify-between overscroll-x-auto hide-scrollbar w-full gap-3">
                         <Card className="xl:w-86 md:w-86 w-44 flex-none h-38 p-2">
                             <Skeleton className="h-8 w-8 rounded-full "/>
                             <Skeleton className="h-20 w-full mt-2"/>
