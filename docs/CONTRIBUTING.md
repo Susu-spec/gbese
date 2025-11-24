@@ -69,6 +69,62 @@ chore: updates dependencies
 4. Keep PRs focused
 
 
+## Folder Structure
+
+```bash
+src/
+  features/      <- main feature folders
+  pages/         <- route-level pages only
+  components/    <- global shared UI components
+  layouts/       <- layout wrappers (dashboard, kyc, auth)
+  lib/           <- general utilities, helpers, configs
+```
+- If something belongs to a domain (business logic), it lives in `features/`.
+- If something is shared by different features, it lives in a global folder.
+- If it's a shared UI component, it lives in `@/components/shared/`
+
+### Example
+```bash
+src/
+  features/
+    main/
+      types.ts
+      schemas/
+      dashboard/
+        components/
+        hooks/
+        slices/
+          paymentsListSlice.ts
+          paymentStatsSlice.ts
+        data/
+          mockPaymentsData.ts
+  pages/
+    main/
+      dashboard/
+        index.tsx
+```
+### Notes
+- If there are multiple slices in a feature:
+```bash
+  src/features/payments/
+    slices/
+      paymentListSlice.ts
+      paymentDetailSlice.ts
+      paymentFiltersSlice.ts
+```
+They can be combined:
+```bash
+  export const store = configureStore({
+    reducer: {
+      payments: combineReducers({
+        list: paymentListReducer,
+        filters: paymentFiltersReducer,
+      })
+    }
+  });
+```
+
+
 ## Merge Rules
 
 - No direct push to `main` or `dev` (always go through the PR)
