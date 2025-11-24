@@ -6,4 +6,9 @@ export interface User {
   twoFactorRequired?: boolean;
   verificationRequired?: boolean;
   verificationMethods?: string[];
+}export interface DashboardCardProps{
+    icon: string;
+    title: string;
+    amount: string;
+    href: string;
 }
