@@ -1,4 +1,4 @@
-import type { AuthHeaderProps } from "../types";
+import type { AuthHeaderProps } from "../../features/auth/types";
 import { Link } from "react-router";
 
 export function AuthHeader({

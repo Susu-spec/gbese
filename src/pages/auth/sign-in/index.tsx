@@ -1,5 +1,5 @@
 import LoginForm from "@/features/auth/components/LoginForm";
-import { AuthHeader } from "@/features/auth/components/AuthHeader";
+import { AuthHeader } from "@/layouts/auth-layout/AuthHeader";
 import { OAuthButtons } from "@/features/auth/components/OauthButtons";
 
 export default function SignInPage() {

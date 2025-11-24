@@ -1,4 +1,4 @@
-import Sidebar from "@/features/auth/components/Sidebar";
+import Sidebar from "@/layouts/auth-layout/Sidebar";
 import { Outlet } from "react-router";
 
 export default function AuthLayout() {
