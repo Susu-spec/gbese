@@ -2,8 +2,8 @@ import { Card, CardAction, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import type { DashboardCardProps } from "@/utils/types"
 import { useState } from "react";
-import Analytics from "@/as_sets/images/cuate.svg";
-import WalletSvg from "@/as_sets/images/rafiki.svg"
+import Analytics from "@/assets/images/cuate.svg";
+import WalletSvg from "@/assets/images/rafiki.svg"
 import {
   Select,
   SelectContent,
