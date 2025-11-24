@@ -23,14 +23,14 @@ export default function DashboardPage() {
     const [debtRequests, setDebtRequests] = useState<any[]>([]);
     return (
         <div>
-            <div>
+            <div className="mb-4">
                 <h2 className="text-3xl font-semibold text-primary-800">How Far, Charles!</h2>
                 <p>Time to balance your gbese and stack some XP. No slackin’ today</p>
             </div>
             <div className="flex gap-3 w-full overflow-x-auto hide-scrollbar mb-6">
                 {mockItems.length > 0 ? (
                     <div className="flex w-full gap-3">
-                        <Card className="w-full h-[150px] p-2">
+                        <Card className="w-full h-38 p-2">
                             <div>
                                 <Wallet />
                             </div>
@@ -38,7 +38,7 @@ export default function DashboardPage() {
                             <p>&#8358; 0.00</p>
                             <p>Fund Wallet</p>
                         </Card>
-                        <Card className="w-full h-[150px] p-2">
+                        <Card className="w-full h-38 p-2">
                             <div>
                                 <Wallet />
                             </div>
@@ -46,7 +46,7 @@ export default function DashboardPage() {
                             <p>&#8358; 0.00</p>
                             <p>Fund Wallet</p>
                         </Card>
-                        <Card className="w-full h-[150px] p-2">
+                        <Card className="w-full h-38 p-2">
                             <div>
                                 <Award />
                             </div>
