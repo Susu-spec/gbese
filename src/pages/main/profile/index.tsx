@@ -6,10 +6,17 @@ type TabValue = "personal-information" | "security-settings" ;
 
 const Profile = () => {
     const [tabValue, setTabValue] = useState<TabValue>("personal-information");
+    const [showModal, setShowModal] = useState<boolean | null>(false)
 
     const handleTabChange = (value: TabValue) => {
         setTabValue(value);
     }
+
+    const handleShowModal = () => {
+        setShowModal((prev) => !prev)
+        console.log(showModal)
+    }
+
 
     return (
         <div className="w-full p-2">
@@ -61,7 +68,7 @@ const Profile = () => {
                             <h2>Password & Pin</h2>
                             <div className="flex justify-between w-full">
                                 <label htmlFor="fullName" className="w-2/3">Pin</label>
-                                <p className="w-1/3" onClick={()=>{true}}>Change Pin</p>
+                                <p className="w-1/3" onClick={handleShowModal}>Change Pin</p>
                             </div>
                             <div className="flex justify-between w-full">
                                 <label htmlFor="email" className="w-2/3">Email Address</label>
