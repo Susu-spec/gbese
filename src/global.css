@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 /*---break---
@@ -48,43 +49,53 @@
   --sidebar-primary: oklch(0.2159 0.0985 263.46);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-accent-foreground: oklch(0.2159 0.0985 263.46);
   --color-sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 }
 
 @theme {
-  /* In Tailwind config to create utilities e.g., text-primary-900, text-poppins */
+  /* Font tokens */
   --font-poppins: "Poppins", sans-serif;
   --font-public-sans: "Public Sans", sans-serif;
   --font-sora: "Sora", sans-serif;
 
-  --color-primary-100: #010B2A;
-  --color-primary-200: #ACBCF0;
-  --color-primary-300: #839AE8;
-  --color-primary-600: #262E3E;
+  /* Primary palette (50–900) */
+  --color-primary-50: #CDD7F6;
+  --color-primary-100: #ACBCF0;
+  --color-primary-200: #839AE8;
+  --color-primary-300: #5A78E1;
+  --color-primary-400: #3057D9;
+  --color-primary-500: #0735D2; /* Brand base */
+  --color-primary-600: #062CAF;
   --color-primary-700: #05238C;
   --color-primary-800: #031A69;
   --color-primary-900: #021346;
-  --color-gbese-background: #F1F4FF;
-  --color-gbese-neutrals-100: #8C8C8C;
-  --color-gbese-neutrals-200: #EBF0FF;
-  --color-gbese-black: #111111;
+
+  /* Custom neutrals */
   --color-gbese-white: #F9FAFB;
-  --color-gbese-orange: #E17700;
+  --color-gbese-neutrals-200: #CFD0D1;
+  --color-gbese-grey-200: #D1D1D1;
+  --color-gbese-neutrals-100: #8C8C8C;
+  --color-gbese-black: #111111;
+
+  /* Gbese custom colors */
+  --color-gbese-background: #F1F4FF;
+  --color-gbese-warning: #D89802;
   --color-gbese-green: #00A81C;
   --color-gbese-lilac: #E6ECFD;
-  --color-gbese-success: #66CB9F;
-  --color-gbese-red: #FF0D05;
+  --color-gbese-success: #34A67B;
+  --color-gbese-success-2: #66CB9F;
+  --color-gbese-error: #EF4444;
   --color-gbese-grey-100: #696969;
-  --color-gbese-grey-200: #7E7D7D;
   --color-gbese-grey-300: #111111CC;
   --color-gbese-pari: #002824;
-  
 
 }
 
-html, body {
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 119px;
   overflow-x: hidden;
 }
 
@@ -93,6 +104,7 @@ body {
   padding: 0;
   cursor: default;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 a, button {
@@ -103,6 +115,11 @@ a {
   text-decoration: none;
 }
 
+.hide-scrollbar{
+  -webkit-scrollbar-width: none; /* For Chrome, Safari, and Opera */
+  scrollbar-width: none; /* For Firefox */
+}
+
 @layer utilities {
   /* utility classes go here */
   /* Low-level helpers like margin, padding, color, font-size */
@@ -110,7 +127,34 @@ a {
 }
 
 @layer components {
-  /* component-level styles belong here */
+  /* Typography utilities */
+  .h1 { @apply font-sora font-bold text-[24px] leading-9 md:text-[80px] md:leading-[120px]; }
+  .h2 { @apply font-sora font-semibold text-[20px] leading-[30px] md:text-[60px] md:leading-[90px]; }
+  .h3 { @apply font-sora font-medium text-[18px] leading-[27px] md:text-[48px] md:leading-[72px]; }
+  /* H4 only for desktop (no mobile variant as requested) */
+  .h4 { @apply font-sora font-medium md:text-[32px] md:leading-[42px]; }
+  .body { @apply font-poppins font-normal text-[16px] leading-6 md:text-[24px] md:leading-9; }
+  .body-sm { @apply font-poppins font-normal text-[14px] leading-[21px]; }
+  .label { @apply font-poppins font-normal text-[12px] leading-[18px] md:text-[18px] md:leading-[27px]; }
+  .caption { @apply font-poppins font-normal text-[12px] leading-[18px] md:text-[14px] md:leading-[21px]; }
+
+  /* Hero section helpers */
+  .hero-bg { background: linear-gradient(180deg, #021346 0%, rgba(2,19,70,0.9) 50%, #021346 100%); }
+  .hero-btn-shadow { box-shadow: 0 20px 80px rgba(205,215,246,0.4), 0 10px 40px rgba(205,215,246,0.3), 0 4px 12px rgba(0,0,0,0.1); }
+  .hero-divider-line { height:1.5px; background:linear-gradient(to right, transparent 0%, rgba(131,154,232,0.5) 10%, rgba(131,154,232,0.7) 20%, rgba(131,154,232,0.8) 50%, rgba(131,154,232,0.7) 80%, rgba(131,154,232,0.5) 90%, transparent 100%); filter:blur(1px); }
+  .hero-glow-main { background: radial-gradient(ellipse 100% 35% at center 100%, rgba(131,154,232,0.3) 0%, rgba(131,154,232,0.25) 3%, rgba(131,154,232,0.2) 8%, rgba(131,154,232,0.15) 15%, rgba(131,154,232,0.1) 25%, rgba(131,154,232,0.06) 35%, rgba(131,154,232,0.03) 50%, transparent 75%); filter: blur(20px); transform: translateY(-100%); }
+  .hero-glow-secondary { background: radial-gradient(ellipse 100% 30% at center 100%, rgba(131,154,232,0.12) 0%, rgba(131,154,232,0.09) 5%, rgba(131,154,232,0.06) 12%, rgba(131,154,232,0.04) 22%, rgba(131,154,232,0.02) 35%, transparent 60%); filter: blur(25px); transform: translateY(-100%); }
+
+  /* CTA tiles */
+  .tile-xp { width:305px; height:346px; background:rgba(244,242,255,1); border:0.5px solid rgba(93,46,255,1); box-shadow:0px 2px 2px 1px rgba(135,67,226,0.1); padding:20px 20px 40px 20px; }
+  .tile-spin { width:305px; height:346px; background:rgba(255,250,235,1); border:0.5px solid rgba(243,167,18,1); box-shadow:0px 2px 2px 1px rgba(250,183,121,0.1); padding:20px 20px 40px 20px; }
+  .tile-badge { width:305px; height:346px; background:rgba(255,242,234,1); border:0.5px solid rgba(255,128,0,1); box-shadow:0px 2px 2px 1px rgba(240,25,17,0.1); padding:20px 20px 40px 20px; }
+
+  /* Icon circle backgrounds */
+  .icon-bg-primary { background: var(--color-primary-100); }
+  .icon-bg-transfer { background: rgba(223,255,249,1); }
+  .icon-bg-reward { background: rgba(231,206,255,0.35); }
+  .shadow-tile-transition { transition: box-shadow .3s, transform .3s; }
 }
 
 /*---break---
