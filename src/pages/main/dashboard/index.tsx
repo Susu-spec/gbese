@@ -57,7 +57,7 @@ export default function DashboardPage() {
                     </div>
                 ) : (
                     <div className="flex justify-between overscroll-x-auto hide-scrollbar w-full gap-3">
-                        <Card className="md:w-full md:max-w-86 md:flex-1 w-44 flex-none h-38 p-2">
+                        <Card className="md:w-full md:basis-w-86 md:flex-1 w-44 flex-none h-38 p-2">
                             <Skeleton className="h-8 w-8 rounded-full "/>
                             <Skeleton className="h-20 w-full mt-2"/>
                             <div>
@@ -65,7 +65,7 @@ export default function DashboardPage() {
                                 <Skeleton className="h-2 w-1/2 mt-2"/>
                             </div>
                         </Card>
-                        <Card className="md:w-full md:max-w-86 md:flex-1 w-44 flex-none h-38 p-2">
+                        <Card className="md:w-full md:basis-w-86 md:flex-1 w-44 flex-none h-38 p-2">
                             <Skeleton className="h-8 w-8 rounded-full "/>
                             <Skeleton className="h-20 w-full mt-2"/>
                             <div>
@@ -73,7 +73,7 @@ export default function DashboardPage() {
                                 <Skeleton className="h-2 w-1/2 mt-2"/>
                             </div>
                         </Card>
-                        <Card className="md:w-full md:max-w-86 md:flex-1 w-44 flex-none h-38 p-2">
+                        <Card className="md:w-full md:basis-w-86 md:flex-1 w-44 flex-none h-38 p-2">
                             <Skeleton className="h-8 w-8 rounded-full "/>
                             <Skeleton className="h-20 w-full mt-2"/>
                             <div>
