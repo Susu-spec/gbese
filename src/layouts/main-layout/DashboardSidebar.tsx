@@ -1,6 +1,6 @@
 import { protectedRoutes } from "@/routes/protected";
 import {NavLink} from "react-router";
-import GbeseIcon from "/icons/gbese-logo.svg"
+import GbeseIcon from "@/assets/icons/gbese-logo.svg"
 
 import {
   Sidebar,

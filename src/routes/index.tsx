@@ -1,9 +1,9 @@
-import AuthLayout from "@/layouts/AuthLayout";
+import AuthLayout from "@/layouts/auth-layout/AuthLayout";
 import { createBrowserRouter, Navigate } from "react-router";
 import { authRoutes, kycRoutes } from "./public";
-import MainLayout from "@/layouts/MainLayout";
+import MainLayout from "@/layouts/main-layout/MainLayout";
 import { protectedRoutes } from "./protected";
-import KYCLayout from "@/layouts/KYCLayout";
+import KYCLayout from "@/layouts/kyc-layout/KYCLayout";
 import ProtectedRoute from "./ProtectedRoute";
 import LandingPage from "@/pages/landing";
 
