@@ -1,5 +1,5 @@
 import api from "@/lib/axios";
-import { useAppDispatch } from "@/store/store";
+import { resetStore, useAppDispatch } from "@/store/store";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { clearUser, setUser } from "../authSlice";
 import { toast } from "sonner";
@@ -21,9 +21,10 @@ export function useAuth() {
     ({
         mutationFn: (data) => api.post("/auth/register", data),
         onSuccess: (response) => {
-             dispatch(setUser({
-                user: response.data.user,
-                accessToken: response.data.token,
+            const payload = response?.data;
+            dispatch(setUser({
+                user: payload.user,
+                accessToken: payload.token,
                 refreshToken: ""
             }));
             toast.info("Account created! Please sign in.")
@@ -39,13 +40,13 @@ export function useAuth() {
     >({
         mutationFn: (data) => api.post("/auth/login", data),
         onSuccess: (response) => {
-            const { data } = response;
+            const payload = response?.data.data ?? response?.data;
             dispatch(setUser({
-                user: response.data.data.user,
-                accessToken: response.data.data.access_token,
-                refreshToken: response.data.data.refresh_token
+                user: payload.user,
+                accessToken: payload.access_token,
+                refreshToken: payload.refresh_token
             }));
-            toast.info(`Welcome back, ${data.data.user?.full_name}`)
+            toast.info(`Welcome back, ${payload.user?.full_name}`)
             navigate("/dashboard")
         },
         onError: (error: AxiosError) => handleApiError(error)
@@ -57,6 +58,8 @@ export function useAuth() {
         onSuccess: () => {
             dispatch(clearUser());
             queryClient.invalidateQueries();
+            resetStore()
+            navigate("/")
         },
         onError: (response) => {
             if (response.message) {

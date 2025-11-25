@@ -8,9 +8,16 @@ import { rememberReducer, rememberEnhancer } from 'redux-remember';
 const rememberedKeys = ['auth']; // Add more slice keys ONLY if their state should persist.
 
 // Combine all reducers here. Only the ones listed in rememberedKeys will be persisted.
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
     auth: authReducer,
 });
+
+const rootReducer = (state: any, action: any) => {
+    if (action.type === "RESET_STORE") {
+        state = undefined;
+    }
+    return appReducer(state, action);
+};
 
 const store = configureStore({
     reducer: rememberReducer(rootReducer),

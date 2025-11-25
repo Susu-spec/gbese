@@ -1,4 +1,3 @@
-import { resetStore } from "@/store/store";
 import type { User } from "@/utils/types";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
@@ -31,7 +30,6 @@ const authSlice = createSlice({
       state.isAuthenticated = true;
     },
     clearUser() {
-      resetStore()
       return initialState
     }
   }
