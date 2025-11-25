@@ -113,7 +113,7 @@ export default function SignUpForm() {
                             onBlur={field.handleBlur}
                             onChange={(e) => field.handleChange(e.target.value)}
                             type="text"
-                            placeholder="Enter your phone number"
+                            placeholder="Enter your phone number: 234"
                             className={`${isInvalid ? 'border-red-500' : ''} text-xs md:text-sm py-3 px-2 md:py-4 md:px-4 rounded-md`}
                         />
                     )}
