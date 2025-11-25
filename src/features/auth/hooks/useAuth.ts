@@ -21,10 +21,13 @@ export function useAuth() {
     ({
         mutationFn: (data) => api.post("/auth/register", data),
         onSuccess: (response) => {
-            dispatch(setUser(response.data.user));
-            localStorage.setItem("token", response.data.token)
-            toast.info("You've successfully signed up! Welcome to Gbese")
-            navigate("/dashboard");
+             dispatch(setUser({
+                user: response.data.user,
+                accessToken: response.data.token,
+                refreshToken: ""
+            }));
+            toast.info("Account created! Please sign in.")
+            navigate("/sign-in");
         },
         onError: (error: AxiosError) => handleApiError(error)
     });
@@ -37,9 +40,11 @@ export function useAuth() {
         mutationFn: (data) => api.post("/auth/login", data),
         onSuccess: (response) => {
             const { data } = response;
-            dispatch(setUser(data.data.user));
-            localStorage.setItem("access_token", data.data.access_token)
-            localStorage.setItem("refresh_token", data.data.refresh_token)
+            dispatch(setUser({
+                user: response.data.data.user,
+                accessToken: response.data.data.access_token,
+                refreshToken: response.data.data.refresh_token
+            }));
             toast.info(`Welcome back, ${data.data.user?.full_name}`)
             navigate("/dashboard")
         },
@@ -51,8 +56,6 @@ export function useAuth() {
         mutationFn: () => api.post("/auth/signout"),
         onSuccess: () => {
             dispatch(clearUser());
-            localStorage.removeItem("access_token");
-            localStorage.removeItem("refresh_token");
             queryClient.invalidateQueries();
         },
         onError: (response) => {

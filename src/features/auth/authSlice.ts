@@ -1,3 +1,4 @@
+import { resetStore } from "@/store/store";
 import type { User } from "@/utils/types";
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
@@ -19,13 +20,19 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setUser(state, action: PayloadAction<User>) {
-      state.user = action.payload;
+    setUser(state, action: PayloadAction<{ 
+        user: User; 
+        accessToken: string; 
+        refreshToken: string }
+      >) {
+      state.user = action.payload.user;
+      state.accessToken = action.payload.accessToken;
+      state.refreshToken = action.payload.refreshToken;
       state.isAuthenticated = true;
     },
-    clearUser(state) {
-      state.user = null;
-      state.isAuthenticated = false;
+    clearUser() {
+      resetStore()
+      return initialState
     }
   }
 });
