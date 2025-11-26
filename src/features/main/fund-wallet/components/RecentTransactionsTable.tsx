@@ -15,11 +15,11 @@ export function RecentTransactionsTable({
   if (transactions.length === 0) return null;
 
   return (
-    <Card className="p-5 md:p-6 w-full max-w-5xl border border-primary-200 bg-white flex flex-col gap-4">
-      <h2 className="text-base font-semibold">Recent Transactions</h2>
+    <Card className="p-4 md:p-6 w-full max-w-5xl border border-primary-200 bg-white flex flex-col gap-4">
+      <h2 className="text-sm md:text-base font-semibold">Recent Transactions</h2>
       <Separator />
       <div className="overflow-x-auto">
-        <table className="w-full text-sm">
+        <table className="w-full text-xs md:text-sm">
           <thead className="text-left text-primary-700">
             <tr className="border-b">
               <th className="py-2 pr-4 font-medium">Date</th>
@@ -60,7 +60,7 @@ function StatusBadge({ status }: { status: WalletTransaction["status"] }) {
   return (
     <span
       className={cn(
-        "px-2 py-0.5 rounded-md text-xs font-medium capitalize",
+        "px-2 py-0.5 rounded-md text-[10px] md:text-xs font-medium capitalize",
         color
       )}
     >

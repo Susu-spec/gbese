@@ -25,7 +25,7 @@ export function FundWalletForm() {
   return (
     <Card
       className={cn(
-        "rounded-b-xl pt-8 pb-8 px-20 w-full max-w-5xl flex flex-col gap-10 shadow-lg",
+        "rounded-b-xl pt-6 pb-8 px-4 md:px-20 w-full max-w-5xl flex flex-col gap-6 md:gap-10 shadow-lg",
         "border border-gbese-white bg-white"
       )}
     >
@@ -43,7 +43,7 @@ export function FundWalletForm() {
                 placeholder="Enter amount"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="h-14"
+                className="h-12 md:h-14"
                 required
                 disabled={fundWallet.isPending}
               />
@@ -57,7 +57,7 @@ export function FundWalletForm() {
                 onChange={(e) => setMethod(e.target.value)}
                 disabled={fundWallet.isPending}
                 className={cn(
-                  "h-14 rounded-md border border-primary-200 bg-white pr-12 pl-3 text-sm",
+                  "h-12 md:h-14 rounded-md border border-primary-200 bg-white pr-10 md:pr-12 pl-3 text-sm",
                   "focus:outline-none focus:ring-2 focus:ring-primary-300",
                   "disabled:opacity-50 disabled:cursor-not-allowed"
                 )}
@@ -76,7 +76,7 @@ export function FundWalletForm() {
                 checked={attachDebt}
                 onChange={(e) => setAttachDebt(e.target.checked)}
                 disabled={fundWallet.isPending}
-                className="size-6 rounded border-primary-200 text-primary-800 focus:ring-2 focus:ring-primary-400 bg-white"
+                className="size-5 md:size-6 rounded border-primary-200 text-primary-800 focus:ring-2 focus:ring-primary-400 bg-white"
               />
               <Label htmlFor="attachDebt" className="cursor-pointer">
                 Attach debt obligations
@@ -86,7 +86,7 @@ export function FundWalletForm() {
           <div>
             <Button
               type="submit"
-              className="min-w-40 h-12"
+              className="min-w-36 md:min-w-40 h-11 md:h-12"
               disabled={fundWallet.isPending || !amount || !method}
             >
               {fundWallet.isPending ? (
