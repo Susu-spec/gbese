@@ -1,8 +1,8 @@
-import { WalletBalanceCard } from "@/features/fund-wallet/components/WalletBalanceCard";
-import { FundWalletForm } from "@/features/fund-wallet/components/FundWalletForm";
-import { RecentTransactionsTable } from "@/features/fund-wallet/components/RecentTransactionsTable";
-import { EmptyWalletState } from "@/features/fund-wallet/components/EmptyWalletState";
-import { useFundWallet } from "@/features/fund-wallet/hooks/useFundWallet";
+import { WalletBalanceCard } from "@/features/main/fund-wallet/components/WalletBalanceCard";
+import { FundWalletForm } from "@/features/main/fund-wallet/components/FundWalletForm";
+import { RecentTransactionsTable } from "@/features/main/fund-wallet/components/RecentTransactionsTable";
+import { EmptyWalletState } from "@/features/main/fund-wallet/components/EmptyWalletState";
+import { useFundWallet } from "@/features/main/fund-wallet/hooks/useFundWallet";
 
 export default function FundWalletPage() {
     const { balance, transactions } = useFundWallet();
