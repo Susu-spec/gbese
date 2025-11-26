@@ -28,16 +28,13 @@ export function DashboardSidebar() {
                 <SidebarGroupContent>
                     <SidebarMenu className="gap-2">
                     {protectedRoutes
-                        .filter(
-                        (item) =>
-                            item.path !== "profile" && item.path !== "notifications"
-                        )
+                        .filter(item => item.showInSidebar)
                         .map((item) => (
                         <SidebarMenuItem
                             key={item.path}
                             className="text-white hover:bg-white hover:rounded-md"
                         >
-                            <NavLink to={`/${item.path}`} end>
+                            <NavLink to={`/${item.path}`}>
                             {({ isActive }) => (
                                 <SidebarMenuButton
                                 asChild
@@ -45,7 +42,7 @@ export function DashboardSidebar() {
                                 className="px-6 py-4 h-14"
                                 >
                                 <div>
-                                    <item.icon />
+                                    {item.icon && <item.icon />}
                                     <span>{item.label}</span>
                                 </div>
                                 </SidebarMenuButton>
