@@ -1,6 +1,5 @@
 import { Card, CardAction, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
-import type { DashboardCardProps } from "@/utils/types"
 import { useState } from "react";
 import Analytics from "@/assets/images/cuate.svg";
 import WalletSvg from "@/assets/images/rafiki.svg"
@@ -14,45 +13,54 @@ import {
 } from "@/components/ui/select"
 import { Button } from "@/components/ui/button";
 import { Award, Wallet } from "lucide-react";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/store/store";
+import { useUser } from "@/features/main/dashboard/hooks/useUser";
+import { TableData } from "@/features/main/dashboard/components/TransactionTable";
 
 
 export default function DashboardPage() {
-    const [mockItems, _setMockItems] = useState<DashboardCardProps[]>([]);
-    const [activity, _setActivity] = useState<any[]>([]);
-    const [transactions, _setTransactions] = useState<any[]>([]);
+    const {userQuery, accountQuery} = useUser();
     const [debtRequests, _setDebtRequests] = useState<any[]>([]);
+
+
+    const isLoading = userQuery.isPending || accountQuery.isPending;
+
+    const user = useSelector((state: RootState) => state.user?.profile);
+    const userAccount = useSelector((state: RootState) => state.user?.account);
+
     return (
         <div>
             <div className="mb-4">
-                <h2 className="text-3xl font-semibold text-primary-800">How Far, Charles!</h2>
+                <h2 className="text-3xl font-semibold text-primary-800">How Far, {isLoading ? "Loading..." : user?.first_name || "User"}!</h2>
                 <p>Time to balance your gbese and stack some XP. No slackin’ today</p>
             </div>
             <div className="flex gap-3 w-full overflow-x-auto hide-scrollbar mb-6">
-                {mockItems.length > 0 ? (
+                {userAccount && !isLoading ? (
                     <div className="flex w-full gap-3">
-                        <Card className="w-full h-38 p-2">
-                            <div>
-                                <Wallet />
+                        <Card className="w-full h-47.5 p-2">
+                            <div className="w-10 p-2 rounded-full flex items-center justify-center bg-gbese-success">
+                                <Wallet stroke="#fff" />
                             </div>
-                            <CardTitle>Balance</CardTitle>
-                            <p>&#8358; 0.00</p>
-                            <p>Fund Wallet</p>
+                            <CardTitle className="text-lg">Balance</CardTitle>
+                            <p className="text-xl">&#8358; {Number(userAccount?.current_balance ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) ?? '0.00'}</p>
+                            <a className="text-underline cursor-pointer">Fund Wallet</a>
                         </Card>
-                        <Card className="w-full h-38 p-2">
-                            <div>
-                                <Wallet />
+                        <Card className="w-full h-47.5 p-2">
+                            <div className="w-10 p-2 rounded-full flex items-center justify-center bg-gbese-warning">
+                                <Wallet stroke="#fff" />
                             </div>
-                            <CardTitle>Balance</CardTitle>
-                            <p>&#8358; 0.00</p>
-                            <p>Fund Wallet</p>
+                            <CardTitle className="text-lg">Debt</CardTitle>
+                            <p className={`${Number(userAccount?.total_debt_obligation ?? 0) > 0 ? "text-gbese-warning text-xl" : "text-gbese-green"}`}>&#8358; {Number(userAccount?.total_debt_obligation ?? 0) > 0 ? "-" + Number(userAccount?.total_debt_obligation ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '0.00'}</p>
+                            <a>Fund Wallet</a>
                         </Card>
-                        <Card className="w-full h-38 p-2">
+                        <Card className="w-full h-47.5 p-2">
                             <div>
                                 <Award />
                             </div>
                             <CardTitle>Balance</CardTitle>
                             <p>&#8358; 0.00</p>
-                            <p>Fund Wallet</p>
+                            <a>Fund Wallet</a>
                         </Card>
                     </div>
                 ) : (
@@ -104,9 +112,9 @@ export default function DashboardPage() {
                                 </Select>
                         </CardAction>
                     </CardHeader>
-                    {activity.length > 0 ? activity.map((act, index) => (
-                        <div key={index}>{act}</div>
-                    )) : (
+                    {!isLoading ? (
+                        <TableData/>
+                    ) : (
                         <div className="flex flex-col text-center items-center justify-center">
                             <img src={Analytics} alt="Analytics" />
                             <p className="xl:w-92 md:w-72 w-64 text-gbese-grey-100">Your activity will show here once you start borrowing, repaying, or transferring gbese.</p>
@@ -118,9 +126,9 @@ export default function DashboardPage() {
                     <CardHeader>
                         <CardTitle>Transaction History</CardTitle>
                     </CardHeader>
-                    {transactions.length > 0 ? transactions.map((tx, index) => (
-                        <div key={index}>{tx}</div>
-                    )) : (      
+                    {!isLoading ? (
+                        <TableData/>
+                    ) : (      
                         <div className="flex flex-col text-center items-center justify-center">
                             <img src={WalletSvg} alt="Wallet-svg" />
                             <p className="xl:w-92 md:w-72 w-64 text-gbese-grey-100">No transactions yet. Once you start flipping gbese, your history will appear here.</p>
