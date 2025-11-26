@@ -71,9 +71,11 @@
   --color-primary-700: #05238C;
   --color-primary-800: #031A69;
   --color-primary-900: #021346;
+  --color-primary-950: #010B2A;
 
   /* Custom neutrals */
   --color-gbese-background: #F9FAFB;
+  --color-gbese-main-background: #F1F4FF;
   --color-gbese-neutrals-200: #CFD0D1;
   --color-gbese-grey-200: #D1D1D1;
   --color-gbese-neutrals-100: #8C8C8C;

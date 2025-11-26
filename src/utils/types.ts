@@ -1,3 +1,5 @@
+import type { ElementType } from "react";
+
 export interface User {
   id: string;
   email: string;
@@ -20,4 +22,13 @@ export interface DashboardCardProps{
   title: string;
   amount: string;
   href: string;
+}
+
+export interface AppRoute {
+  path: string;
+  label?: string;
+  icon?: ElementType;
+  showInSidebar?: boolean;
+  lazy?: () => Promise<{ Component: React.ComponentType<any> }>;
+  children?: AppRoute[];
 }
