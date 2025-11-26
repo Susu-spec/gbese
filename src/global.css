@@ -145,16 +145,25 @@ input:-webkit-autofill::selection {
 }
 
 @layer components {
+    /* Wallet logo size utilities */
+    .wallet-logo-bg-size {
+      width: 45px;
+      height: 45px;
+    }
+    .wallet-logo-icon-size {
+      width: 24px;
+      height: 24px;
+    }
   /* Typography utilities */
   .h1 { @apply font-sora font-bold text-[24px] leading-9 md:text-[80px] md:leading-[120px]; }
   .h2 { @apply font-sora font-semibold text-[20px] leading-[30px] md:text-[60px] md:leading-[90px]; }
   .h3 { @apply font-sora font-medium text-[18px] leading-[27px] md:text-[48px] md:leading-[72px]; }
   /* H4 only for desktop (no mobile variant as requested) */
-  .h4 { @apply font-sora font-medium md:text-[32px] md:leading-[42px]; }
-  .body { @apply font-poppins font-normal text-[16px] leading-6 md:text-[24px] md:leading-9; }
-  .body-sm { @apply font-poppins font-normal text-[14px] leading-[21px]; }
-  .label { @apply font-poppins font-normal text-[12px] leading-[18px] md:text-[18px] md:leading-[27px]; }
-  .caption { @apply font-poppins font-normal text-[12px] leading-[18px] md:text-[14px] md:leading-[21px]; }
+  .h4 { @apply font-medium md:text-[32px] md:leading-[42px]; }
+  .body { @apply font-normal text-[16px] leading-6 md:text-[24px] md:leading-9; }
+  .body-sm { @apply font-normal text-[14px] leading-[21px]; }
+  .label { @apply font-normal text-[12px] leading-[18px] md:text-[18px] md:leading-[27px]; }
+  .caption { @apply font-normal text-[12px] leading-[18px] md:text-[14px] md:leading-[21px]; }
 
   /* Hero section helpers */
   .hero-bg { background: linear-gradient(180deg, #021346 0%, rgba(2,19,70,0.9) 50%, #021346 100%); }
