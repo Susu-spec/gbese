@@ -1,4 +1,4 @@
-import { FormFieldWrapper } from "@/components/shared/form"
+import { FormFieldWrapper, PasswordInput } from "@/components/shared/form"
 import { Button } from "@/components/ui/button"
 import { FieldGroup } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
@@ -63,15 +63,15 @@ export default function LoginForm() {
                     name="password"
                 >
                     {(field, isInvalid) => (
-                        <Input
+                        <PasswordInput
                             id={field.name}
                             name={field.name}
                             value={field.state.value}
                             onBlur={field.handleBlur}
-                            onChange={(e) => field.handleChange(e.target.value)}
-                            type="password"
+                            onChange={field.handleChange}
+                            isInvalid={isInvalid}
                             placeholder="Enter your password"
-                            className={`${isInvalid ? 'border-red-500' : ''} text-xs md:text-sm py-3 px-2 md:py-4 md:px-4 rounded-md`}
+                            className={`text-xs md:text-sm py-3 px-2 md:py-4 md:px-4 rounded-md`}
                         />
                     )}
                 </FormFieldWrapper>

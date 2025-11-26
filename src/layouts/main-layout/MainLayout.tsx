@@ -7,12 +7,11 @@ export default function MainLayout() {
     return (
         <SidebarProvider>
             <DashboardSidebar />
-            <main className="w-full bg-gbese-background p-8 overscroll-auto hide-scrollbar">
-                <Header/>
-                <div className="pt-14">
-                    <Outlet/>
+            <main className="w-full bg-gbese-main-background overscroll-auto hide-scrollbar">
+                <Header />
+                <div className="md:mx-auto max-w-360 mt-26 mb-10 px-6">
+                    <Outlet />
                 </div>
-                
             </main>
         </SidebarProvider>
   )

@@ -1,5 +1,5 @@
 import api from "@/lib/axios";
-import { useAppDispatch } from "@/store/store";
+import { resetStore, useAppDispatch } from "@/store/store";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { clearUser, setUser } from "../authSlice";
 import { toast } from "sonner";
@@ -21,10 +21,14 @@ export function useAuth() {
     ({
         mutationFn: (data) => api.post("/auth/register", data),
         onSuccess: (response) => {
-            dispatch(setUser(response.data.user));
-            localStorage.setItem("token", response.data.token)
-            toast.info("You've successfully signed up! Welcome to Gbese")
-            navigate("/dashboard");
+            const payload = response?.data;
+            dispatch(setUser({
+                user: payload.user,
+                accessToken: payload.token,
+                refreshToken: ""
+            }));
+            toast.info("Account created! Please sign in.")
+            navigate("/sign-in");
         },
         onError: (error: AxiosError) => handleApiError(error)
     });
@@ -36,11 +40,13 @@ export function useAuth() {
     >({
         mutationFn: (data) => api.post("/auth/login", data),
         onSuccess: (response) => {
-            const { data } = response;
-            dispatch(setUser(data.data.user));
-            localStorage.setItem("access_token", data.data.access_token)
-            localStorage.setItem("refresh_token", data.data.refresh_token)
-            toast.info(`Welcome back, ${data.data.user?.full_name}`)
+            const payload = response?.data.data ?? response?.data;
+            dispatch(setUser({
+                user: payload.user,
+                accessToken: payload.access_token,
+                refreshToken: payload.refresh_token
+            }));
+            toast.info(`Welcome back, ${payload.user?.full_name}`)
             navigate("/dashboard")
         },
         onError: (error: AxiosError) => handleApiError(error)
@@ -51,9 +57,9 @@ export function useAuth() {
         mutationFn: () => api.post("/auth/signout"),
         onSuccess: () => {
             dispatch(clearUser());
-            localStorage.removeItem("access_token");
-            localStorage.removeItem("refresh_token");
             queryClient.invalidateQueries();
+            resetStore()
+            navigate("/")
         },
         onError: (response) => {
             if (response.message) {
