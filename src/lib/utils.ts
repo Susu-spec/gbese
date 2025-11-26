@@ -36,3 +36,29 @@ export function handleApiError(error: any) {
       break;
   }
 }
+
+// Helper function to format date
+export const formatDate = (dateValue: string | number | Date): string => {
+  try {
+    const date = new Date(dateValue);
+    
+    // Check if date is valid
+    if (isNaN(date.getTime())) {
+      return 'Invalid Date';
+    }
+    
+    // Format options
+    const options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    };
+    
+    return date.toLocaleDateString('en-US', options);
+  } catch (error) {
+    console.error('Date formatting error:', error);
+    return 'Invalid Date';
+  }
+};
