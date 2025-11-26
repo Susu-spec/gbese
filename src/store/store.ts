@@ -1,15 +1,17 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import authReducer from "@/features/auth/authSlice"
+import userReducer from "@/features/main/dashboard/userSlice"
 import { useDispatch } from 'react-redux';
 import { rememberReducer, rememberEnhancer } from 'redux-remember';
 
 // Persist only reducers that must survive a refresh (e.g., auth, user preferences).
 // Do NOT persist server-fetched data, UI state, or anything that changes frequently.
-const rememberedKeys = ['auth']; // Add more slice keys ONLY if their state should persist.
+const rememberedKeys = ['auth', 'user']; // Add more slice keys ONLY if their state should persist.
 
 // Combine all reducers here. Only the ones listed in rememberedKeys will be persisted.
 const appReducer = combineReducers({
     auth: authReducer,
+    user: userReducer,
 });
 
 const rootReducer = (state: any, action: any) => {
