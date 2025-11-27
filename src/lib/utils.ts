@@ -62,3 +62,27 @@ export const formatDate = (dateValue: string | number | Date): string => {
     return 'Invalid Date';
   }
 };
+
+/**
+ * Safely parse balance from API (handles string | number | null | undefined)
+ * Prevents runtime crashes from unexpected API data types
+ */
+export function parseBalance(value: string | number | null | undefined): number {
+  if (value === null || value === undefined || value === '') return 0;
+  const parsed = typeof value === 'string' ? parseFloat(value) : value;
+  return isNaN(parsed) ? 0 : parsed;
+}
+
+/**
+ * Transaction type mapping for consistent UI across features
+ * Use this when teammates implement withdrawal, debt payments, etc.
+ */
+export const TRANSACTION_TYPES = {
+  deposit: { label: 'Deposit', color: 'text-gbese-success' },
+  withdrawal: { label: 'Withdrawal', color: 'text-gbese-warning' },
+  debt_payment: { label: 'Debt Payment', color: 'text-primary-800' },
+  transfer: { label: 'Transfer', color: 'text-primary-600' },
+  refund: { label: 'Refund', color: 'text-gbese-success' },
+} as const;
+
+export type TransactionType = keyof typeof TRANSACTION_TYPES;
