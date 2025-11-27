@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 .env
+
+# Codebase architecture documentation (local reference only)
+CODEBASE_ARCHITECTURE.md

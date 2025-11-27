@@ -13,7 +13,7 @@ export default function FAQSection() {
             id="faqs"
             className="w-full bg-gbese-white border-t border-gbese-neutrals-200 py-20 px-5 md:py-20 md:px-20"
         >
-            <div className="mx-auto flex max-w-screen-2xl flex-col items-center gap-[1.875rem] md:gap-[4.938rem]">
+            <div className="mx-auto flex max-w-screen-2xl flex-col items-center gap-7.5 md:gap-[4.938rem]">
                 <h2 className="font-sora font-semibold text-center text-primary-900 text-[1.75rem] leading-10 md:text-[3rem] md:leading-18 max-w-sm sm:max-w-md md:max-w-2xl">
                     Got Gbese Questions?
                 </h2>

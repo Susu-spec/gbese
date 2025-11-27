@@ -1,11 +1,12 @@
 import api from "@/lib/axios";
 import { useAppDispatch } from "@/store/store";
 import { useQuery } from "@tanstack/react-query";
-import { setAccount, setUser } from "../userSlice";
+import { setUser } from "../userSlice";
 import { AxiosError, type AxiosResponse } from "axios";
-import type { GetAccountResponse, GetUserResponse } from "../types";
+import type { GetUserResponse } from "../types";
 import { handleApiError } from "@/lib/utils";
 import { useEffect } from "react";
+import { useAccountBalance } from "@/features/main/account/hooks";
 
 export function useUser() {
   const dispatch = useAppDispatch();
@@ -20,15 +21,8 @@ export function useUser() {
     staleTime: 1000 * 60 * 5,
   });
 
-  // Account query
-  const accountQuery = useQuery<GetAccountResponse, AxiosError>({
-    queryKey: ["userAccount"],
-    queryFn: async (): Promise<GetAccountResponse> => {
-      const { data } = await api.get<GetAccountResponse>("/account/balance");
-      return data;
-    },
-    staleTime: 1000 * 60 * 5,
-  });
+  // Account balance (centralized hook keeps Redux in sync)
+  const accountQuery = useAccountBalance();
 
   const transactionQuery = useQuery<AxiosResponse, AxiosError>({
     queryKey: ["userTransactions"],
@@ -46,11 +40,7 @@ export function useUser() {
     }
   }, [userQuery.data, dispatch]);
 
-  useEffect(() => {
-    if (accountQuery.data) {
-      dispatch(setAccount(accountQuery.data.data));
-    }
-  }, [accountQuery.data, dispatch]);
+  // Account state is synced inside useAccountBalance
 
   // Handle errors
   useEffect(() => {
