@@ -11,9 +11,11 @@ export interface WalletTransaction {
   method: string; // Bank | Card | Gbese Pay
 }
 
+export type PaymentMethod = "bank_transfer" | "card" | "ussd";
+
 export interface FundWalletPayload {
   amount: number;
-  method: string;
+  payment_method: PaymentMethod;
 }
 
 export interface FundWalletResponse {

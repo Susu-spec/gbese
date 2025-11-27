@@ -5,11 +5,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { useFundWallet } from "../hooks/useFundWallet";
+import type { PaymentMethod } from "../types";
 import { Spinner } from "@/components/ui/spinner";
 
 export function FundWalletForm() {
   const [amount, setAmount] = useState("");
-  const [method, setMethod] = useState("");
+  const [method, setMethod] = useState<PaymentMethod | "">("");
   const [attachDebt, setAttachDebt] = useState(false);
   const { fundWallet } = useFundWallet();
 
@@ -17,7 +18,7 @@ export function FundWalletForm() {
     e.preventDefault();
     fundWallet.mutate({
       amount: Number(amount),
-      method,
+      payment_method: method as PaymentMethod,
     });
     setAmount("");
   }
@@ -54,7 +55,7 @@ export function FundWalletForm() {
               <select
                 id="method"
                 value={method}
-                onChange={(e) => setMethod(e.target.value)}
+                onChange={(e) => setMethod(e.target.value as PaymentMethod | "")}
                 disabled={fundWallet.isPending}
                 className={cn(
                   "h-12 md:h-14 rounded-md border border-primary-200 bg-white pr-10 md:pr-12 pl-3 text-sm",
@@ -63,9 +64,9 @@ export function FundWalletForm() {
                 )}
               >
                 <option value="">Select payment method</option>
-                <option>Bank</option>
-                <option>Card</option>
-                <option>Gbese Pay</option>
+                <option value="bank_transfer">Bank Transfer</option>
+                <option value="card">Card</option>
+                <option value="ussd">USSD</option>
               </select>
             </div>
             {/* Attach Debt Checkbox */}
