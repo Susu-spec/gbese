@@ -25,12 +25,5 @@ dist-ssr
 
 .env
 
-# Local fund wallet work-in-progress docs & reference images (keep local, do not commit)
-fund-wallet-doc.md
-public/(Fund wallet -Empty state).png
-public/(Fund wallet- Active account).png
-public/(Fund wallet- When they've funded the account)).png
-public/Pop up (Success).png
-
 # Codebase architecture documentation (local reference only)
 CODEBASE_ARCHITECTURE.md
