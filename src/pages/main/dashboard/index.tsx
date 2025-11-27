@@ -32,9 +32,9 @@ export default function DashboardPage() {
         rejectReq.mutate(request_id);
     }
 
-    const isLoading = userQuery.isPending || accountQuery.isPending;
+    const isLoading = userQuery.isPending || accountQuery.isPending || debtReqQuery.isPending;
     const debtReq = debtReqQuery.data?.data;
-    console.log("Debt Requests:", debtReq);
+
 
     const user = useSelector((state: RootState) => state.user?.profile);
     const userAccount = useSelector((state: RootState) => state.user?.account);
@@ -147,11 +147,7 @@ export default function DashboardPage() {
                     )}
                 </Card>
                 <Card className="col-span-1 p-4">
-                    <div className="mb-2 text-center">
-                        <h2 className="text-3xl font-bold">Debt Requests</h2>
-                        <p>Accept Request to help save a person financial life. Abeg! Big Dawg</p>
-                    </div>
-                    {debtReq.length > 0 ? debtReq.map((dr: DebtRequest) => (
+                    {!isLoading ? debtReq.map((dr: DebtRequest) => (
                         <DebtRequests key={dr.id} debtRequest={dr} handleAccept={() => handleAccept(dr.id)} handleReject={() => handleReject(dr.id)} />
                     )) : (
                         <div className="flex flex-col text-center items-center justify-center p-4">
