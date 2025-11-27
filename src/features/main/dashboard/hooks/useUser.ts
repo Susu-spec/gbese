@@ -1,75 +1,59 @@
 import api from "@/lib/axios";
-import { useAppDispatch } from "@/store/store";
 import { useQuery } from "@tanstack/react-query";
-import { setAccount, setUser } from "../userSlice";
-import { AxiosError, type AxiosResponse } from "axios";
 import type { GetAccountResponse, GetUserResponse } from "../types";
 import { handleApiError } from "@/lib/utils";
 import { useEffect } from "react";
+import { setUser, setAccount } from "../userSlice";
+import { useAppDispatch } from "@/store/store";
 
 export function useUser() {
-  const dispatch = useAppDispatch();
-
-  // User query
-  const userQuery = useQuery<GetUserResponse, AxiosError>({
+    const dispatch = useAppDispatch();
+  const userQuery = useQuery({
     queryKey: ["userProfile"],
-    queryFn: async (): Promise<GetUserResponse> => {
+    queryFn: async () => {
       const { data } = await api.get<GetUserResponse>("/user/profile");
       return data;
     },
     staleTime: 1000 * 60 * 5,
   });
 
-  // Account query
-  const accountQuery = useQuery<GetAccountResponse, AxiosError>({
+  const accountQuery = useQuery({
     queryKey: ["userAccount"],
-    queryFn: async (): Promise<GetAccountResponse> => {
+    queryFn: async () => {
       const { data } = await api.get<GetAccountResponse>("/account/balance");
       return data;
     },
     staleTime: 1000 * 60 * 5,
   });
 
-  const transactionQuery = useQuery<AxiosResponse, AxiosError>({
+  const transactionQuery = useQuery({
     queryKey: ["userTransactions"],
-    queryFn: async (): Promise<AxiosResponse> => {
-        const {data} = await api.get<AxiosResponse>("/account/transactions");
-        return data;
+    queryFn: async () => {
+      const { data } = await api.get("/account/transactions");
+      return data;
     },
     staleTime: 1000 * 60 * 5,
-  })
+  });
 
-  // Handle side effects with useEffect
+  // Sync user data to Redux - INSIDE useEffect
   useEffect(() => {
-    if (userQuery.data) {
+    if (userQuery.isSuccess && userQuery.data) {
       dispatch(setUser(userQuery.data.data));
     }
-  }, [userQuery.data, dispatch]);
-
-  useEffect(() => {
-    if (accountQuery.data) {
-      dispatch(setAccount(accountQuery.data.data));
-    }
-  }, [accountQuery.data, dispatch]);
-
-  // Handle errors
-  useEffect(() => {
-    if (userQuery.error) {
+    if (userQuery.isError && userQuery.error) {
       handleApiError(userQuery.error);
     }
-  }, [userQuery.error]);
+  }, [userQuery.isSuccess, userQuery.data, userQuery.isError, userQuery.error, dispatch]);
 
+  // Sync account data to Redux - INSIDE useEffect
   useEffect(() => {
-    if (accountQuery.error) {
+    if (accountQuery.isSuccess && accountQuery.data) {
+      dispatch(setAccount(accountQuery.data.data));
+    }
+    if (accountQuery.isError && accountQuery.error) {
       handleApiError(accountQuery.error);
     }
-  }, [accountQuery.error]);
-
-  useEffect(() => {
-    if (transactionQuery.error) {
-        handleApiError(transactionQuery.error);
-    }
-  }, [transactionQuery.error])
+  }, [accountQuery.isSuccess, accountQuery.data, accountQuery.isError, accountQuery.error, dispatch]);
 
   return { userQuery, accountQuery, transactionQuery };
 }

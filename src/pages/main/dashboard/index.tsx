@@ -14,21 +14,18 @@ import {
 import { Button } from "@/components/ui/button";
 import { Award, Wallet } from "lucide-react";
 import { useSelector } from "react-redux";
-import type { RootState } from "@/store/store";
+import { type RootState } from "@/store/store";
 import { useUser } from "@/features/main/dashboard/hooks/useUser";
 import { TableData } from "@/features/main/dashboard/components/TransactionTable";
 
 
 export default function DashboardPage() {
     const {userQuery, accountQuery} = useUser();
-    const [debtRequests, _setDebtRequests] = useState<any[]>([]);
-
-
     const isLoading = userQuery.isPending || accountQuery.isPending;
 
     const user = useSelector((state: RootState) => state.user?.profile);
     const userAccount = useSelector((state: RootState) => state.user?.account);
-
+    const [debtRequests, _setDebtRequests] = useState<[]>([]);
     return (
         <div>
             <div className="mb-4">
@@ -37,8 +34,8 @@ export default function DashboardPage() {
             </div>
             <div className="flex gap-3 w-full overflow-x-auto hide-scrollbar mb-6">
                 {userAccount && !isLoading ? (
-                    <div className="flex w-full gap-3">
-                        <Card className="w-full h-47.5 p-2">
+                    <div className="flex justify-between overscroll-x-auto hide-scrollbar w-full gap-3">
+                        <Card className="md:w-full md:basis-w-86 md:flex-1 w-44 flex-none h-47.5 p-2">
                             <div className="w-10 p-2 rounded-full flex items-center justify-center bg-gbese-success">
                                 <Wallet stroke="#fff" />
                             </div>
@@ -46,7 +43,7 @@ export default function DashboardPage() {
                             <p className="text-xl">&#8358; {Number(userAccount?.current_balance ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) ?? '0.00'}</p>
                             <a className="text-underline cursor-pointer">Fund Wallet</a>
                         </Card>
-                        <Card className="w-full h-47.5 p-2">
+                        <Card className="md:w-full md:basis-w-86 md:flex-1 w-44 flex-none h-47.5 p-2">
                             <div className="w-10 p-2 rounded-full flex items-center justify-center bg-gbese-warning">
                                 <Wallet stroke="#fff" />
                             </div>
@@ -54,7 +51,7 @@ export default function DashboardPage() {
                             <p className={`${Number(userAccount?.total_debt_obligation ?? 0) > 0 ? "text-gbese-warning text-xl" : "text-gbese-green"}`}>&#8358; {Number(userAccount?.total_debt_obligation ?? 0) > 0 ? "-" + Number(userAccount?.total_debt_obligation ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '0.00'}</p>
                             <a>Fund Wallet</a>
                         </Card>
-                        <Card className="w-full h-47.5 p-2">
+                        <Card className="md:w-full md:basis-w-86 md:flex-1 w-44 flex-none h-47.5 p-2">
                             <div>
                                 <Award />
                             </div>
