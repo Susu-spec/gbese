@@ -1,6 +1,5 @@
 import { Card, CardAction, CardHeader, CardTitle } from "@/components/ui/card"
-import { Skeleton } from "@/components/ui/skeleton"
-import { useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 import Analytics from "@/assets/images/cuate.svg";
 import WalletSvg from "@/assets/images/rafiki.svg"
 import {
@@ -15,17 +14,32 @@ import { Button } from "@/components/ui/button";
 import { Award, Wallet } from "lucide-react";
 import { useSelector } from "react-redux";
 import { type RootState } from "@/store/store";
-import { useUser } from "@/features/main/dashboard/hooks/useUser";
+import { useDebtReq, useUser } from "@/features/main/dashboard/hooks/useUser";
 import { TableData } from "@/features/main/dashboard/components/TransactionTable";
+import type { DebtRequest } from "@/features/main/dashboard/types";
+import DebtRequests from "@/features/main/dashboard/components/DebtRequest";
 
 
 export default function DashboardPage() {
-    const {userQuery, accountQuery} = useUser();
+    const {userQuery, accountQuery, debtReqQuery} = useUser();
+    const {rejectReq, acceptReq} = useDebtReq();
+
+    const handleAccept = (request_id: string) => {
+        acceptReq.mutate(request_id);
+    }
+
+    const handleReject = (request_id: string) => {
+        rejectReq.mutate(request_id);
+    }
+
     const isLoading = userQuery.isPending || accountQuery.isPending;
+    const debtReq = debtReqQuery.data?.data;
+    console.log("Debt Requests:", debtReq);
 
     const user = useSelector((state: RootState) => state.user?.profile);
     const userAccount = useSelector((state: RootState) => state.user?.account);
-    const [debtRequests, _setDebtRequests] = useState<[]>([]);
+
+
     return (
         <div>
             <div className="mb-4">
@@ -52,12 +66,12 @@ export default function DashboardPage() {
                             <a>Fund Wallet</a>
                         </Card>
                         <Card className="md:w-full md:basis-w-86 md:flex-1 w-44 flex-none h-47.5 p-2">
-                            <div>
+                            <div className="w-10 p-2 rounded-full flex items-center justify-center">
                                 <Award />
                             </div>
-                            <CardTitle>Balance</CardTitle>
-                            <p>&#8358; 0.00</p>
-                            <a>Fund Wallet</a>
+                            <CardTitle className="text-lg">Credit Score</CardTitle>
+                            <p className="text-xl">&#8358; {userAccount?.available_credit}</p>
+                            <a>Apply For Credit</a>
                         </Card>
                     </div>
                 ) : (
@@ -132,9 +146,13 @@ export default function DashboardPage() {
                         </div>
                     )}
                 </Card>
-                <Card className="col-span-1">
-                    {debtRequests.length > 0 ? debtRequests.map((dr, index) => (
-                        <div key={index}>{dr}</div>
+                <Card className="col-span-1 p-4">
+                    <div className="mb-2 text-center">
+                        <h2 className="text-3xl font-bold">Debt Requests</h2>
+                        <p>Accept Request to help save a person financial life. Abeg! Big Dawg</p>
+                    </div>
+                    {debtReq.length > 0 ? debtReq.map((dr: DebtRequest) => (
+                        <DebtRequests key={dr.id} debtRequest={dr} handleAccept={() => handleAccept(dr.id)} handleReject={() => handleReject(dr.id)} />
                     )) : (
                         <div className="flex flex-col text-center items-center justify-center p-4">
                             <p>No gbese requests for now. Send one yourself!</p>
