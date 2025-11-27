@@ -5,6 +5,10 @@ const DebtRequests = ({debtRequest, handleAccept, handleReject}: {debtRequest: D
 
     return(
         <div className="w-full">
+            <div className="mb-2 text-center">
+                <h2 className="text-3xl font-bold">Debt Requests</h2>
+                <p>Accept Request to help save a person financial life. Abeg! Big Dawg</p>
+            </div>
             <div className="flex justify-between items-center mb-2">
                 <h2 className="text-2xl">{debtRequest.sender.first_name}</h2>
                 <p className="text-2xl">&#8358; {Number(debtRequest.debt.remaining_balance).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
