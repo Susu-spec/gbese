@@ -1,9 +1,10 @@
 import api from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
-import type { GetAccountResponse, GetUserResponse } from "../types";
+import { setAccount, setUser } from "../userSlice";
+import type { GetUserResponse } from "../types";
 import { handleApiError } from "@/lib/utils";
 import { useEffect } from "react";
-import { setUser, setAccount } from "../userSlice";
+import { useAccountBalance } from "@/features/main/account/hooks";
 import { useAppDispatch } from "@/store/store";
 
 export function useUser() {
@@ -17,14 +18,8 @@ export function useUser() {
     staleTime: 1000 * 60 * 5,
   });
 
-  const accountQuery = useQuery({
-    queryKey: ["userAccount"],
-    queryFn: async () => {
-      const { data } = await api.get<GetAccountResponse>("/account/balance");
-      return data;
-    },
-    staleTime: 1000 * 60 * 5,
-  });
+  // Account balance (centralized hook keeps Redux in sync)
+  const accountQuery = useAccountBalance();
 
   const transactionQuery = useQuery({
     queryKey: ["userTransactions"],
