@@ -1,12 +1,21 @@
 import { Camera } from "lucide-react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/store/store";
+import { useUser } from "@/features/main/dashboard/hooks/useUser";
 
 
 type TabValue = "personal-information" | "security-settings" ;
 
 const Profile = () => {
     const [tabValue, setTabValue] = useState<TabValue>("personal-information");
-    const [showModal, setShowModal] = useState<boolean | null>(false)
+    const [showModal, setShowModal] = useState<boolean | null>(false);
+
+    const {userQuery} = useUser();
+
+    const isLoading = userQuery.isPending;
+    
+    const user = useSelector((state: RootState) => state.user?.profile);
 
     const handleTabChange = (value: TabValue) => {
         setTabValue(value);
@@ -38,7 +47,7 @@ const Profile = () => {
                             <div className="w-36 h-36 rounded-xl flex items-center justify-center bg-primary-200">
                                 <Camera size={44} stroke="#fff" strokeWidth={1}/>
                             </div>
-                            <p className="font-bold text-xl">Jones Charles</p>
+                            <p className="font-bold text-xl">{isLoading ? "Loading..." : user?.first_name + " " + user?.last_name }</p>
                         </div>
                         <div className="">
                             <div className="flex justify-between w-full">
@@ -47,7 +56,7 @@ const Profile = () => {
                             </div>
                             <div className="flex justify-between w-full">
                                 <label htmlFor="email" className="w-2/3">Email Address</label>
-                                <input type="email" id="email" name="email" placeholder="jones.charles@example.com" className="w-1/3" />
+                                <input type="email" id="email" name="email" placeholder={isLoading ? "Loading..." : user?.email || "User"} className="w-1/3" />
                             </div>
                         </div>
                     </div>
