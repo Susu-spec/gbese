@@ -46,10 +46,7 @@ export function WalletBalanceCard({ balance, isLoading }: WalletBalanceCardProps
           ) : showBalance ? (
             <>
               <span className="text-lg md:text-4xl font-semibold leading-7 md:leading-tight">
-                {balance ? balance.amount.toLocaleString() : "—"}
-              </span>
-              <span className="text-xs md:text-sm font-medium text-primary-600 leading-4 md:leading-5">
-                {balance?.currency}
+                &#8358;{balance ? balance.amount.toLocaleString() : "—"}
               </span>
             </>
           ) : (
