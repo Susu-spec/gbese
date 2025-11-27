@@ -1,11 +1,13 @@
 import api from "@/lib/axios";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { setAccount, setUser } from "../userSlice";
 import type { GetUserResponse } from "../types";
 import { handleApiError } from "@/lib/utils";
 import { useEffect } from "react";
 import { useAccountBalance } from "@/features/main/account/hooks";
 import { useAppDispatch } from "@/store/store";
+import { toast } from "sonner";
+import type { AxiosError } from "axios";
 
 export function useUser() {
     const dispatch = useAppDispatch();
@@ -30,6 +32,15 @@ export function useUser() {
     staleTime: 1000 * 60 * 5,
   });
 
+  const debtReqQuery = useQuery({
+    queryKey: ["debtRequests"],
+    queryFn: async () => {
+        const { data } = await api.get("/dtp/requests/incoming")
+        return data ;
+    },
+    staleTime: 1000 * 60 * 5,
+  })
+
   // Sync user data to Redux - INSIDE useEffect
   useEffect(() => {
     if (userQuery.isSuccess && userQuery.data) {
@@ -50,5 +61,41 @@ export function useUser() {
     }
   }, [accountQuery.isSuccess, accountQuery.data, accountQuery.isError, accountQuery.error, dispatch]);
 
-  return { userQuery, accountQuery, transactionQuery };
+  return { userQuery, accountQuery, transactionQuery, debtReqQuery };
+}
+
+
+export function useDebtReq(){
+  const rejectReq = useMutation({
+    mutationFn: async (request_id: string) => {
+      const { data } = await api.post(`/dtp/requests/${request_id}/reject`);
+      return data;
+    },
+    onSuccess: () => {
+      toast.success("Debt Request Rejected");
+    },
+
+    onError: (error: AxiosError<any>) => {
+      const message =
+        error.response?.data?.message || "Failed to apply for loan.";
+      toast.error(message);
+    }
+  })
+
+  const acceptReq = useMutation({
+    mutationFn: async (request_id: string) => {
+      const { data } = await api.post(`/dtp/requests/${request_id}/accept`);
+      return data;
+    },
+    onSuccess: () => {
+      toast.success("Debt Request Accepted");
+    },
+    onError: (error: AxiosError<any>) => {
+      const message =
+        error.response?.data?.message || "Failed to apply for loan.";
+      toast.error(message);
+    }
+
+  })
+  return {rejectReq, acceptReq}
 }
