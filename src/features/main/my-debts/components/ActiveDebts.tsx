@@ -2,12 +2,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import type { DebtObligation } from "../../types";
 import { useDebt } from "../hook";
+import { useNavigate } from "react-router";
 
 const ActiveDebts = () => {
   const { acticeDebtsQuery } = useDebt();
   const isLoading = acticeDebtsQuery.isPending;
 
-  const debts = acticeDebtsQuery.data || [];
+  const debts = acticeDebtsQuery.data?.data || [];
+
+  const navigate = useNavigate()
 
   return (
     <div className="w-full bg-white rounded-xl p-4">
@@ -65,7 +68,9 @@ const ActiveDebts = () => {
                             Make Payment
                         </Button>
 
-                        <Button className="rounded-lg px-4 py-2 text-sm bg-blue-700 hover:bg-blue-800">
+                        <Button className="rounded-lg px-4 py-2 text-sm bg-blue-700 hover:bg-blue-800"
+                        onClick={() => navigate(`/my-debts/transfer-debt/${debt.id}`)}
+                        >
                             Transfer Debt
                         </Button>
                     </div>
