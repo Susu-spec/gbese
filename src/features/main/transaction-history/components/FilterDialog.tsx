@@ -18,14 +18,14 @@ export function FilterDialog({ currentFilter, onFilterChange }: {
             <DialogTrigger className="bg-primary-800 rounded-lg text-gbese-white font-semibold p-2.5 text-xs min-w-20">
                 Filter
             </DialogTrigger>
-            <DialogContent className="bg-gbese-white border border-gbese-neutrals-100 py-8 px-8.5 rounded-[1.25rem] flex flex-col gap-10 sm:max-w-3/5">
+            <DialogContent className="bg-gbese-white border border-gbese-neutrals-100 py-8 px-4 md:px-8.5 rounded-[1.25rem] flex flex-col gap-10 sm:max-w-3/5">
                 <DialogTitle hidden>Title</DialogTitle>
                 <DialogDescription hidden>Description</DialogDescription>
                 <div className="flex flex-col gap-3">
                     <h1 className="font-sora font-semibold text-primary-950 text-xl">
                         All Categories
                     </h1>
-                    <div className="flex items-center gap-3.25">
+                    <div className="flex flex-wrap items-center gap-3.25">
                         {categories.map((category) => (
                             <button 
                                 key={category}
@@ -41,7 +41,7 @@ export function FilterDialog({ currentFilter, onFilterChange }: {
                     <h1 className="font-sora font-semibold text-primary-950 text-xl">
                         All Status
                     </h1>
-                    <div className="flex items-center gap-3.25">
+                    <div className="flex flex-wrap items-center gap-3.25">
                         {statuses.map((status) => (
                             <button 
                                 key={status}
