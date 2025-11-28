@@ -9,7 +9,6 @@ const TransferredDebts = () => {
     const isLoading = transferredDebtsQuery.isPending;
 
     const transferredDebts = transferredDebtsQuery.data?.data || [];
-    console.log("Transferred Debts:", transferredDebts);
     return (
         <div>
             <h2 className="text-3xl text-primary-800">Transferred Debts</h2>
