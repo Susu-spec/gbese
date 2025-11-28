@@ -25,3 +25,16 @@ export interface DebtObligation {
   status: "active" | "paid" | "defaulted";
   interest_rate: string;
 }
+
+export interface DebtMatch {
+  user_id: string;
+  name: string;
+  available_credit: number;
+}
+
+export interface TransferDebtPayload {
+  obligation_id: string;
+  recipient_id: string;
+  incentive_amount: number;
+  transfer_type: string
+}
