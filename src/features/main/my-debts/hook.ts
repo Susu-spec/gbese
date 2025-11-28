@@ -1,5 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import { getActiveDebts, getTransferredDebts } from "./services";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { getActiveDebts, getDebtMatch, getTransferredDebts } from "./services";
+import { toast } from "sonner";
+import type { AxiosError } from "axios";
+import api from "@/lib/axios";
+import type { TransferDebtPayload } from "../types";
 
 export function useDebt(){
 
@@ -15,5 +19,36 @@ export function useDebt(){
         staleTime: 1000 * 60 * 5,
     });
 
-    return {acticeDebtsQuery, transferredDebtsQuery};
+    const debtMatchQuery = useQuery({
+        queryKey: ["debtMatch"],
+        queryFn: getDebtMatch,
+        staleTime: 1000 * 60 * 5,
+    });
+
+    return {acticeDebtsQuery, transferredDebtsQuery, debtMatchQuery};
+}
+
+export function useTransferDebt() {
+
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (payload: TransferDebtPayload) => {
+      const res = await api.post("/dtp/transfer", payload);
+      return res.data;
+    },
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["debtMatch"] });
+
+      toast.success("Debt transferred successfully! ");
+
+    },
+
+    onError: (error: AxiosError<any>) => {
+      const message =
+        error.response?.data?.message || "Failed to transfer debt.";
+      toast.error(message);
+    }
+  });
 }
