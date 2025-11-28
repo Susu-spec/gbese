@@ -36,13 +36,13 @@ export function DeclineModal({
     <Modal
       open={open}
       onClose={handleClose}
-      className="w-full max-w-lg p-10 flex flex-col gap-10"
+      className="w-full max-w-lg p-6 md:p-10 flex flex-col gap-6 md:gap-10"
     >
-      <div className="flex flex-col gap-4">
-        <h2 className="font-sora font-semibold text-2xl text-primary-900">
+      <div className="flex flex-col gap-3 md:gap-4">
+        <h2 className="font-sora font-semibold text-xl md:text-2xl text-primary-900">
           Decline Request
         </h2>
-        <p className="text-primary-700">
+        <p className="text-sm md:text-base text-primary-700">
           Are you sure you want to decline the debt request from <strong>{requesterName}</strong>?
         </p>
       </div>
