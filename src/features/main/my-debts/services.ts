@@ -10,3 +10,7 @@ export async function getTransferredDebts(){
     return response.data;
 }
 
+export async function getDebtMatch(){
+    const response = await api.get("/dtp/match");
+    return response.data;
+}
