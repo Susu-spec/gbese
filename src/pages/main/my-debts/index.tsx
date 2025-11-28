@@ -25,13 +25,12 @@ export default function MyDebtsPage() {
                 <h1 className="text-3xl text-primary-800 font-semibold">My Debts - GBESE</h1>
                 <p>Track, Manage, and Transfer your debt in one place.</p>
             </div>
-            <div className="flex gap-4 mb-6">
-                <div className="w-2/3 bg-white p-4 rounded-xl">
+            <div className="flex flex-col lg:flex-row md:flex-row gap-4 mb-6">
+                <div className="lg:w-2/3 w-full bg-white p-4 rounded-xl">
                     <h2 className="text-xl font-semibold mb-4">Total Outstanding</h2>
                     <div>
                         <p className="text-xl text-primary-800">&#8358; {isLoading ? "0.00" : Number(account?.total_debt_obligation ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                        <div className="flex justify-between">
-                            <p>Due date: </p>
+                        <div className="flex justify-end">
                             <div className="flex gap-2">
                                 <Button className="px-1 py-2 bg-primary-800 text-white">Make Payment</Button>
                                 <Button className="px-1 py-2 text-primary-800 bg-white border border-primary-800">Transfer Debt</Button>
@@ -39,7 +38,7 @@ export default function MyDebtsPage() {
                         </div>
                     </div>
                 </div>
-                <div className="w-1/3 bg-white p-4 rounded-xl">
+                <div className="lg:w-1/3 w-full bg-white p-4 rounded-xl">
                     <h2>Debt Shuffle Program</h2>
                     <div>
                         <p>Join our community debt redistribution program for potential debt reduction of 5-15%</p>
