@@ -14,3 +14,14 @@ export interface ApplyLoanPayload {
   tenure_months: number;
   purpose: string;
 }
+
+
+export interface DebtObligation {
+  id: string;
+  lender: string;
+  principal_amount: string;
+  remaining_balance: string;
+  due_date: string;
+  status: "active" | "paid" | "defaulted";
+  interest_rate: string;
+}
