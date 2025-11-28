@@ -22,8 +22,8 @@ const ActiveDebts = () => {
       {/* When debts exist */}
       {!isLoading && debts.length > 0 && (
         debts.map((debt: DebtObligation) => (
-          <Card key={debt.id} className="mb-4 ">
-            <CardContent className="p-4">
+          <Card key={debt.id} className="mb-4 p-4">
+            <CardContent className="">
               <div className="space-y-1">
 
                 <div className="flex justify-between">
@@ -31,7 +31,7 @@ const ActiveDebts = () => {
                     {debt.lender} 
                   </p>
                   <p
-                    className="px-3 py-1 rounded-full text-xs font-medium"
+                    className="px-3 py-1 rounded-lg text-xs font-medium"
                     style={{
                       backgroundColor:
                         Number(debt.interest_rate) <= 5
@@ -55,7 +55,7 @@ const ActiveDebts = () => {
                 </p>
 
 
-                <div className="flex justify-between items-center ">
+                <div className="flex flex-col lg:flex-row lg:justify-between ">
                     <p className="text-sm text-gray-500 ">
                         Due date: {debt.due_date}
                     </p>
