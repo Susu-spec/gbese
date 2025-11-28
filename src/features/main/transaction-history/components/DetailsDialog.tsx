@@ -8,8 +8,10 @@ import { formatDate, TransactionStatusMap } from "@/lib/utils"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import { format } from "date-fns"
+import { useState } from "react"
 
 export const DetailsDialog = ({ referenceNumber }: { referenceNumber: string }) => {
+    const [open, setOpen] = useState<boolean>(false);
     const { data, isError, isPending, isLoading, refetch } = useTransactionDetail(referenceNumber);
     const transaction = data?.data?.data;
 
@@ -24,7 +26,7 @@ export const DetailsDialog = ({ referenceNumber }: { referenceNumber: string }) 
 
 
     return (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger className="" onClick={() => refetch()}>
                 <span className="hover:bg-gbese-lilac p-2.5 rounded-lg border border-gbese-neutrals-100 text-sm">
                     View details

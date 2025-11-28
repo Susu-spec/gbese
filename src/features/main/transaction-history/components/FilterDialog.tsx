@@ -11,7 +11,7 @@ export function FilterDialog({ currentFilter, onFilterChange }: {
     },
     onFilterChange: (filterType: "status" | "category", value: string) => void
 }) {
-    const [open, setOpen] = useState<boolean>();
+    const [open, setOpen] = useState<boolean>(false);
 
     return (
         <Dialog open={open} onOpenChange={setOpen}>
@@ -28,6 +28,7 @@ export function FilterDialog({ currentFilter, onFilterChange }: {
                     <div className="flex items-center gap-3.25">
                         {categories.map((category) => (
                             <button 
+                                key={category}
                                 className={`p-2.5 rounded-lg border border-gbese-neutrals-100 text-sm ${currentFilter.category === category ? "bg-primary-100" :"bg-inherit"}`}
                                 onClick={() => onFilterChange("category", category)}
                             >
@@ -43,6 +44,7 @@ export function FilterDialog({ currentFilter, onFilterChange }: {
                     <div className="flex items-center gap-3.25">
                         {statuses.map((status) => (
                             <button 
+                                key={status}
                                 className={`p-2.5 rounded-lg border border-gbese-neutrals-100 text-sm ${currentFilter.status === status ? "bg-primary-100" :"bg-inherit"}`}
                                 onClick={() => onFilterChange("status", status)}
                             >
