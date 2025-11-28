@@ -36,5 +36,24 @@ export interface TransferDebtPayload {
   obligation_id: string;
   recipient_id: string;
   incentive_amount: number;
-  transfer_type: string
+  transfer_type: string;
+}
+
+export interface TransactionDataType {
+  id: string,
+  reference_number: string,
+  recipient: {
+    name: string,
+    account_number: string
+  },
+  type: string,
+  sender: {
+    name: string,
+    account_number: string
+  },
+  status: string,
+  description: string,
+  completed_at: string,
+  amount: string,
+  action: string
 }
