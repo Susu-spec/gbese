@@ -154,7 +154,54 @@ export default function Dashboard() {
   return <Tabs items={dashboardTabs} />;
 }
 ```
+```
 - **Always run a production build before pushing or opening a PR.**
     - Run `npm run build` to verify the project compiles successfully.
     - Builds catch issues that may not appear during `npm run dev`.
 - **Issues:** Create issues to track bugs, planned improvements, or anything noticed that might need fixing later.
+
+
+## Testing
+
+All code changes should include appropriate tests.
+
+### Running Tests
+
+```bash
+# Run unit tests
+npm run test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Generate coverage report
+npm run test:coverage
+
+# Open Cypress for E2E tests
+npm run cypress:open
+
+# Run E2E tests headless
+npm run cypress:run
+```
+
+### Test Requirements
+
+- **New Features:** Must include unit tests and E2E tests for critical user flows
+- **Bug Fixes:** Must include a test that would have caught the bug
+- **Coverage:** Maintain minimum 80% code coverage
+- **All Tests Pass:** Run `npm run test` before opening a PR
+
+### Writing Tests
+
+- **Unit Tests:** Place in `tests/unit/` following the folder structure
+- **E2E Tests:** Place in `cypress/e2e/` organized by feature
+- **Use Factories:** Import test data factories from `tests/fixtures/`
+- **Follow Patterns:** See `tests/README.md` and `cypress/README.md` for examples
+
+### Test Checklist
+
+Before opening a PR:
+- [ ] All existing tests pass
+- [ ] New tests added for changes
+- [ ] Coverage threshold met (80%)
+- [ ] E2E tests pass for affected flows

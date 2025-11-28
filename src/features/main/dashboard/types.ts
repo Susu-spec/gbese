@@ -41,3 +41,52 @@ export interface TransactionData{
     initiated_at: string;
     completed_at: string;
 }
+
+export interface Debt {
+  id: string;
+  obligation_number: string;
+  current_holder_id: string;
+  original_creditor_id: string;
+  original_borrower_id: string;
+  principal_amount: string;
+  remaining_balance: string;
+  interest_rate: string;
+  monthly_payment: string;
+  status: 'active' | 'paid_off' | 'defaulted' | 'transferred';
+  due_date: string;
+  next_payment_date: string;
+  is_transferable: boolean;
+  transfer_count: number;
+  max_transfer_count: number;
+  days_overdue: number;
+  created_at: string;
+  updated_at: string;
+  transferred_at: string | null;
+  paid_off_at: string | null;
+}
+
+export interface Sender {
+  first_name: string;
+  last_name: string;
+}
+
+export interface DebtRequest {
+  id: string;
+  sender_id: string;
+  recipient_id: string;
+  debt_id: string;
+  request_number: string;
+  incentive_amount: string | null;
+  incentive_percentage: number | null;
+  transfer_type: 'direct' | 'auction' | 'split';
+  status: 'pending' | 'accepted' | 'rejected' | 'cancelled';
+  notes: string | null;
+  rejection_reason: string | null;
+  created_at: string;
+  accepted_at: string | null;
+  rejected_at: string | null;
+  cancelled_at: string | null;
+  expires_at: string;
+  sender: Sender;
+  debt: Debt;
+}
