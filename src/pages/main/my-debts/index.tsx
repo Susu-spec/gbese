@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { useUser } from "@/features/main/dashboard/hooks/useUser";
 import ActiveDebts from "@/features/main/my-debts/components/ActiveDebts";
+import TransferredDebts from "@/features/main/my-debts/components/TransferredDebts";
 import type { RootState } from "@/store/store";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
@@ -26,9 +26,9 @@ export default function MyDebtsPage() {
                 <p>Track, Manage, and Transfer your debt in one place.</p>
             </div>
             <div className="flex gap-4 mb-6">
-                <Card className="w-2/3">
-                    <CardTitle>Total Outstanding</CardTitle>
-                    <CardContent>
+                <div className="w-2/3 bg-white p-4 rounded-xl">
+                    <h2 className="text-xl font-semibold mb-4">Total Outstanding</h2>
+                    <div>
                         <p className="text-xl text-primary-800">&#8358; {isLoading ? "0.00" : Number(account?.total_debt_obligation ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                         <div className="flex justify-between">
                             <p>Due date: </p>
@@ -37,18 +37,18 @@ export default function MyDebtsPage() {
                                 <Button className="px-1 py-2 text-primary-800 bg-white border border-primary-800">Transfer Debt</Button>
                             </div>
                         </div>
-                    </CardContent>
-                </Card>
-                <Card className="w-1/3">
-                    <CardTitle>Debt Shuffle Program</CardTitle>
-                    <CardContent>
+                    </div>
+                </div>
+                <div className="w-1/3 bg-white p-4 rounded-xl">
+                    <h2>Debt Shuffle Program</h2>
+                    <div>
                         <p>Join our community debt redistribution program for potential debt reduction of 5-15%</p>
-                    </CardContent>
-                    <Button>
+                    </div>
+                    <Button className="w-full">
                         <ArrowRight/>
                         <p>Learn More</p>
                     </Button>
-                </Card>
+                </div>
             </div>
 
             <div>
@@ -68,7 +68,7 @@ export default function MyDebtsPage() {
                         <ActiveDebts />
                     ) : tabValue === "transferred" ? (
                         <div>
-                            <p>Transferred Debts Content</p>
+                            <TransferredDebts/>
                         </div>
                     ) : (
                         <div>
