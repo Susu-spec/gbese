@@ -113,7 +113,7 @@ export default function DebtRequestsPage() {
           Debt Requests
         </h1>
         <p className="font-poppins text-xl leading-[30px] text-primary-900">
-          Manage incoming debt payment requests from your network
+          See debt for your friend hand? Help am throw am away!
         </p>
       </header>
 
