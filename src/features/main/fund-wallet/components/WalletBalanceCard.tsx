@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 import { Wallet, Eye, EyeOff } from "lucide-react";
 import type { WalletBalance } from "../types";
@@ -42,15 +43,15 @@ export function WalletBalanceCard({ balance, isLoading }: WalletBalanceCardProps
         </div>
         <div className="flex items-baseline gap-4">
           {isLoading ? (
-            <span className="text-lg md:text-4xl font-semibold text-primary-400 leading-7 md:leading-tight">Loading...</span>
+            <Skeleton className="h-7 sm:h-10 md:h-12 w-32 sm:w-40 md:w-48" />
           ) : showBalance ? (
             <>
-              <span className="text-lg md:text-4xl font-semibold leading-7 md:leading-tight">
+              <span className="text-xl sm:text-2xl md:text-4xl font-semibold leading-7 md:leading-tight">
                 &#8358;{balance ? balance.amount.toLocaleString() : "—"}
               </span>
             </>
           ) : (
-            <span className="text-lg md:text-4xl font-semibold leading-7 md:leading-tight">••••••</span>
+            <span className="text-xl sm:text-2xl md:text-4xl font-semibold leading-7 md:leading-tight">••••••</span>
           )}
         </div>
         <div className="border-b border-gbese-black w-16 md:w-20">
