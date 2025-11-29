@@ -1,4 +1,6 @@
-import KYCPage from "@/pages/auth/kyc";
+import IdentityDocument from "@/pages/auth/kyc/identity-document";
+import PersonalInfo from "@/pages/auth/kyc/personal-info";
+import ReviewSubmit from "@/pages/auth/kyc/review-submit";
 import SignInPage from "@/pages/auth/sign-in";
 import SignUpPage from "@/pages/auth/sign-up";
 
@@ -8,5 +10,7 @@ export const authRoutes = [
 ]
 
 export const kycRoutes = [
-    { path: "/kyc", element: <KYCPage /> }
+    { path: "/personal-info", element: <PersonalInfo /> },
+    { path: "/identity-document", element: <IdentityDocument /> },
+    { path: "/review-submit", element: <ReviewSubmit /> }
 ]
