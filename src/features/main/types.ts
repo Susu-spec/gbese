@@ -38,3 +38,8 @@ export interface TransferDebtPayload {
   incentive_amount: number;
   transfer_type: string
 }
+
+export interface PayDebtPayLoad {
+  obligation_id: string;
+  amount: number;
+}
