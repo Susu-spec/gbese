@@ -63,7 +63,9 @@
   /* Primary palette (50–900) */
   --color-primary-50: #CDD7F6;
   --color-primary-100: #ACBCF0;
+  --color-primary-150: #E9EEFE;
   --color-primary-200: #839AE8;
+  --color-primary-250: #F3F6FF;
   --color-primary-300: #5A78E1;
   --color-primary-400: #3057D9;
   --color-primary-500: #0735D2; /* Brand base */
@@ -96,6 +98,8 @@
   --color-gbese-grey-400: #6D6D6D;
   --color-gbese-pari: #002824;
 
+  --breakpoint-1000: 1000px;
+  --breakpoint-1200: 1200px;
 }
 
 html {

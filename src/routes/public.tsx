@@ -10,7 +10,7 @@ export const authRoutes = [
 ]
 
 export const kycRoutes = [
-    { path: "/personal-info", element: <PersonalInfo /> },
-    { path: "/identity-document", element: <IdentityDocument /> },
-    { path: "/review-submit", element: <ReviewSubmit /> }
+    { path: "/kyc/personal-info", element: <PersonalInfo /> },
+    { path: "/kyc/upload", element: <IdentityDocument /> },
+    { path: "/kyc/submit", element: <ReviewSubmit /> }
 ]
