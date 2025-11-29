@@ -43,3 +43,22 @@ export interface PayDebtPayLoad {
   obligation_id: string;
   amount: number;
 }
+
+export interface TransactionDataType {
+  id: string,
+  reference_number: string,
+  recipient: {
+    name: string,
+    account_number: string
+  },
+  type: string,
+  sender: {
+    name: string,
+    account_number: string
+  },
+  status: string,
+  description: string,
+  completed_at: string,
+  amount: string,
+  action: string
+}
