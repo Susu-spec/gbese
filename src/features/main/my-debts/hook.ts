@@ -3,7 +3,7 @@ import { getActiveDebts, getDebtMatch, getTransferredDebts } from "./services";
 import { toast } from "sonner";
 import type { AxiosError } from "axios";
 import api from "@/lib/axios";
-import type { TransferDebtPayload } from "../types";
+import type { PayDebtPayLoad, TransferDebtPayload } from "../types";
 
 export function useDebt(){
 
@@ -51,4 +51,23 @@ export function useTransferDebt() {
       toast.error(message);
     }
   });
+}
+
+export function usePayDebt() {
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: async (payload: PayDebtPayLoad) => {
+            const res = await api.post(`/debt/repay`, payload);
+            return res.data;
+        },
+        onSuccess: () => {
+            toast.success("Payment successful!");
+            queryClient.invalidateQueries({ queryKey: ["activeDebts"] });
+        }
+        ,
+        onError: (error: AxiosError<any>) => {
+            const message = error.response?.data?.message || "Failed to make payment.";
+            toast.error(message);
+        }
+    });
 }
