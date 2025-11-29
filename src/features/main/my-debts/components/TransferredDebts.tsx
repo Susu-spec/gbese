@@ -11,7 +11,7 @@ const TransferredDebts = () => {
     const transferredDebts = transferredDebtsQuery.data?.data || [];
     return (
         <div>
-            <h2 className="text-3xl text-primary-800">Transferred Debts</h2>
+            <h2 className="text-3xl font-semibold mb-4 text-primary-800">Transferred Debts</h2>
             {isLoading && <p className="text-gray-500">Loading...</p>}
             {!isLoading && transferredDebts.length === 0 && <p className="text-gray-500">No transferred debts found.</p>}
             {!isLoading && transferredDebts.length > 0 && (
