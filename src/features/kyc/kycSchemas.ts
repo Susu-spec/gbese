@@ -1,4 +1,3 @@
-import { phoneWithCountrySchema } from "@/lib/schemas";
 import z from "zod";
 
 export const addressSchema = z.object({
@@ -10,19 +9,26 @@ export const addressSchema = z.object({
 
 
 export const identityDocumentSchema = z.object({
-  documentType: z.string(),
+  documentType: z.string().min(1, "Document type is required"),
   file: z
     .custom<File>()
     .refine((f) => f instanceof File, "A file is required")
-    .nullable(),
 })
 
 
 export const personalInfoSchema = z.object({
-    firstName: z.string().min(1, 'First name is required'),
-    lastName: z.string().min(1, 'Last name is required'),
-    email: z.email().min(1, 'Email is required'),
-    dob: z.string().min(1, 'Date of Birth is required'),
-    phoneNumber: phoneWithCountrySchema,
-    address: addressSchema
+    dob: z.date()
+    .max(new Date(), "Date cannot be in the future")
+    .nullable()
+    .refine(
+        (d) => d !== null,
+            "Date of birth is required"
+        ),
+    country: z.string().min(1, "Country is required"),
+    address: z.string().min(1, "Address is required"),
+    city: z.string().min(1, "City is required"),
+    postalCode: z.string().min(1, "Postal code is required"),
+    state: z.string().min(1, "State is required"),
+    gender: z.string().min(1, "Gender is required"),
+    occupation: z.string().min(1, "Occupation is required")
 })
