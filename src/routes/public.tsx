@@ -1,6 +1,6 @@
+import KycGuard from "@/layouts/kyc-layout/KycGuard";
 import IdentityDocument from "@/pages/auth/kyc/identity-document";
 import PersonalInfo from "@/pages/auth/kyc/personal-info";
-import ReviewSubmit from "@/pages/auth/kyc/review-submit";
 import SignInPage from "@/pages/auth/sign-in";
 import SignUpPage from "@/pages/auth/sign-up";
 
@@ -10,7 +10,18 @@ export const authRoutes = [
 ]
 
 export const kycRoutes = [
-    { path: "/kyc/personal-info", element: <PersonalInfo /> },
-    { path: "/kyc/upload", element: <IdentityDocument /> },
-    { path: "/kyc/submit", element: <ReviewSubmit /> }
+    { 
+        path: "/kyc/personal-info", 
+        element: (
+            <KycGuard requiredStep={1}>
+                <PersonalInfo />
+            </KycGuard>
+    )},
+    { 
+        path: "/kyc/upload-document", 
+        element: (
+            <KycGuard requiredStep={2}>
+                <IdentityDocument />
+            </KycGuard>
+        )}
 ]

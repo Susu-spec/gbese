@@ -3,9 +3,9 @@ import { createBrowserRouter, Navigate } from "react-router";
 import { authRoutes, kycRoutes } from "./public";
 import MainLayout from "@/layouts/main-layout/MainLayout";
 import { protectedRoutes } from "./protected";
-import KYCLayout from "@/layouts/kyc-layout/KYCLayout";
 import ProtectedRoute from "./ProtectedRoute";
 import LandingPage from "@/pages/landing";
+import KycLayout from "@/layouts/kyc-layout/KYCLayout";
 
 export const router = createBrowserRouter([
     {
@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
         children: authRoutes
     },
     {
-        element: <KYCLayout />,
+        element: <KycLayout />,
         children: kycRoutes
     },
     {
