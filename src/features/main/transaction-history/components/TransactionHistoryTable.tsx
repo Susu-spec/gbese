@@ -1,4 +1,4 @@
-import  { type ColumnFiltersState, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from "@tanstack/react-table"
+import  { type ColumnFiltersState, getCoreRowModel, getFilteredRowModel, useReactTable } from "@tanstack/react-table"
 import { useUser } from "../../dashboard/hooks/useUser"
 import CustomTable from "@/components/shared/table/CustomTable";
 import { AlertTriangle, LoaderIcon, PackageX } from "lucide-react";
@@ -25,11 +25,9 @@ export default function TransactionHistoryTable() {
         state: {
             columnFilters
         },
-        pageCount: Math.ceil(transactions.length / 10),
         onColumnFiltersChange: setColumnFilters,
         getCoreRowModel: getCoreRowModel(),
-        getFilteredRowModel: getFilteredRowModel(),
-        getPaginationRowModel: getPaginationRowModel(),
+        getFilteredRowModel: getFilteredRowModel()
     })
 
 
@@ -65,7 +63,7 @@ export default function TransactionHistoryTable() {
                     />
                 </div>
 
-                <div className="min-h-[150px] flex items-center justify-center">
+                <div className="min-h-37.5 flex items-center justify-center">
                     {isLoading && (
                         <div className="py-10 w-full flex items-center justify-center">
                             <LoaderIcon className="size-8 animate-spin" />
