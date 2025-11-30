@@ -9,9 +9,12 @@ import { rememberReducer, rememberEnhancer } from 'redux-remember';
 const rememberedKeys = ['auth', 'user']; // Add more slice keys ONLY if their state should persist.
 
 // Combine all reducers here. Only the ones listed in rememberedKeys will be persisted.
+import debtRequestsReducer from "@/features/main/debt-requests/debtRequestsSlice";
+
 const appReducer = combineReducers({
     auth: authReducer,
     user: userReducer,
+    debtRequests: debtRequestsReducer,
 });
 
 const rootReducer = (state: any, action: any) => {

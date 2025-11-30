@@ -5,19 +5,17 @@ const DebtRequests = ({debtRequest, handleAccept, handleReject}: {debtRequest: D
 
     return(
         <div className="w-full">
-            <div className="mb-2 text-center">
-                <h2 className="text-3xl font-bold">Debt Requests</h2>
-                <p>Accept Request to help save a person financial life. Abeg! Big Dawg</p>
+            <div className="flex flex-col gap-2 mb-3">
+                <div className="flex justify-between items-center">
+                    <h3 className="font-sora font-semibold text-lg text-primary-900">{debtRequest.sender.first_name}</h3>
+                    <p className="font-sora font-semibold text-lg text-primary-900">&#8358;{Number(debtRequest.debt.remaining_balance).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                </div>
             </div>
-            <div className="flex justify-between items-center mb-2">
-                <h2 className="text-2xl">{debtRequest.sender.first_name}</h2>
-                <p className="text-2xl">&#8358; {Number(debtRequest.debt.remaining_balance).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+            <div className="flex gap-2">
+                <Button onClick={handleAccept} className="flex-1 bg-primary-700 hover:bg-primary-800 text-white text-sm">Accept</Button>
+                <Button onClick={handleReject} className="flex-1 bg-white text-primary-900 border border-primary-300 hover:bg-primary-50 text-sm">Reject</Button>
             </div>
-            <div className="flex justify-between ">
-                <Button onClick={handleAccept} className="w-1/3 p-2 bg-gbese-success text-white text-lg">Accept</Button>
-                <Button onClick={handleReject} className="w-1/3 p-2 bg-[#F5D8D8] text-[#EF4444] text-lg">Reject</Button>
-            </div>
-            <hr className="h-6 my-2"/>
+            <hr className="h-px my-3 bg-primary-200 border-0"/>
         </div>
     )
 }
