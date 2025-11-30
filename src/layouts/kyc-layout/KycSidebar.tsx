@@ -1,33 +1,36 @@
 import { KycSidebarIcon } from "@/components/shared/sidebar-icons"
 import GbeseLogo from "@/assets/images/gbese-logo.svg"
 import { useLocation } from "react-router"
+import { kycSteps } from "@/features/kyc/data";
 
-export default function KYCSidebar() {
+export default function KycSidebar() {
     const location = useLocation();
     const pathname = location.pathname;
 
     const currentStep = pathname.split("/").pop(); 
+    const currentIndex = kycSteps.findIndex(
+        (step) => step.path === currentStep
+    );
 
     return (
         <aside 
-            className="
-                hidden md:max-w-1.5/5
-                lg:max-w-2/5 min-h-screen
-                bg-primary-900 px-11 py-9.5
-                lg:flex flex-col
+            className="fixed
+                hidden lg:max-w-2/5 min-h-screen
+                bg-primary-900 px-5 lg:px-11 py-9.5
+                1200:flex flex-col
             "
         >
-            <div className="flex flex-col justify-between h-full">
-                <div className="w-full flex items-start flex-col gap-16">
+            <div className="flex flex-col gap-8 h-full">
+                <div className="w-full flex items-start flex-col gap-8">
                     <img src={GbeseLogo} alt="Gbese" className="h-auto w-26.5" />
                     <h1 className="text-[2rem] font-semibold text-gbese-white">
                         KYC Verification
                     </h1>
                 </div>
 
-                <div className="w-full flex items-start">
-                    {steps.map((step) => {
-                        const isActive = step.path === currentStep;
+                <div className="w-full flex flex-col gap-4 justify-start overflow-y-auto hide-scrollbar">
+                    {kycSteps.map((step, index) => {
+                        const isActive = index <= currentIndex
 
                         return (
                              <KYCStep 
@@ -44,27 +47,6 @@ export default function KYCSidebar() {
 }
 
 
-const steps = [
-    {
-        id: "1",
-        title: "Personal Information",
-        path: "personal-info",
-        description: "Enter your name, email and phone number."
-    },
-    {
-        id: "2",
-        title: "Identity Document",
-        path: "identity-document",
-        description: "Upload a valid government ID."
-    },
-    {
-        id: "3",
-        title: "Review and Submit",
-        path: "review",
-        description: "Confirm your info before submitting."
-    }
-]
-
 const KYCStep = ({ step, isActive }: { 
     isActive: boolean,
     step: { 
@@ -76,7 +58,7 @@ const KYCStep = ({ step, isActive }: {
         const color = isActive ? "#F9FAFB" : "#B3B3B3";
 
     return (
-        <div key={id} className="flex gap-4 justify-center">
+        <div key={id} className="flex gap-4 justify-start items-center transition-all">
             <KycSidebarIcon color={color} />
             <div className="flex flex-col gap-1.5">
                 <p style={{ color: color }} className="font-medium">Step {id}</p>
