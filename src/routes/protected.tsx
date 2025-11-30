@@ -37,6 +37,14 @@ export const protectedRoutes: AppRoute[] = [
         }
     },
     {
+        path: "my-debts/transfer-debt/:obligation_id",
+        showInSidebar: false,
+        async lazy() {
+            const module = await import("@/pages/main/my-debts/transfer-debt")
+            return { Component: module.default }
+        }
+    },
+    {
         path: "fund-wallet",
         label: "Fund Wallet",
         icon: FundWalletIcon,

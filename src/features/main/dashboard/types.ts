@@ -70,6 +70,11 @@ export interface Sender {
   last_name: string;
 }
 
+export interface Recipient{
+  first_name: string;
+  last_name: string;
+}
+
 export interface DebtRequest {
   id: string;
   sender_id: string;
@@ -89,4 +94,5 @@ export interface DebtRequest {
   expires_at: string;
   sender: Sender;
   debt: Debt;
+  recipient: Recipient;
 }
