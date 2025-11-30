@@ -39,10 +39,15 @@ export function useTransferDebt() {
     },
 
     onSuccess: () => {
+      toast.success("Debt transferred successfully!");
+      
+      // Update all affected queries
       queryClient.invalidateQueries({ queryKey: ["debtMatch"] });
-
-      toast.success("Debt transferred successfully! ");
-
+      queryClient.invalidateQueries({ queryKey: ["activeDebts"] });
+      queryClient.invalidateQueries({ queryKey: ["transferredDebts"] });
+      queryClient.invalidateQueries({ queryKey: ["account", "balance"] });
+      queryClient.invalidateQueries({ queryKey: ["userProfile"] });
+      queryClient.invalidateQueries({ queryKey: ["userTransactions"] });
     },
 
     onError: (error: AxiosError<any>) => {

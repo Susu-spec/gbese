@@ -1,9 +1,8 @@
 import { useState, useEffect, useMemo } from "react";
 import { useAccountBalance } from "@/features/main/account/hooks";
-import { useSelector } from "react-redux";
-import type { RootState } from "@/store/store";
+import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { AxiosError, type AxiosResponse } from "axios";
 import { handleApiError, parseBalance } from "@/lib/utils";
@@ -14,12 +13,14 @@ import { AcceptRequestModal } from "@/features/main/debt-requests/components/Acc
 import { PaymentResultModal } from "@/features/main/debt-requests/components/PaymentResultModal";
 import { EmptyDebtRequestsState } from "@/features/main/debt-requests/components/EmptyDebtRequestsState";
 import { Separator } from "@/components/ui/separator";
-import type { DebtRequest, RejectRequestPayload, PaymentResponse } from "@/features/main/debt-requests/types";
-import { acceptDebtRequest, rejectDebtRequest } from "@/features/main/debt-requests/services";
+import { setIncomingDebtRequests } from "@/features/main/debt-requests/debtRequestsSlice";
+import type { DebtRequest, RejectRequestPayload, PaymentResponse, IncomingDebtRequestsResponse } from "@/features/main/debt-requests/types";
+import { acceptDebtRequest, rejectDebtRequest, getIncomingDebtRequests } from "@/features/main/debt-requests/services";
 
 export default function DebtRequestsPage() {
   const { data: accountData, isLoading: balanceLoading } = useAccountBalance();
   const queryClient = useQueryClient();
+  const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [declineModal, setDeclineModal] = useState<{ open: boolean; request: DebtRequest | null }>({
@@ -44,6 +45,8 @@ export default function DebtRequestsPage() {
       queryClient.invalidateQueries({ queryKey: ["account", "balance"] });
       queryClient.invalidateQueries({ queryKey: ["userProfile"] });
       queryClient.invalidateQueries({ queryKey: ["userTransactions"] });
+      queryClient.invalidateQueries({ queryKey: ["activeDebts"] });
+      queryClient.invalidateQueries({ queryKey: ["transferredDebts"] });
     },
     onError: (error: AxiosError) => handleApiError(error),
   });
@@ -58,11 +61,24 @@ export default function DebtRequestsPage() {
     onError: (error: AxiosError) => handleApiError(error),
   });
 
+  // Fetch incoming debt requests directly on this page
+  const { data: requestsData, isLoading: requestsLoading } = useQuery<IncomingDebtRequestsResponse, AxiosError>({
+    queryKey: ["debtRequests", "incoming"],
+    queryFn: getIncomingDebtRequests,
+    staleTime: 1000 * 60 * 5,
+  });
+
+  // Sync to Redux store for dashboard access
+  useEffect(() => {
+    if (requestsData?.data && Array.isArray(requestsData.data)) {
+      dispatch(setIncomingDebtRequests(requestsData.data));
+    }
+  }, [requestsData, dispatch]);
+
   const account = accountData?.data;
   const walletBalance = parseBalance(account?.current_balance);
   const debtBalance = parseBalance(account?.total_debt_obligation);
-  const incomingRequests = useSelector((state: RootState) => state.debtRequests.incoming);
-  const requests = useMemo(() => incomingRequests || [], [incomingRequests]);
+  const requests = useMemo(() => requestsData?.data || [], [requestsData]);
 
   useEffect(() => {
     const acceptId = searchParams.get('accept');
@@ -161,7 +177,11 @@ export default function DebtRequestsPage() {
           <Separator className="bg-primary-200" />
         </div>
 
-        {requests.length === 0 ? (
+        {requestsLoading ? (
+          <div className="flex justify-center py-8">
+            <p className="text-primary-600">Loading requests...</p>
+          </div>
+        ) : requests.length === 0 ? (
           <EmptyDebtRequestsState />
         ) : (
           <div className="flex flex-col">
