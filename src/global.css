@@ -63,7 +63,9 @@
   /* Primary palette (50–900) */
   --color-primary-50: #CDD7F6;
   --color-primary-100: #ACBCF0;
+  --color-primary-150: #E9EEFE;
   --color-primary-200: #839AE8;
+  --color-primary-250: #F3F6FF;
   --color-primary-300: #5A78E1;
   --color-primary-400: #3057D9;
   --color-primary-500: #0735D2; /* Brand base */
@@ -94,8 +96,11 @@
   --color-gbese-grey-100: #696969;
   --color-gbese-grey-300: #111111CC;
   --color-gbese-grey-400: #6D6D6D;
+  --color-gbese-grey-500: #D9D9D9;
   --color-gbese-pari: #002824;
 
+  --breakpoint-1000: 1000px;
+  --breakpoint-1200: 1200px;
 }
 
 html {
@@ -199,11 +204,65 @@ input:-webkit-autofill::selection {
     color: black;
   }
 
+  .input-spacing {
+    padding: 1rem;
+    line-height: 1rem;
+    width: 100%;
+  }
+
   .signup-input {
     padding: 1rem;
     font-size: .875rem;
     border-radius: .5rem;
   }
+
+  .stdropdown-container {
+    padding: 1rem;
+    width: 100%;
+    position: relative;
+  }
+
+  .stdropdown-input {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .stdropdown-menu {
+    position: absolute;
+    right: 0;
+    height: 8rem;
+    overflow-y: auto;
+    width: 100%;
+    background: var(--color-gbese-background);
+    margin-top: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+  }
+
+  .stdropdown-menu .stdropdown-item {
+    padding: 1.25rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .stdropdown-menu::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .stdropdown-menu::-webkit-scrollbar-thumb {
+    background: #021346;
+    border-radius: 10px;
+  }
+
+  .strdropdown-menu::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+
+
 }
 
 /*---break---
@@ -308,4 +367,10 @@ input:-webkit-autofill::selection {
     padding-block: .5rem;
     padding-inline: 1rem;
   }
+
+  .input-spacing {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
 }
+
