@@ -40,11 +40,11 @@ export default function HeroSection() {
                     />
                     {/* Refined radial glow spreading upward only */}
                     <div 
-                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 md:mt-4 pointer-events-none overflow-hidden h-[7.5rem] md:h-50 w-screen hero-glow-main z-10"
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 md:mt-4 pointer-events-none overflow-hidden h-30 md:h-50 w-screen hero-glow-main z-10"
                     />
                     {/* Additional soft glow layer for depth */}
                     <div 
-                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 md:mt-4 pointer-events-none overflow-hidden h-[6.25rem] md:h-38 w-screen hero-glow-secondary z-10"
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 md:mt-4 pointer-events-none overflow-hidden h-25 md:h-38 w-screen hero-glow-secondary z-10"
                     />
                 </div>
                 {/* Dashboard Mockup */}

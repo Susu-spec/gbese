@@ -24,3 +24,12 @@ dist-ssr
 *.sw?
 
 .env
+
+# Codebase architecture documentation (local reference only)
+CODEBASE_ARCHITECTURE.md
+
+# Testing
+coverage/
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/

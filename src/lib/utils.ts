@@ -38,27 +38,68 @@ export function handleApiError(error: any) {
 }
 
 // Helper function to format date
+// Helper function to format date
 export const formatDate = (dateValue: string | number | Date): string => {
   try {
     const date = new Date(dateValue);
-    
-    // Check if date is valid
+
     if (isNaN(date.getTime())) {
-      return 'Invalid Date';
+      return "Invalid Date";
     }
-    
-    // Format options
-    const options: Intl.DateTimeFormatOptions = {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    };
-    
-    return date.toLocaleDateString('en-US', options);
+
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
   } catch (error) {
-    console.error('Date formatting error:', error);
-    return 'Invalid Date';
+    console.error("Date formatting error:", error);
+    return "Invalid Date";
   }
 };
+
+/**
+ * Safely parse balance from API (handles string | number | null | undefined)
+ * Prevents runtime crashes from unexpected API data types
+ */
+export function parseBalance(value: string | number | null | undefined): number {
+  if (value === null || value === undefined || value === '') return 0;
+  const parsed = typeof value === 'string' ? parseFloat(value) : value;
+  return isNaN(parsed) ? 0 : parsed;
+}
+
+/**
+ * Transaction type mapping for consistent UI across features
+ * Use this when teammates implement withdrawal, debt payments, etc.
+ */
+export const TRANSACTION_TYPES = {
+  deposit: { label: 'Deposit', color: 'text-gbese-success' },
+  withdrawal: { label: 'Withdrawal', color: 'text-gbese-warning' },
+  debt_payment: { label: 'Debt Payment', color: 'text-primary-800' },
+  transfer: { label: 'Transfer', color: 'text-primary-600' },
+  refund: { label: 'Refund', color: 'text-gbese-success' },
+} as const;
+
+export type TransactionType = keyof typeof TRANSACTION_TYPES;
+
+/**
+ * A lookup table that maps each transaction status to its
+ * corresponding display color and text label.
+ */
+export const TransactionStatusMap: Record<"completed" | "pending" | "failed", {
+  color: string,
+  text: string
+}> = {
+  completed: {
+    color: "#34A67B",
+    text: "Success"
+  },
+  pending: {
+    color: "#FFB300",
+    text: "Pending"
+  },
+  failed: {
+    color: "",
+    text: "Failed"
+  }
+}

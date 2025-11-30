@@ -48,3 +48,41 @@ export interface AppRoute {
   lazy?: () => Promise<{ Component: React.ComponentType<any> }>;
   children?: AppRoute[];
 }
+
+export interface Country {
+  id: number;
+  name: string;
+  iso3: string;
+  iso2: string;
+  numeric_code: string;
+  phone_code: string;
+  capital: string;
+  currency: string;
+  currency_name: string;
+  currency_symbol: string;
+  native: string;
+  region: string;
+  subregion: string;
+  emoji: string;
+  emojiU: string;
+  tld: string;
+  latitude: string;
+  longitude: string;
+  hasStates: boolean;
+}
+
+export interface State {
+  id: number;
+  name: string;
+  state_code: string;
+  latitude: string;
+  longitude: string;
+  hasCities: boolean;
+}
+
+export interface City {
+  id: number;
+  name: string;
+  latitude: string;
+  longitude: string;
+}

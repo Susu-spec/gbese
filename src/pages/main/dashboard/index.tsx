@@ -1,6 +1,5 @@
 import { Card, CardAction, CardHeader, CardTitle } from "@/components/ui/card"
-import { Skeleton } from "@/components/ui/skeleton"
-import { useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 import Analytics from "@/assets/images/cuate.svg";
 import WalletSvg from "@/assets/images/rafiki.svg"
 import {
@@ -13,21 +12,44 @@ import {
 } from "@/components/ui/select"
 import { Button } from "@/components/ui/button";
 import { Award, Wallet } from "lucide-react";
-import { useSelector } from "react-redux";
-import type { RootState } from "@/store/store";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { type RootState } from "@/store/store";
+import { setIncomingDebtRequests } from "@/features/main/debt-requests/debtRequestsSlice";
 import { useUser } from "@/features/main/dashboard/hooks/useUser";
 import { TableData } from "@/features/main/dashboard/components/TransactionTable";
+import type { DebtRequest } from "@/features/main/dashboard/types";
+import DebtRequests from "@/features/main/dashboard/components/DebtRequest";
+import { useNavigate } from "react-router";
 
 
 export default function DashboardPage() {
-    const {userQuery, accountQuery} = useUser();
-    const [debtRequests, _setDebtRequests] = useState<any[]>([]);
+    const {userQuery, accountQuery, debtReqQuery} = useUser();
+    const navigate = useNavigate();
 
+    const handleAccept = (request_id: string) => {
+        navigate(`/debt-requests?accept=${request_id}`);
+    }
 
-    const isLoading = userQuery.isPending || accountQuery.isPending;
+    const handleReject = (request_id: string) => {
+        navigate(`/debt-requests?decline=${request_id}`);
+    }
 
+    const isLoading = userQuery.isPending || accountQuery.isPending || debtReqQuery.isPending;
+    const debtReq = debtReqQuery.data?.data;
+
+    const dispatch = useDispatch();
     const user = useSelector((state: RootState) => state.user?.profile);
     const userAccount = useSelector((state: RootState) => state.user?.account);
+
+    // Sync incoming debt requests to Redux store when data changes
+    // Wrapped in useEffect to avoid dispatching during render (prevents "Cannot update component while rendering" error)
+    useEffect(() => {
+        if (debtReq && Array.isArray(debtReq)) {
+            dispatch(setIncomingDebtRequests(debtReq));
+        }
+    }, [debtReq, dispatch]);
+
 
     return (
         <div>
@@ -37,8 +59,8 @@ export default function DashboardPage() {
             </div>
             <div className="flex gap-3 w-full overflow-x-auto hide-scrollbar mb-6">
                 {userAccount && !isLoading ? (
-                    <div className="flex w-full gap-3">
-                        <Card className="w-full h-47.5 p-2">
+                    <div className="flex justify-between overscroll-x-auto hide-scrollbar w-full gap-3">
+                        <Card className="md:w-full md:basis-w-86 md:flex-1 w-44 flex-none h-47.5 p-2">
                             <div className="w-10 p-2 rounded-full flex items-center justify-center bg-gbese-success">
                                 <Wallet stroke="#fff" />
                             </div>
@@ -46,7 +68,7 @@ export default function DashboardPage() {
                             <p className="text-xl">&#8358; {Number(userAccount?.current_balance ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) ?? '0.00'}</p>
                             <a className="text-underline cursor-pointer">Fund Wallet</a>
                         </Card>
-                        <Card className="w-full h-47.5 p-2">
+                        <Card className="md:w-full md:basis-w-86 md:flex-1 w-44 flex-none h-47.5 p-2">
                             <div className="w-10 p-2 rounded-full flex items-center justify-center bg-gbese-warning">
                                 <Wallet stroke="#fff" />
                             </div>
@@ -54,13 +76,13 @@ export default function DashboardPage() {
                             <p className={`${Number(userAccount?.total_debt_obligation ?? 0) > 0 ? "text-gbese-warning text-xl" : "text-gbese-green"}`}>&#8358; {Number(userAccount?.total_debt_obligation ?? 0) > 0 ? "-" + Number(userAccount?.total_debt_obligation ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '0.00'}</p>
                             <a>Fund Wallet</a>
                         </Card>
-                        <Card className="w-full h-47.5 p-2">
-                            <div>
+                        <Card className="md:w-full md:basis-w-86 md:flex-1 w-44 flex-none h-47.5 p-2">
+                            <div className="w-10 p-2 rounded-full flex items-center justify-center">
                                 <Award />
                             </div>
-                            <CardTitle>Balance</CardTitle>
-                            <p>&#8358; 0.00</p>
-                            <a>Fund Wallet</a>
+                            <CardTitle className="text-lg">Credit Score</CardTitle>
+                            <p className="text-xl">&#8358; {userAccount?.available_credit}</p>
+                            <a>Apply For Credit</a>
                         </Card>
                     </div>
                 ) : (
@@ -135,9 +157,13 @@ export default function DashboardPage() {
                         </div>
                     )}
                 </Card>
-                <Card className="col-span-1">
-                    {debtRequests.length > 0 ? debtRequests.map((dr, index) => (
-                        <div key={index}>{dr}</div>
+                <Card className="col-span-1 p-4">
+                    <div className="mb-3 text-center">
+                        <h2 className="font-sora font-semibold text-2xl text-primary-800 mb-1">Debt Requests</h2>
+                        <p className="font-poppins text-sm text-primary-900">Accept Request to help save a person financial life. Abeg! Big Dawg</p>
+                    </div>
+                    {!isLoading ? debtReq.map((dr: DebtRequest) => (
+                        <DebtRequests key={dr.id} debtRequest={dr} handleAccept={() => handleAccept(dr.id)} handleReject={() => handleReject(dr.id)} />
                     )) : (
                         <div className="flex flex-col text-center items-center justify-center p-4">
                             <p>No gbese requests for now. Send one yourself!</p>

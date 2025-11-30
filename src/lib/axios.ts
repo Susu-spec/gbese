@@ -1,4 +1,5 @@
 import { clearUser } from "@/features/auth/authSlice";
+import { resetKyc } from "@/features/kyc/kycSlice";
 import store, { resetStore } from "@/store/store";
 import axios from "axios";
 import  type { AxiosInstance } from "axios";
@@ -32,6 +33,7 @@ api.interceptors.response.use(
     (error) => {
         if (error.response?.status === 401) {
             sessionStorage.setItem("expired", "1");
+            store.dispatch(resetKyc())
             store.dispatch(clearUser());
             resetStore();
             window.location.href = "/sign-in";
