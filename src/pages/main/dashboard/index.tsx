@@ -12,32 +12,43 @@ import {
 } from "@/components/ui/select"
 import { Button } from "@/components/ui/button";
 import { Award, Wallet } from "lucide-react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { type RootState } from "@/store/store";
-import { useDebtReq, useUser } from "@/features/main/dashboard/hooks/useUser";
+import { setIncomingDebtRequests } from "@/features/main/debt-requests/debtRequestsSlice";
+import { useUser } from "@/features/main/dashboard/hooks/useUser";
 import { TableData } from "@/features/main/dashboard/components/TransactionTable";
 import type { DebtRequest } from "@/features/main/dashboard/types";
 import DebtRequests from "@/features/main/dashboard/components/DebtRequest";
+import { useNavigate } from "react-router";
 
 
 export default function DashboardPage() {
     const {userQuery, accountQuery, debtReqQuery} = useUser();
-    const {rejectReq, acceptReq} = useDebtReq();
+    const navigate = useNavigate();
 
     const handleAccept = (request_id: string) => {
-        acceptReq.mutate(request_id);
+        navigate(`/debt-requests?accept=${request_id}`);
     }
 
     const handleReject = (request_id: string) => {
-        rejectReq.mutate(request_id);
+        navigate(`/debt-requests?decline=${request_id}`);
     }
 
     const isLoading = userQuery.isPending || accountQuery.isPending || debtReqQuery.isPending;
     const debtReq = debtReqQuery.data?.data;
 
-
+    const dispatch = useDispatch();
     const user = useSelector((state: RootState) => state.user?.profile);
     const userAccount = useSelector((state: RootState) => state.user?.account);
+
+    // Sync incoming debt requests to Redux store when data changes
+    // Wrapped in useEffect to avoid dispatching during render (prevents "Cannot update component while rendering" error)
+    useEffect(() => {
+        if (debtReq && Array.isArray(debtReq)) {
+            dispatch(setIncomingDebtRequests(debtReq));
+        }
+    }, [debtReq, dispatch]);
 
 
     return (
@@ -147,6 +158,10 @@ export default function DashboardPage() {
                     )}
                 </Card>
                 <Card className="col-span-1 p-4">
+                    <div className="mb-3 text-center">
+                        <h2 className="font-sora font-semibold text-2xl text-primary-800 mb-1">Debt Requests</h2>
+                        <p className="font-poppins text-sm text-primary-900">Accept Request to help save a person financial life. Abeg! Big Dawg</p>
+                    </div>
                     {!isLoading ? debtReq.map((dr: DebtRequest) => (
                         <DebtRequests key={dr.id} debtRequest={dr} handleAccept={() => handleAccept(dr.id)} handleReject={() => handleReject(dr.id)} />
                     )) : (
