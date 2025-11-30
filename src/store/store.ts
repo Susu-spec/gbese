@@ -4,18 +4,18 @@ import userReducer from "@/features/main/dashboard/userSlice"
 import kycReducer from "@/features/kyc/kycSlice"
 import { useDispatch, useSelector } from 'react-redux';
 import { rememberReducer, rememberEnhancer } from 'redux-remember';
+import debtRequestsReducer from "@/features/main/debt-requests/debtRequestsSlice";
 
 // Persist only reducers that must survive a refresh (e.g., auth, user preferences).
 // Do NOT persist server-fetched data, UI state, or anything that changes frequently.
 const rememberedKeys = ['auth', 'user', 'kyc']; // Add more slice keys ONLY if their state should persist.
 
 // Combine all reducers here. Only the ones listed in rememberedKeys will be persisted.
-import debtRequestsReducer from "@/features/main/debt-requests/debtRequestsSlice";
 
 const appReducer = combineReducers({
     auth: authReducer,
     user: userReducer,
-    kyc: kycReducer
+    kyc: kycReducer,
     debtRequests: debtRequestsReducer,
 });
 
