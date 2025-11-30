@@ -6,6 +6,7 @@ import { protectedRoutes } from "./protected";
 import ProtectedRoute from "./ProtectedRoute";
 import LandingPage from "@/pages/landing";
 import KycLayout from "@/layouts/kyc-layout/KYCLayout";
+import KycAlreadyVerified from "@/pages/auth/kyc/already-verified";
 
 export const router = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
             </ProtectedRoute>
         ),
         children: protectedRoutes
+    },
+    {
+        path: "/kyc/already-verified",
+        element: <KycAlreadyVerified />
     },
     {
         path: "*",

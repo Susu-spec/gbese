@@ -23,5 +23,6 @@ export const kycRoutes = [
             <KycGuard requiredStep={2}>
                 <IdentityDocument />
             </KycGuard>
-        )}
+        )
+    }
 ]
