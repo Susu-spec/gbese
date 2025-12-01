@@ -25,19 +25,20 @@ export function PaymentResultModal({
         {success ? (
           <CheckCircle2 className="w-16 h-16 md:w-20 md:h-20 text-gbese-success" />
         ) : (
-          <XCircle className="w-16 h-16 md:w-20 md:h-20 text-red-600" />
+          <XCircle className="w-16 h-16 md:w-20 md:h-20 text-primary-400" />
         )}
         
         <div className="text-center">
           <h2 className="font-sora font-semibold text-2xl md:text-3xl text-primary-900 mb-2">
-            {success ? "Debt Accepted!" : "Action Failed"}
+            {message || (success ? "Debt Accepted!" : "Action Failed")}
           </h2>
-          <p className="text-sm md:text-base text-primary-700 px-4">
-            {message ||
-              (success
+          {!message && (
+            <p className="text-sm md:text-base text-primary-700 px-4">
+              {success
                 ? "The debt has been transferred to your obligations."
-                : "There was an issue processing your request. Please try again.")}
-          </p>
+                : "There was an issue processing your request. Please try again."}
+            </p>
+          )}
         </div>
 
         <Button
@@ -45,7 +46,7 @@ export function PaymentResultModal({
           className={
             success
               ? "bg-gbese-success hover:bg-gbese-success/90 text-white px-6 md:px-8 text-sm md:text-base w-full sm:w-auto"
-              : "bg-red-600 hover:bg-red-700 text-white px-6 md:px-8 text-sm md:text-base w-full sm:w-auto"
+              : "bg-blue-600 hover:bg-blue-700 text-white px-6 md:px-8 text-sm md:text-base w-full sm:w-auto"
           }
         >
           Close

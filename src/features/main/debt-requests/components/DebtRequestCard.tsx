@@ -18,10 +18,9 @@ export function DebtRequestCard({
   isDeclining,
 }: DebtRequestCardProps) {
   return (
-    <div className="w-full max-w-5xl h-49 border-b border-primary-200 py-6 flex flex-col gap-3">
-      {/* Top row: Name (left) and Due date (right) */}
-      <div className="flex justify-between items-start">
-        <h3 className="font-sora font-semibold text-xl md:text-2xl leading-7 md:leading-10 text-primary-900">
+    <div className="w-full max-w-5xl border-b border-primary-200 py-4 md:py-6 flex flex-col gap-3 md:gap-4">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-0">
+        <h3 className="font-sora font-semibold text-lg sm:text-xl md:text-2xl leading-6 sm:leading-7 md:leading-10 text-primary-900">
           {request.requester_name}
         </h3>
         <p className="text-xs md:text-sm text-primary-600">
@@ -29,28 +28,26 @@ export function DebtRequestCard({
         </p>
       </div>
 
-      {/* Middle row: Reason/Narration */}
       <p className="text-sm md:text-base text-primary-700 line-clamp-2">
         {request.narration || "No description provided"}
       </p>
 
-      {/* Bottom row: Amount (left) and Buttons (right) */}
-      <div className="flex justify-between items-center">
-        <p className="font-sora font-semibold text-lg md:text-2xl leading-7 md:leading-10 text-primary-900">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+        <p className="font-sora font-semibold text-xl sm:text-2xl md:text-3xl leading-7 md:leading-10 text-primary-900">
           &#8358;{request.amount?.toLocaleString() ?? "0"}
         </p>
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
           <KycProtectedButton
             onAllowed={() => onAccept(request.id)}
             disabled={isAccepting || isDeclining}
-            className="bg-primary-700 hover:bg-primary-800 text-white text-sm md:text-base h-13 w-48 rounded-lg px-6 py-3"
+            className="bg-primary-700 hover:bg-primary-800 text-white text-sm md:text-base h-12 md:h-13 w-full sm:w-44 md:w-48 rounded-lg px-4 md:px-6 py-3"
           >
             {isAccepting ? "Accepting..." : "Accept Request"}
           </KycProtectedButton>
           <Button
             onClick={() => onDecline(request.id)}
             disabled={isAccepting || isDeclining}
-            className="bg-white text-primary-900 border border-primary-300 hover:bg-primary-50 text-sm md:text-base h-13 w-48 rounded-lg px-6 py-3"
+            className="bg-white text-primary-900 border border-primary-300 hover:bg-primary-50 text-sm md:text-base h-12 md:h-13 w-full sm:w-44 md:w-48 rounded-lg px-4 md:px-6 py-3"
           >
             {isDeclining ? "Declining..." : "Decline Request"}
           </Button>

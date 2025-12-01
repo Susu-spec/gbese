@@ -6,6 +6,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { AxiosError, type AxiosResponse } from "axios";
 import { handleApiError, parseBalance } from "@/lib/utils";
+import { invalidateAfterAcceptDebt, invalidateAfterDeclineDebt } from "@/lib/query-utils";
 import { BalanceCards } from "@/features/main/debt-requests/components/BalanceCards";
 import { DebtRequestCard } from "@/features/main/debt-requests/components/DebtRequestCard";
 import { DeclineModal } from "@/features/main/debt-requests/components/DeclineModal";
@@ -38,25 +39,18 @@ export default function DebtRequestsPage() {
 
   const acceptRequest = useMutation<AxiosResponse<PaymentResponse>, AxiosError, string>({
     mutationFn: acceptDebtRequest,
-    onSuccess: () => {
+    onSuccess: async () => {
       toast.success("Debt transfer accepted! Your debt obligation has been updated.");
-      queryClient.invalidateQueries({ queryKey: ["debtRequests", "incoming"] });
-      queryClient.invalidateQueries({ queryKey: ["debtRequests"] });
-      queryClient.invalidateQueries({ queryKey: ["account", "balance"] });
-      queryClient.invalidateQueries({ queryKey: ["userProfile"] });
-      queryClient.invalidateQueries({ queryKey: ["userTransactions"] });
-      queryClient.invalidateQueries({ queryKey: ["activeDebts"] });
-      queryClient.invalidateQueries({ queryKey: ["transferredDebts"] });
+      await invalidateAfterAcceptDebt(queryClient);
     },
     onError: (error: AxiosError) => handleApiError(error),
   });
 
   const rejectRequest = useMutation<AxiosResponse<PaymentResponse>, AxiosError, RejectRequestPayload>({
     mutationFn: rejectDebtRequest,
-    onSuccess: () => {
+    onSuccess: async () => {
       toast.success("Request rejected successfully!");
-      queryClient.invalidateQueries({ queryKey: ["debtRequests", "incoming"] });
-      queryClient.invalidateQueries({ queryKey: ["debtRequests"] });
+      await invalidateAfterDeclineDebt(queryClient);
     },
     onError: (error: AxiosError) => handleApiError(error),
   });
@@ -122,7 +116,7 @@ export default function DebtRequestsPage() {
         {
           onSuccess: () => {
             setDeclineModal({ open: false, request: null });
-            setResultModal({ open: true, success: true, message: "Request declined successfully." });
+            setResultModal({ open: true, success: false, message: "Request Declined" });
           },
         }
       );
