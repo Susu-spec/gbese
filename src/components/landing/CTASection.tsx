@@ -10,11 +10,11 @@ export default function CTASection() {
             className="w-full bg-gbese-white py-20 px-0 md:py-20 md:px-10 lg:px-[11.25rem] border-b border-primary-200"
         >
             <div className="mx-auto flex max-w-screen-2xl flex-col items-center gap-10 md:gap-14">
-                <h2 className="font-sora font-semibold text-center text-primary-900 text-[1.75rem] leading-10 md:text-[3rem] md:leading-18 max-w-sm sm:max-w-xl md:max-w-4xl">
+                <h2 className="font-sora font-semibold text-center text-primary-900 text-3xl leading-10 md:text-5xl md:leading-tight max-w-sm sm:max-w-xl md:max-w-4xl">
                     Your Gbese Adventure Starts Here.
                 </h2>
 
-                <p className="font-medium text-center text-lg leading-9 md:text-[1.5rem] md:leading-10.5 max-w-sm sm:max-w-xl md:max-w-4xl">
+                <p className="font-medium text-center text-lg leading-9 md:text-2xl md:leading-normal max-w-sm sm:max-w-xl md:max-w-4xl">
                     Earn XP. Trade debt. Spin wheels. Collect NFTs. It's debt; but make it fun.
                 </p>
 
@@ -36,7 +36,7 @@ export default function CTASection() {
                                 {tile.title}
                             </h3>
 
-                            <p className="font-normal text-center text-gbese-black/80 text-lg leading-[1.688rem] max-w-[16.25rem] sm:max-w-xs">
+                            <p className="font-normal text-center text-gbese-black/80 text-lg leading-snug max-w-[16.25rem] sm:max-w-xs">
                                 {tile.description}
                             </p>
                         </div>

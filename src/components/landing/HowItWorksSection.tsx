@@ -8,11 +8,11 @@ export default function HowItWorksSection() {
             className="w-full bg-gbese-white py-16 md:py-24 border-b border-[rgba(179,179,179,1)]"
         >
             <div className="mx-auto max-w-7xl px-5 sm:px-10 md:px-20">
-                <h2 className="font-sora font-semibold text-[1.75rem] leading-10.5 md:text-[3.75rem] md:leading-22.5 text-center text-primary-900">
+                <h2 className="font-sora font-semibold text-3xl leading-tight md:text-6xl md:leading-tight text-center text-primary-900">
                     How Gbese Works
                 </h2>
                 
-                <p className="font-medium text-base leading-6 md:text-[1.5rem] md:leading-9 text-center text-gbese-black/80 max-w-sm sm:max-w-2xl md:max-w-4xl mx-auto mt-4 md:mt-6">
+                <p className="font-medium text-base leading-6 md:text-2xl md:leading-snug text-center text-gbese-black/80 max-w-sm sm:max-w-2xl md:max-w-4xl mx-auto mt-4 md:mt-6">
                     From debt requests to repayments, Gbese makes every step simple, social, and secure. Here's how you stay in control.
                 </p>
 
@@ -36,10 +36,10 @@ export default function HowItWorksSection() {
                                         <Award className="w-full h-full transition-transform duration-300 text-[rgba(147,51,234,1)]" />
                                     )}
                                 </div>
-                                <h3 className="font-semibold text-lg leading-7 md:text-[1.5rem] md:leading-9 mb-3">
+                                <h3 className="font-semibold text-lg leading-7 md:text-2xl md:leading-snug mb-3">
                                     {`Step ${step.step}: ${step.title}`}
                                 </h3>
-                                <p className="font-normal text-base leading-6 md:text-[1.25rem] md:leading-7.5 text-gbese-black/70">
+                                <p className="font-normal text-base leading-6 md:text-xl md:leading-relaxed text-gbese-black/70">
                                     {step.description}
                                 </p>
                             </div>
