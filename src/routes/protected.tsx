@@ -1,15 +1,10 @@
 import { 
-    BillPaymentsIcon, 
     CreditOptionsIcon, 
     DashboardIcon, 
     DebtRequestsIcon, 
-    // FinancialHealthIcon, 
     FundWalletIcon, 
     MyDebtsIcon, 
-    // RewardsIcon, 
-    SchedulePaymentIcon, 
-    TransactionHistoryIcon, 
-    // WealthIndexIcon, 
+    TransactionHistoryIcon,
     WithdrawFundsIcon 
 } from "@/components/shared/sidebar-icons";
 import type { AppRoute } from "@/utils/types";
@@ -83,26 +78,6 @@ export const protectedRoutes: AppRoute[] = [
         }
     },
     {
-        path: "bill-payment",
-        label: "Bill Payment",
-        icon: BillPaymentsIcon,
-        showInSidebar: true,
-        async lazy() {
-            const module = await import("@/pages/main/bill-payment");
-            return { Component: module.default }
-        }
-    },
-    {
-        path: "schedule-payment",
-        label: "Schedule Payment",
-        icon: SchedulePaymentIcon,
-        showInSidebar: true,
-        async lazy() {
-            const module = await import("@/pages/main/schedule-payment");
-            return { Component: module.default }
-        }
-    },
-    {
         path: "transaction-history",
         label: "Transaction History",
         icon: TransactionHistoryIcon,
@@ -122,33 +97,6 @@ export const protectedRoutes: AppRoute[] = [
             return { Component: module.default }
         }
     },
-    // {
-    //     path: "rewards",
-    //     label: "Rewards",
-    //     icon: RewardsIcon,
-    //     async lazy() {
-    //         const module = await import("@/pages/main/rewards");
-    //         return { Component: module.default }
-    //     }
-    // },
-    // {
-    //     path: "financial-health",
-    //     label: "Financial Health",
-    //     icon: FinancialHealthIcon,
-    //     async lazy() {
-    //         const module = await import("@/pages/main/financial-health");
-    //         return { Component: module.default }
-    //     }
-    // },
-    // {
-    //     path: "wealth-index",
-    //     label: "Wealth Index",
-    //     icon: WealthIndexIcon,
-    //     async lazy() {
-    //         const module = await import("@/pages/main/wealth-index");
-    //         return { Component: module.default }
-    //     }
-    // },
     {
         path: "profile",
         label: "Profile",
