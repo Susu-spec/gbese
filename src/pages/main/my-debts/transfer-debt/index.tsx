@@ -31,9 +31,11 @@ export default function TransferDebt() {
 
     const userAccount = useSelector((state: RootState) => state.user.account);
 
-    const transferDebt = useTransferDebt();
-
     const navigate = useNavigate();
+
+    const transferDebt = useTransferDebt(() => {
+        navigate("/my-debts");
+    });
 
     const handleBack = () => {
         if (window.history.length > 2) {

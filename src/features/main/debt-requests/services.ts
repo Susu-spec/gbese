@@ -4,11 +4,16 @@ import type {
   IncomingDebtRequestsResponse,
   RejectRequestPayload,
   PaymentResponse,
+  RawIncomingDebtRequestsResponse,
 } from "./types";
+import { mapRawIncomingDebtRequest } from "./types";
 
-export async function getIncomingDebtRequests() {
-  const { data } = await api.get<IncomingDebtRequestsResponse>("/dtp/requests/incoming");
-  return data;
+export async function getIncomingDebtRequests(): Promise<IncomingDebtRequestsResponse> {
+  const { data } = await api.get<RawIncomingDebtRequestsResponse>("/dtp/requests/incoming");
+  return {
+    success: data.success,
+    data: Array.isArray(data.data) ? data.data.map(mapRawIncomingDebtRequest) : [],
+  };
 }
 
 export async function acceptDebtRequest(requestId: string): Promise<AxiosResponse<PaymentResponse>> {
