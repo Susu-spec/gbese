@@ -1,10 +1,10 @@
-import { Camera } from "lucide-react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/store/store";
 import { useUser } from "@/features/main/dashboard/hooks/useUser";
 import { InfoRow } from "@/features/main/profile/component/RowCard";
 import { Link } from "react-router";
+import AvatarJpeg from "@/assets/images/Avatar.jpg"
 
 type TabValue = "personal-information" | "security-settings";
 
@@ -32,9 +32,6 @@ const Profile = () => {
   const handleTabChange = (value: TabValue) => setTabValue(value);
 
   const isKycVerified = user?.kyc_status === "verified";
-  if(isKycVerified){
-    console.log("KYC Status: Verified");
-  }
 
   return (
     <div className="w-full p-2">
@@ -70,7 +67,7 @@ const Profile = () => {
                 <SectionCard>
                     <div className="flex flex-col md:flex-row lg:flex-row items-center gap-2">
                         <div className="w-36 h-36 rounded-xl flex items-center justify-center bg-primary-200">
-                            <Camera size={44} stroke="#fff" strokeWidth={1} />
+                            <img src={AvatarJpeg} alt="User Avatar" className="rounded-xl"/>
                         </div>
 
                         <p className="font-bold text-xl">
