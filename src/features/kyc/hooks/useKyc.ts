@@ -39,7 +39,7 @@ export function useKyc() {
         },
         onSuccess: () => {
             dispatch(completeStep2())
-            toast.success("KYC information uploaded successfully! Redirecting to dashboard...")
+            toast.success("KYC information uploaded successfully! Verification processing...")
             navigate("/dashboard")
         },
         onError: (error: AxiosError) => toast.error(error.message)

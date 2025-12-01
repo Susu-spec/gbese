@@ -52,21 +52,13 @@ export function useAuth() {
         onError: (error: AxiosError) => handleApiError(error)
     })
 
-
-    const signOut = useMutation({
-        mutationFn: () => api.post("/auth/signout"),
-        onSuccess: () => {
-            dispatch(clearUser());
-            queryClient.invalidateQueries();
-            resetStore()
-            navigate("/")
-        },
-        onError: (response) => {
-            if (response.message) {
-                toast.error(response.message)
-            }
-        }
-    });
+    const signOut = () => {
+        dispatch(clearUser());
+        queryClient.invalidateQueries();
+        toast.success("You have been logged out successfuly. Redirecting to Sign in Page...")
+        resetStore();
+        navigate("/sign-in")
+    }
 
 
     return {

@@ -57,7 +57,7 @@ export default function ApplyLoanForm() {
                     e.preventDefault();
                     form.handleSubmit();
                 }}
-                className="py-5 lg:py-15 px-1.5 md:px-5 lg:px-16 flex flex-col gap-6 md:gap-8 lg:gap-14"
+                className="py-5 lg:py-15 px-1.5 md:px-5 lg:px-16 flex flex-col items-end gap-6 md:gap-8 lg:gap-14"
             >
                 <FieldGroup className="flex flex-col gap-6">
                     <FormFieldWrapper
@@ -106,7 +106,7 @@ export default function ApplyLoanForm() {
                                 onValueChange={field.handleChange} 
                                 value={field.state.value}
                             >
-                                <SelectTrigger className={`${isInvalid ? 'border-red-500' : ''} text-xs md:text-sm py-2 px-2 md:py-4 md:px-4 rounded-md w-full`}>
+                                <SelectTrigger className={`${isInvalid ? 'border-red-500' : ''} text-xs md:text-sm py-2 px-2 md:py-4 h-fit! md:px-4 rounded-md w-full`}>
                                     <SelectValue placeholder="Select employment status" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -129,7 +129,7 @@ export default function ApplyLoanForm() {
                                 onValueChange={field.handleChange} 
                                 value={field.state.value}
                             >
-                                <SelectTrigger className={`${isInvalid ? 'border-red-500' : ''} text-xs md:text-sm py-2 px-2 md:py-4 md:px-4 rounded-md w-full`}>
+                                <SelectTrigger className={`${isInvalid ? 'border-red-500' : ''} text-xs md:text-sm py-2 px-2 md:py-4 h-fit! md:px-4 rounded-md w-full`}>
                                     <SelectValue placeholder="Select income range" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -154,7 +154,7 @@ export default function ApplyLoanForm() {
                                 value={field.state.value} 
                                 defaultValue={field.state.value}
                             >
-                                <SelectTrigger className={`${isInvalid ? 'border-red-500' : ''} text-xs md:text-sm py-2 px-2 md:py-4 md:px-4 rounded-md w-full`}>
+                                <SelectTrigger className={`${isInvalid ? 'border-red-500' : ''} text-xs md:text-sm py-2 px-2 md:py-4 h-fit! md:px-4 rounded-md w-full`}>
                                     <SelectValue placeholder="Select tenure" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -171,7 +171,7 @@ export default function ApplyLoanForm() {
                 <Button
                     variant={!form.state.isValid ? "secondary" : "default"} 
                     disabled={!form.state.isValid || applyLoan.isPending}
-                    className="w-full py-3 px-6 h-fit">
+                    className="w-fit py-3 px-6 h-fit">
                         {applyLoan.isPending ?
                             <span className="flex items-center gap-1">
                                 <span>Give us a second to process</span>

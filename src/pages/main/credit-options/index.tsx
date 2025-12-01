@@ -9,10 +9,10 @@ export default function CreditOptionsPage() {
     return (
         <div className="flex flex-col gap-6.5 lg:gap-10">
             <div className="flex flex-col gap-1.5 md:gap-2">
-                <h1 className="font-sora text-primary-800 font-semibold text-xl md:text-[2rem]">
+                <h1 className="font-sora text-primary-800 font-semibold text-xl md:text-3xl ">
                     Credit Options
                 </h1>
-                <p className="text-sm md:text-xl text-primary-950 leading-7.5">
+                <p className="text-sm md:text-base text-primary-950 leading-7.5">
                     Pick your credit. Compare, apply, cash out; na your move!
                 </p>
             </div>

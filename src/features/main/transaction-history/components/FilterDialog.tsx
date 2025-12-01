@@ -25,9 +25,10 @@ export function FilterDialog({ currentFilter, onFilterChange }: {
                     <h1 className="font-sora font-semibold text-primary-950 text-xl">
                         All Categories
                     </h1>
-                    <div className="flex items-center gap-3.25">
-                        {categories.map((category) => (
-                            <button 
+                    <div className="flex flex-wrap items-center gap-3.25">
+                        {categories.map((category, index) => (
+                            <button
+                                key={index}
                                 className={`p-2.5 rounded-lg border border-gbese-neutrals-100 text-sm ${currentFilter.category === category ? "bg-primary-100" :"bg-inherit"}`}
                                 onClick={() => onFilterChange("category", category)}
                             >
@@ -40,9 +41,10 @@ export function FilterDialog({ currentFilter, onFilterChange }: {
                     <h1 className="font-sora font-semibold text-primary-950 text-xl">
                         All Status
                     </h1>
-                    <div className="flex items-center gap-3.25">
-                        {statuses.map((status) => (
+                    <div className="flex flex-wrap items-center gap-3.25">
+                        {statuses.map((status, index) => (
                             <button 
+                                key={index}
                                 className={`p-2.5 rounded-lg border border-gbese-neutrals-100 text-sm ${currentFilter.status === status ? "bg-primary-100" :"bg-inherit"}`}
                                 onClick={() => onFilterChange("status", status)}
                             >

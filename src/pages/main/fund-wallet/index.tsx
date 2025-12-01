@@ -49,14 +49,16 @@ export default function FundWalletPage() {
     return (
         <div className="flex flex-col gap-8 pb-12">
             <header className="flex flex-col gap-2">
-                <h1 className="font-sora font-semibold text-3xl leading-10 text-primary-800">
+                <h1 className="font-sora font-semibold text-xl md:text-3xl leading-10 text-primary-800">
                     Fund Your Wallet
                 </h1>
                 <p className="text-sm md:text-base text-primary-900 max-w-2xl">
                     Add money to your wallet sharp sharp; make gbese no hold you!
                 </p>
             </header>
-            <WalletBalanceCard balance={walletBalance} isLoading={balance.isLoading} />
+            <div className="max-w-5xl">
+                <WalletBalanceCard balance={walletBalance} isLoading={balance.isLoading} />
+            </div>
             <FundWalletForm />
             <RecentTransactionsTable
                 transactions={txList}

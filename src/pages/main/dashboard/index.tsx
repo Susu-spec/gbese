@@ -20,7 +20,7 @@ import { useUser } from "@/features/main/dashboard/hooks/useUser";
 import { TableData } from "@/features/main/dashboard/components/TransactionTable";
 import type { DebtRequest } from "@/features/main/dashboard/types";
 import DebtRequests from "@/features/main/dashboard/components/DebtRequest";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 
 export default function DashboardPage() {
@@ -52,37 +52,37 @@ export default function DashboardPage() {
 
 
     return (
-        <div>
-            <div className="mb-4">
-                <h2 className="text-3xl font-semibold text-primary-800">How Far, {isLoading ? "Loading..." : user?.first_name || "User"}!</h2>
-                <p>Time to balance your gbese and stack some XP. No slackin’ today</p>
+        <div className="flex flex-col gap-6">
+            <div className="mb-4 flex flex-col gap-2">
+                <h2 className="text-xl md:text-3xl font-semibold text-primary-800">How Far, {isLoading ? "..." : user?.first_name || "User"}!</h2>
+                <p className="text-sm md:text-base">Time to balance your gbese and stack some XP. No slackin’ today</p>
             </div>
-            <div className="flex gap-3 w-full overflow-x-auto hide-scrollbar mb-6">
+            <div className="flex gap-3 w-full overflow-x-auto hide-scrollbar">
                 {userAccount && !isLoading ? (
                     <div className="flex justify-between overscroll-x-auto hide-scrollbar w-full gap-3">
-                        <Card className="md:w-full md:basis-w-86 md:flex-1 w-44 flex-none h-47.5 p-2">
-                            <div className="w-10 p-2 rounded-full flex items-center justify-center bg-gbese-success">
-                                <Wallet stroke="#fff" />
+                        <Card className="md:w-full md:basis-w-86 md:flex-1 w-44 flex-none  py-5 px-6">
+                            <div className="w-10 p-2 rounded-full flex items-center justify-center bg-[#D9D9D942]">
+                                <Wallet className="text-gbese-black" />
                             </div>
-                            <CardTitle className="text-lg">Balance</CardTitle>
-                            <p className="text-xl">&#8358; {Number(userAccount?.current_balance ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) ?? '0.00'}</p>
-                            <a className="text-underline cursor-pointer">Fund Wallet</a>
+                            <CardTitle className="text-sm md:text-lg whitespace-nowrap">Available Balance</CardTitle>
+                            <p className="text-xl whitespace-nowrap">&#8358; {Number(userAccount?.current_balance ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) ?? '0.00'}</p>
+                            <Link className="underline text-xs" to="/fund-wallet">Fund Wallet</Link>
                         </Card>
-                        <Card className="md:w-full md:basis-w-86 md:flex-1 w-44 flex-none h-47.5 p-2">
-                            <div className="w-10 p-2 rounded-full flex items-center justify-center bg-gbese-warning">
-                                <Wallet stroke="#fff" />
+                        <Card className="md:w-full md:basis-w-86 md:flex-1 w-44 flex-none  py-5 px-6">
+                            <div className="w-10 p-2 rounded-full flex items-center justify-center bg-[#E8EEFF]">
+                                <Wallet className="text-primary-900" />
                             </div>
-                            <CardTitle className="text-lg">Debt</CardTitle>
-                            <p className={`${Number(userAccount?.total_debt_obligation ?? 0) > 0 ? "text-gbese-warning text-xl" : "text-gbese-green"}`}>&#8358; {Number(userAccount?.total_debt_obligation ?? 0) > 0 ? "-" + Number(userAccount?.total_debt_obligation ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '0.00'}</p>
-                            <a>Fund Wallet</a>
+                            <CardTitle className="text-sm md:text-lg">My Debt</CardTitle>
+                            <p className={`${Number(userAccount?.total_debt_obligation ?? 0) > 0 ? "text-gbese-warning text-xl" : "text-gbese-green"} whitespace-nowrap`}>&#8358; {Number(userAccount?.total_debt_obligation ?? 0) > 0 ? "-" + Number(userAccount?.total_debt_obligation ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '0.00'}</p>
+                            <Link className="underline text-xs" to="/my-debts">Transfer debts</Link>
                         </Card>
-                        <Card className="md:w-full md:basis-w-86 md:flex-1 w-44 flex-none h-47.5 p-2">
-                            <div className="w-10 p-2 rounded-full flex items-center justify-center">
-                                <Award />
+                        <Card className="md:w-full md:basis-w-86 md:flex-1 w-44 flex-none  py-5 px-6">
+                            <div className="w-10 p-2 rounded-full flex items-center justify-center bg-[#FFF9E2]">
+                                <Award className="text-[#685200]"/>
                             </div>
-                            <CardTitle className="text-lg">Credit Score</CardTitle>
-                            <p className="text-xl">&#8358; {userAccount?.available_credit}</p>
-                            <a>Apply For Credit</a>
+                            <CardTitle className="text-sm md:text-lg whitespace-nowrap">Credit Score</CardTitle>
+                            <p className="text-xl whitespace-nowrap">&#8358; {(+userAccount?.available_credit!).toLocaleString()}</p>
+                            <Link className="underline text-xs" to="/credit-options">Apply For Credit</Link>
                         </Card>
                     </div>
                 ) : (
@@ -157,15 +157,17 @@ export default function DashboardPage() {
                         </div>
                     )}
                 </Card>
-                <Card className="col-span-1 p-4">
-                    <div className="mb-3 text-center">
-                        <h2 className="font-sora font-semibold text-2xl text-primary-800 mb-1">Debt Requests</h2>
-                        <p className="text-sm text-primary-900">Accept Request to help save a person financial life. Abeg! Big Dawg</p>
-                    </div>
+                <Card className="col-span-1 p-4 flex flex-col items-center justify-center">
                     {!isLoading && debtReq && debtReq.length > 0 ? (
-                        debtReq.slice(0, 3).map((dr: DebtRequest) => (
-                            <DebtRequests key={dr.id} debtRequest={dr} handleAccept={() => handleAccept(dr.id)} handleReject={() => handleReject(dr.id)} />
-                        ))
+                        <div className="flex flex-col gap-4">
+                            <div className="text-center">
+                                <h2 className="font-sora font-semibold text-2xl text-primary-800 mb-1">Debt Requests</h2>
+                                <p className="text-sm text-primary-900">Accept Request to help save a person financial life. Abeg! Big Dawg</p>
+                            </div>
+                            {debtReq.slice(0, 3).map((dr: DebtRequest) => (
+                                <DebtRequests key={dr.id} debtRequest={dr} handleAccept={() => handleAccept(dr.id)} handleReject={() => handleReject(dr.id)} />
+                            ))}
+                        </div>
                     ) : !isLoading ? (
                         <div className="flex flex-col text-center items-center justify-center p-4">
                             <p>No gbese requests for now. Send one yourself!</p>
