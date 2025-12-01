@@ -10,17 +10,17 @@ const TransferredDebts = () => {
 
     const transferredDebts = transferredDebtsQuery.data?.data || [];
     return (
-        <div>
+        <div className="">
             <h2 className="text-3xl font-semibold mb-4 text-primary-800">Transferred Debts</h2>
             {isLoading && <p className="text-gray-500">Loading...</p>}
             {!isLoading && transferredDebts.length === 0 && <p className="text-gray-500">No transferred debts found.</p>}
             {!isLoading && transferredDebts.length > 0 && (
                 transferredDebts.map((debt: DebtRequest) => (
-                    <Card key={debt.id} className="mb-4 p-4">
+                    <Card key={debt.id} className="mb-4 py-4 px-8">
                         <div className="flex justify-between items-center">
                             <h2>{((debt.id) as string).substring(0, 10)}...</h2>
                             <p 
-                            className="rounded-xl p-2 w-fit"
+                            className="rounded-xl p-2 w-fit capitalize"
                             style={{
                                 backgroundColor:
                                     (debt.status) === "pending"

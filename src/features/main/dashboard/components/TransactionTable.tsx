@@ -21,7 +21,7 @@ const columns: ColumnDef<TransactionData>[] = [
     header: 'Transaction ID',
     cell: ({ row }) => {
       const id = row.getValue('id') as string;
-      return id.length > 10 ? `${id.substring(0, 10)}...` : id;
+      return <span title={id}>{id.length > 10 ? `${id.substring(0, 10)}...` : id}</span>;
     },
   },
   {
@@ -29,7 +29,7 @@ const columns: ColumnDef<TransactionData>[] = [
     header: 'Type',
     cell: ({ row }) => {
       const type = row.getValue('type') as string;
-      return type.charAt(0).toUpperCase() + type.slice(1);
+      return type.charAt(0).toUpperCase() + type.slice(1).split("_").join(" ");
     },
   },
   {
@@ -47,7 +47,7 @@ const columns: ColumnDef<TransactionData>[] = [
       const status = (row.getValue('status') as string).toLowerCase();
       return (
         <span className={`
-          px-2 py-1 rounded-xl text-xs font-medium border
+          px-2 py-1 rounded-xl text-xs font-medium border capitalize
           ${status === 'completed' ? 'bg-gbese-success text-gbese-green' : ''}
           ${status === 'pending' ? 'bg-[#FFDE5B1A] text-[#F4B60B] border-[#F4B60B]' : ''}
           ${status === 'failed' ? 'bg-[#FF71711A] text-[#F65142] border-[#F65142]' : ''}
@@ -111,11 +111,11 @@ export function TableData() {
   }
 
   return (
-    <Table>
+    <Table className="border-separate border-spacing-y-8 border-spacing-x-2 rounded-md">
       <TableCaption>A list of your recent transactions.</TableCaption>
       <TableHeader>
         {table.getHeaderGroups().map((hg) => (
-          <TableRow key={hg.id}>
+          <TableRow key={hg.id} className="hover:bg-inherit!">
             {hg.headers.map((header) => (
               <TableHead key={header.id}>
                 {flexRender(header.column.columnDef.header, header.getContext())}
@@ -125,8 +125,8 @@ export function TableData() {
         ))}
       </TableHeader>
       <TableBody>
-        {table.getRowModel().rows.map((row) => (
-          <TableRow key={row.id}>
+        {table.getRowModel().rows.slice(0, 5).map((row) => (
+          <TableRow key={row.id} className="border-0 hover:bg-inherit">
             {row.getVisibleCells().map((cell) => (
               <TableCell key={cell.id}>
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}

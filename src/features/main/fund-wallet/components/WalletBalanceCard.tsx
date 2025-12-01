@@ -15,7 +15,7 @@ export function WalletBalanceCard({ balance, isLoading }: WalletBalanceCardProps
   return (
     <Card
       className={cn(
-          "rounded-lg py-4 md:py-5 pl-6 md:pl-8 pr-6 md:pr-10 flex flex-col gap-2 w-full max-w-5xl h-52 md:h-64 shadow-lg",
+          "rounded-lg py-4 md:py-5 pl-6 md:pl-8 pr-6 md:pr-10 flex flex-col gap-2 w-full h-52 md:h-64 shadow-lg",
         "border border-gbese-white bg-white"
       )}
     >

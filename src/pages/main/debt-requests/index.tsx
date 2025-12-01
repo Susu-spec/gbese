@@ -149,10 +149,10 @@ export default function DebtRequestsPage() {
   return (
     <div className="flex flex-col gap-6 md:gap-8 pb-12 px-2 sm:px-3 md:px-0">
       <header className="flex flex-col gap-2">
-        <h1 className="font-sora font-semibold text-2xl md:text-3xl leading-8 md:leading-10 text-primary-800">
+        <h1 className="font-sora font-semibold text-xl md:text-3xl leading-8 md:leading-10 text-primary-800">
           Debt Requests
         </h1>
-        <p className="text-base md:text-xl leading-6 md:leading-8 text-primary-900">
+        <p className="text-sm md:text-base leading-6 md:leading-8 text-primary-900">
           See debt for your friend hand? Help am throw am away!
         </p>
       </header>

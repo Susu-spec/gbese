@@ -2,17 +2,19 @@ import { Modal } from "@/components/ui/modal";
 import { format } from "date-fns";
 import { CheckCircle } from "lucide-react";
 
+export interface WithdrawalProps {
+    receiver: string,
+    date: Date | string,
+    description: string | undefined,
+    amount: string
+}
+
 export default function SuccessfulWithdrawalPrompt({
     open, onClose, withdrawal
 }: { 
     open: boolean, 
     onClose: () => void, 
-    withdrawal: {
-        receiver: string,
-        date: Date | string,
-        description: string | undefined,
-        amount: string
-    } 
+    withdrawal: WithdrawalProps
 }) {
     const {
         receiver,

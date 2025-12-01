@@ -7,7 +7,7 @@ import { Link } from "react-router";
 const Header = () =>  {
     return (
         <div className="fixed md:pl-64 inset-x-0 max-h-22 top-0 z-20 w-full bg-white ">
-            <div className="flex justify-between items-center max-w-360 w-full mx-auto py-4 px-6">
+            <div className="flex justify-between items-center mx-auto max-w-5xl w-full py-4 px-6">
                 <SidebarTrigger className="md:hidden flex justify-start"/>
                 <div className="md:ml-auto flex items-center justify-end py-2 gap-2 ">
                     <Button className="bg-primary-800 ">Connect Wallet</Button>

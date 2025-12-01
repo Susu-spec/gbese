@@ -121,10 +121,6 @@ a, button {
   cursor: pointer;
 }
 
-a {
-  text-decoration: none;
-}
-
 /* globals.css or tailwind base layer */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

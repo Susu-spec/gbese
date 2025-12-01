@@ -16,6 +16,7 @@ import { toast } from "sonner";
 import { FormFieldWrapper } from "@/components/shared/form";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/store/store";
+import { formatDate } from "date-fns";
 
 export default function ActiveDebts() {
   const { acticeDebtsQuery } = useDebt();
@@ -30,8 +31,8 @@ export default function ActiveDebts() {
   const debts = acticeDebtsQuery.data?.data || [];
 
   const form = useForm({
-    defaultValues: {
-      amount: "",
+     defaultValues: {
+      amount: 0,
     },
     validators: {
         onChange: ({ value }) => {
@@ -71,7 +72,6 @@ export default function ActiveDebts() {
             }
         },
     },
-
     onSubmit: async ({ value }) => {
         if (!selectedDebt) return;
 
@@ -109,7 +109,7 @@ export default function ActiveDebts() {
       {!isLoading &&
         debts.length > 0 &&
         debts.map((debt: DebtObligation) => (
-          <Card key={debt.id} className="p-4 mb-4">
+          <Card key={debt.id} className="py-4 px-8 mb-4">
             <div className="flex justify-between items-start">
               <div className="space-y-1">
                 <h2 className="text-lg font-semibold">{debt.lender}</h2>
@@ -118,7 +118,7 @@ export default function ActiveDebts() {
                   ₦{Number(debt.remaining_balance).toLocaleString()}
                 </p>
 
-                <p className="text-sm text-gray-500">Due date: {debt.due_date}</p>
+                <p className="text-sm text-gray-500">Due date: {formatDate(debt.due_date, "dd-MM-yyyy hh:mm a")}</p>
               </div>
 
               <div
@@ -164,7 +164,7 @@ export default function ActiveDebts() {
    
         <Dialog open={open} onOpenChange={setOpen}>
             
-            <DialogContent className="p-0 overflow-hidden">
+            <DialogContent className="p-4 overflow-hidden">
                 <DialogTitle className="p-2 text-lg ">Make Payment</DialogTitle>
                 <div className="p-1 border-b">
                     <p className="text-md text-gray-500">
@@ -195,7 +195,7 @@ export default function ActiveDebts() {
                                     name={field.name}
                                     value={field.state.value}
                                     onBlur={field.handleBlur}
-                                    onChange={(e) => field.handleChange(e.target.value)}
+                                    onChange={(e) => field.handleChange(e.target.valueAsNumber)}
                                     type="number"
                                     placeholder="Enter amount"
                                     className={`${isInvalid ? "border-red-500" : ""} text-sm`}
