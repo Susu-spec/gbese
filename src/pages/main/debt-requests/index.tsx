@@ -116,7 +116,7 @@ export default function DebtRequestsPage() {
         {
           onSuccess: () => {
             setDeclineModal({ open: false, request: null });
-            setResultModal({ open: true, success: false, message: "Request Declined" });
+            setResultModal({ open: true, success: false, message: `You have declined this debt transfer request.${reason ? " Reason: " + reason : ""}` });
           },
         }
       );
