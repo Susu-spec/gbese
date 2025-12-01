@@ -5,15 +5,21 @@ import GbeseIcon from "@/assets/icons/gbese-logo.svg"
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
+import { LogOutIcon } from "lucide-react";
+import { useAuth } from "@/features/auth/hooks/useAuth";
 
 export function DashboardSidebar() {
+    const { signOut } = useAuth();
+    const { setOpenMobile } = useSidebar();
 
   return (
     <Sidebar className="z-40">
@@ -40,6 +46,7 @@ export function DashboardSidebar() {
                                 asChild
                                 isActive={isActive}
                                 className="px-6 py-4 h-14"
+                                onClick={() => setOpenMobile(false)}
                                 >
                                 <div>
                                     {item.icon && <item.icon />}
@@ -54,6 +61,17 @@ export function DashboardSidebar() {
                 </SidebarGroupContent>
             </SidebarGroup>
         </SidebarContent>
+    
+        <SidebarFooter>
+            <button 
+                title="Log out" 
+                className="flex flex-row items-center gap-2 text-gbese-white px-6 pb-4 text-sm"
+                onClick={signOut}
+            >
+                <LogOutIcon className="text-gbese-white" size={20}/>
+                Log out
+            </button>
+        </SidebarFooter>
     </Sidebar>
   );
 }
