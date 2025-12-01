@@ -3,7 +3,7 @@ import { identityDocumentSchema } from "../kycSchemas"
 import { FieldGroup } from "@/components/ui/field";
 import { FormFieldWrapper } from "@/components/shared/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, FileText } from "lucide-react";
 import DownloadIcon from "@/assets/icons/download-icon.svg"
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
@@ -21,25 +21,32 @@ export default function IdentityDocumentForm() {
     const navigate = useNavigate();
     const { uploadDocument } = useKyc();
 
+
+
     const form = useForm({
         defaultValues,
         validators: {
             onSubmit: identityDocumentSchema,
         },
         onSubmit: async ({ value }) => {
-            uploadDocument.mutate({
-                document_type: value.documentType,
-                file: value.file
-            })
+            const formData = new FormData();
+            formData.append("document_type", value.documentType);
+            if (value.file) {
+                formData.append("file", value.file);
+            }
+
+            uploadDocument.mutate(formData);
         }
+
     })
+
 
     return (
         <form 
             id="upload-doc-form"
             onSubmit={(e) => {
-                e.preventDefault(),
-                form.handleSubmit()
+                e.preventDefault();
+                form.handleSubmit();
             }}
             className="flex flex-col gap-10"
         >
@@ -47,13 +54,13 @@ export default function IdentityDocumentForm() {
                 <FormFieldWrapper
                     form={form}
                     label="Select Document Type"
-                    name="identityDocument"
+                    name="documentType"
                 >
                     {(field, isInvalid) => (
                         <Select
-                            defaultValue={field.state.value}
                             onValueChange={field.handleChange}
                             value={field.state.value}
+                            name={field.name}
                         >
                             <SelectTrigger className={`${isInvalid ? 'border-red-500' : 'border-primary-900'} relative h-fit! text-sm p-4 rounded-md w-full`}>
                                 <SelectValue placeholder="Select document type" />
@@ -78,19 +85,33 @@ export default function IdentityDocumentForm() {
                 >
                     {(field, isInvalid) => (
                         <div className={`${isInvalid ? 'border-red-500' : 'border-gbese-neutrals-100'} relative border border-dashed rounded-lg py-15 px-20 md:px-36`}>
-                            <div className="flex flex-col gap-2 items-center text-center">
-                                <img src={DownloadIcon} alt="" />
-                                <p className="text-xs text-primary-900">
-                                    Upload or Drag and drop back ID document
-                                </p>
-                                <p className="text-[.625rem] text-gbese-neutrals-200">
-                                    Supported formats: JPG, PNG, PDF (Max 5MB)
-                                </p>
+                           <div className="flex flex-col gap-2 items-center text-center">
+                            {!field.state.value 
+                                ? 
+                                <>
+                                    <img src={DownloadIcon} alt="" />
+                                    <p className="text-xs text-primary-900">
+                                        Upload or Drag and drop back ID document
+                                    </p>
+                                    <p className="text-[.625rem] text-gbese-neutrals-200">
+                                        Supported formats: JPG, PNG, PDF (Max 5MB)
+                                    </p>
+                                </>
+                             :
+                                <>
+                                    <FileText className="size-8 text-primary-800" />
+                                    <p className="text-sm font-medium">{field.state.value?.name}</p>
+                                    <p className="text-xs text-muted-foreground">
+                                        {(field.state.value.size / 1024 / 1024).toFixed(2)} MB
+                                    </p>
+                                </>
+                            }
                             </div>
                             <input
                                 type="file"
+                                name={field.name}
                                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                                accept=".pdf, .doc, .docx"
+                                accept=".pdf, .doc, .docx, .jpg, .png"
                                 onChange={(e) => field.handleChange(e.target.files?.[0] ?? null)}
                             />
                         </div>

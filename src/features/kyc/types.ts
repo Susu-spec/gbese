@@ -17,7 +17,7 @@ export interface IdentityDocumentFormValues {
 }
 
 export interface PersonalInfoPayload {
-    dob: string;
+    date_of_birth: string;
     country: string;
     city: string;
     state: string;

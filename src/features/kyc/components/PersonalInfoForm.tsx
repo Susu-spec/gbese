@@ -5,7 +5,7 @@ import { useForm } from "@tanstack/react-form"
 import { personalInfoSchema } from "../kycSchemas"
 import { useState } from "react"
 import { CountrySelect, StateSelect, CitySelect } from "react-country-state-city"
-import { Select, SelectTrigger } from "@/components/ui/select"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import type { Country, State } from "@/utils/types"
 import { Button } from "@/components/ui/button"
 import type { PersonalInfoFormValues } from "@/features/kyc/types"
@@ -35,9 +35,9 @@ export default function PersonalInfoForm() {
         },
         onSubmit: ({ value }) => {
             if (!value.dob) return;
-            const isoDob = value.dob.toISOString()
+            const isoDob = value.dob?.toISOString()
             uploadPersonalInformation.mutate({
-                dob: isoDob,
+                date_of_birth: isoDob,
                 country: value.country,
                 city: value.city,
                 state: value.state,
@@ -54,6 +54,7 @@ export default function PersonalInfoForm() {
             id="personal-info-form"
             onSubmit={(e) => {
                 e.preventDefault()
+                form.handleSubmit()
             }}
             className="flex flex-col gap-10 w-full"
         >
@@ -65,16 +66,20 @@ export default function PersonalInfoForm() {
                         name="gender"
                     >
                         {(field, isInvalid) => (
-                            <Input
-                                id={field.name}
+                            <Select
                                 name={field.name}
+                                onValueChange={field.handleChange}
                                 value={field.state.value}
-                                onBlur={field.handleBlur}
-                                onChange={(e) => field.handleChange(e.target.value)}
-                                type="text"
-                                placeholder="Please input your gender"
-                                className={`${isInvalid ? 'border-red-500' : ''} text-sm py-4 px-4 rounded-md bg-gbese-background`}
-                            />
+                            >
+                                <SelectTrigger className={`${isInvalid ? 'border-red-500' : 'border-input'} relative h-fit! text-sm p-4 rounded-md w-full`}>
+                                    <SelectValue placeholder="Select your gender" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="male">Male</SelectItem>
+                                    <SelectItem value="female">Female</SelectItem>
+                                    <SelectItem value="other">Other</SelectItem>
+                                </SelectContent>
+                            </Select>
                         )}
                     </FormFieldWrapper>
                     <FormFieldWrapper
@@ -254,6 +259,7 @@ export default function PersonalInfoForm() {
                 <Button
                     variant={!form.state.isValid ? "secondary" : "default"} 
                     className="w-full md:w-fit py-3 px-6 h-fit"
+                    disabled={!form.state.isValid}
                 >
                     {uploadPersonalInformation.isPending ?
                         <span className="flex items-center gap-1">
