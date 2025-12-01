@@ -1,11 +1,12 @@
-import AuthLayout from "@/layouts/AuthLayout";
+import AuthLayout from "@/layouts/auth-layout/AuthLayout";
 import { createBrowserRouter, Navigate } from "react-router";
 import { authRoutes, kycRoutes } from "./public";
-import MainLayout from "@/layouts/MainLayout";
+import MainLayout from "@/layouts/main-layout/MainLayout";
 import { protectedRoutes } from "./protected";
-import KYCLayout from "@/layouts/KYCLayout";
 import ProtectedRoute from "./ProtectedRoute";
 import LandingPage from "@/pages/landing";
+import KycLayout from "@/layouts/kyc-layout/KYCLayout";
+import KycAlreadyVerified from "@/pages/auth/kyc/already-verified";
 
 export const router = createBrowserRouter([
     {
@@ -17,7 +18,7 @@ export const router = createBrowserRouter([
         children: authRoutes
     },
     {
-        element: <KYCLayout />,
+        element: <KycLayout />,
         children: kycRoutes
     },
     {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
             </ProtectedRoute>
         ),
         children: protectedRoutes
+    },
+    {
+        path: "/kyc/already-verified",
+        element: <KycAlreadyVerified />
     },
     {
         path: "*",

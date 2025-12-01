@@ -11,7 +11,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: var(--color-primary-800);
+  color: var(--color-gbese-black);
   background-color: var(--color-gbese-background);
 
   font-synthesis: none;
@@ -21,35 +21,35 @@
 
   /* These utilities were added by shadcn, can be used for direct CSS access */
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: var(--color-gbese-background);
+  --foreground: var(--color-gbese-black);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
+  --primary: var(--color-primary-700);
+  --primary-foreground: var(--color-gbese-white);
+  --secondary: var(--color-gbese-white);
+  --secondary-foreground: var(--color-primary-900);
+  --muted: var(--color-gbese-neutrals-100);
+  --muted-foreground: var(--color-gbese-neutrals-200);
+  --accent: var(--color-gbese-neutrals-100);
+  --accent-foreground: var(--color-gbese-white);
+  --destructive: var(--color-gbese-error);
   --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --input: var(--color-gbese-neutrals-200);
+  --ring: var(--color-gbese-neutrals-200);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar: oklch(0.2159 0.0985 263.46);
+  --sidebar-foreground: oklch(0.2159 0.0985 263.46);
+  --sidebar-primary: oklch(0.2159 0.0985 263.46);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-accent-foreground: oklch(0.2159 0.0985 263.46);
   --color-sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 }
@@ -63,7 +63,9 @@
   /* Primary palette (50–900) */
   --color-primary-50: #CDD7F6;
   --color-primary-100: #ACBCF0;
+  --color-primary-150: #E9EEFE;
   --color-primary-200: #839AE8;
+  --color-primary-250: #F3F6FF;
   --color-primary-300: #5A78E1;
   --color-primary-400: #3057D9;
   --color-primary-500: #0735D2; /* Brand base */
@@ -71,26 +73,34 @@
   --color-primary-700: #05238C;
   --color-primary-800: #031A69;
   --color-primary-900: #021346;
+  --color-primary-950: #010B2A;
 
   /* Custom neutrals */
-  --color-gbese-white: #F9FAFB;
+  --color-gbese-background: #F9FAFB;
+  --color-gbese-main-background: #F1F4FF;
   --color-gbese-neutrals-200: #CFD0D1;
   --color-gbese-grey-200: #D1D1D1;
   --color-gbese-neutrals-100: #8C8C8C;
+  --color-gbese-neutrals-200: #B3B3B3;
+  --color-gbese-neutrals-300: #EBF0FF;
   --color-gbese-black: #111111;
-
-  /* Gbese custom colors */
-  --color-gbese-background: #F1F4FF;
-  --color-gbese-warning: #D89802;
+  --color-gbese-white: #F9FAFB;
+  --color-gbese-warning: #E17700;
   --color-gbese-green: #00A81C;
   --color-gbese-lilac: #E6ECFD;
-  --color-gbese-success: #34A67B;
-  --color-gbese-success-2: #66CB9F;
-  --color-gbese-error: #EF4444;
+  --color-gbese-success: #66CB9F;
+  --color-gbese-error: #FF0D05;
+  --color-gbese-light-grey: #CFD0D1;
+  --color-gbese-dark-grey: #8C8C8C;
+  --color-gbese-grey: #D1D1D1;
   --color-gbese-grey-100: #696969;
   --color-gbese-grey-300: #111111CC;
+  --color-gbese-grey-400: #6D6D6D;
+  --color-gbese-grey-500: #D9D9D9;
   --color-gbese-pari: #002824;
 
+  --breakpoint-1000: 1000px;
+  --breakpoint-1200: 1200px;
 }
 
 html {
@@ -115,23 +125,50 @@ a {
   text-decoration: none;
 }
 
+/* globals.css or tailwind base layer */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+input:-webkit-autofill::selection {
+  -webkit-box-shadow: 0 0 0 1000px hsl(var(--input)) inset !important;
+  -webkit-text-fill-color: var(--color-gbese-black) !important;
+  transition: background-color 9999s ease-in-out 0s; /* prevents flicker */
+}
+
+.dark input:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-gbese-black) !important;
+}
+
+
 @layer utilities {
-  /* utility classes go here */
-  /* Low-level helpers like margin, padding, color, font-size */
   /* Single responsibility */
+  .hide-scrollbar{
+    -webkit-scrollbar-width: none; /* For Chrome, Safari, and Opera */
+    scrollbar-width: none; /* For Firefox */
+  }
 }
 
 @layer components {
+    /* Wallet logo size utilities */
+    .wallet-logo-bg-size {
+      width: 45px;
+      height: 45px;
+    }
+    .wallet-logo-icon-size {
+      width: 24px;
+      height: 24px;
+    }
   /* Typography utilities */
   .h1 { @apply font-sora font-bold text-[24px] leading-9 md:text-[80px] md:leading-[120px]; }
   .h2 { @apply font-sora font-semibold text-[20px] leading-[30px] md:text-[60px] md:leading-[90px]; }
   .h3 { @apply font-sora font-medium text-[18px] leading-[27px] md:text-[48px] md:leading-[72px]; }
   /* H4 only for desktop (no mobile variant as requested) */
-  .h4 { @apply font-sora font-medium md:text-[32px] md:leading-[42px]; }
-  .body { @apply font-poppins font-normal text-[16px] leading-6 md:text-[24px] md:leading-9; }
-  .body-sm { @apply font-poppins font-normal text-[14px] leading-[21px]; }
-  .label { @apply font-poppins font-normal text-[12px] leading-[18px] md:text-[18px] md:leading-[27px]; }
-  .caption { @apply font-poppins font-normal text-[12px] leading-[18px] md:text-[14px] md:leading-[21px]; }
+  .h4 { @apply font-medium md:text-[32px] md:leading-[42px]; }
+  .body { @apply font-normal text-[16px] leading-6 md:text-[24px] md:leading-9; }
+  .body-sm { @apply font-normal text-[14px] leading-[21px]; }
+  .label { @apply font-normal text-[12px] leading-[18px] md:text-[18px] md:leading-[27px]; }
+  .caption { @apply font-normal text-[12px] leading-[18px] md:text-[14px] md:leading-[21px]; }
 
   /* Hero section helpers */
   .hero-bg { background: linear-gradient(180deg, #021346 0%, rgba(2,19,70,0.9) 50%, #021346 100%); }
@@ -150,6 +187,82 @@ a {
   .icon-bg-transfer { background: rgba(223,255,249,1); }
   .icon-bg-reward { background: rgba(231,206,255,0.35); }
   .shadow-tile-transition { transition: box-shadow .3s, transform .3s; }
+  .oauth-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    border: 1px solid var(--color-gbese-grey);
+    width: 100%;
+    border-radius: .5rem;
+    padding-block: 1.0625rem;
+    width: 100%;
+  }
+
+  .oauth-button span {
+    font-weight: 500;
+    color: black;
+  }
+
+  .input-spacing {
+    padding: 1rem;
+    line-height: 1rem;
+    width: 100%;
+  }
+
+  .signup-input {
+    padding: 1rem;
+    font-size: .875rem;
+    border-radius: .5rem;
+  }
+
+  .stdropdown-container {
+    padding: 1rem;
+    width: 100%;
+    position: relative;
+  }
+
+  .stdropdown-input {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .stdropdown-menu {
+    position: absolute;
+    right: 0;
+    height: 8rem;
+    overflow-y: auto;
+    width: 100%;
+    background: var(--color-gbese-background);
+    margin-top: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+  }
+
+  .stdropdown-menu .stdropdown-item {
+    padding: 1.25rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .stdropdown-menu::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .stdropdown-menu::-webkit-scrollbar-thumb {
+    background: #021346;
+    border-radius: 10px;
+  }
+
+  .strdropdown-menu::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+
+
 }
 
 /*---break---
@@ -242,3 +355,22 @@ a {
     @apply bg-background text-foreground;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .signup-input {
+    padding: .75rem .5rem;
+    font-size: .75rem;
+  }
+
+  .oauth-button {
+    font-size: .875rem;
+    padding-block: .5rem;
+    padding-inline: 1rem;
+  }
+
+  .input-spacing {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+

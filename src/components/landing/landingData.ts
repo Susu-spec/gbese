@@ -1,7 +1,7 @@
 // Centralized static data for landing page sections.
-import XPTileImage from "@/components/assets/images/xp-tile.png";
-import SpinWheelTileImage from "@/components/assets/images/spin-the-wheel-tile.png";
-import BadgeTileImage from "@/components/assets/images/badge-tile.png";
+import XPTileImage from "@/assets/images/xp-tile.png";
+import SpinWheelTileImage from "@/assets/images/spin-the-wheel-tile.png";
+import BadgeTileImage from "@/assets/images/badge-tile.png";
 
 export const heroCtaText = "Start Passing Debt Now";
 
