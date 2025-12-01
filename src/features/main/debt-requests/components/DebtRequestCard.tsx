@@ -19,7 +19,7 @@ export function DebtRequestCard({
 }: DebtRequestCardProps) {
   return (
     <div className="w-full max-w-5xl border-b border-primary-200 py-4 md:py-6 flex flex-col gap-3 md:gap-4">
-      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-0">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-4">
         <h3 className="font-sora font-semibold text-lg sm:text-xl md:text-2xl leading-6 sm:leading-7 md:leading-10 text-primary-900">
           {request.requester_name}
         </h3>
