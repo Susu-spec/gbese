@@ -34,6 +34,7 @@ export default function FundWalletPage() {
     const txList: WalletTransaction[] = Array.isArray(rawTx)
         ? rawTx
             .filter((t: TxRaw) => t.type?.toLowerCase() === "deposit")
+            .slice(0, 6)
             .map((t: TxRaw) => ({
                 id: t.id,
                 date: t.initiated_at ?? t.completed_at ?? new Date().toISOString(),
