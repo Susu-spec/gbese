@@ -5,6 +5,7 @@ import api from "@/lib/axios";
 import { toast } from "sonner";
 import { useNavigate } from "react-router";
 import type { AxiosError } from "axios";
+import { invalidateAfterCreditApplication } from "@/lib/query-utils";
 
 export function useCreditProviders() {
     return useQuery<CreditProvider[]>({
@@ -24,10 +25,9 @@ export function useApplyLoan() {
       return res.data;
     },
 
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["credit-providers"] });
-
+    onSuccess: async () => {
       toast.success("Loan applied successfully! Redirecting...");
+      await invalidateAfterCreditApplication(queryClient);
       navigate("/credit-options");
     },
 
