@@ -160,14 +160,20 @@ export default function DashboardPage() {
                 <Card className="col-span-1 p-4">
                     <div className="mb-3 text-center">
                         <h2 className="font-sora font-semibold text-2xl text-primary-800 mb-1">Debt Requests</h2>
-                        <p className="font-poppins text-sm text-primary-900">Accept Request to help save a person financial life. Abeg! Big Dawg</p>
+                        <p className="text-sm text-primary-900">Accept Request to help save a person financial life. Abeg! Big Dawg</p>
                     </div>
-                    {!isLoading ? debtReq.map((dr: DebtRequest) => (
-                        <DebtRequests key={dr.id} debtRequest={dr} handleAccept={() => handleAccept(dr.id)} handleReject={() => handleReject(dr.id)} />
-                    )) : (
+                    {!isLoading && debtReq && debtReq.length > 0 ? (
+                        debtReq.slice(0, 3).map((dr: DebtRequest) => (
+                            <DebtRequests key={dr.id} debtRequest={dr} handleAccept={() => handleAccept(dr.id)} handleReject={() => handleReject(dr.id)} />
+                        ))
+                    ) : !isLoading ? (
                         <div className="flex flex-col text-center items-center justify-center p-4">
                             <p>No gbese requests for now. Send one yourself!</p>
                             <Button className="bg-primary-800 mt-4 w-fit">Send Request</Button>
+                        </div>
+                    ) : (
+                        <div className="flex justify-center p-4">
+                            <p>Loading requests...</p>
                         </div>
                     )}
                 </Card>

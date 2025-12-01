@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import type { AxiosError } from "axios";
 import api from "@/lib/axios";
 import type { PayDebtPayLoad, TransferDebtPayload } from "../types";
+import { invalidateAfterTransferDebt, invalidateAfterPayment } from "@/lib/query-utils";
 
 export function useDebt(){
 
@@ -28,7 +29,7 @@ export function useDebt(){
     return {acticeDebtsQuery, transferredDebtsQuery, debtMatchQuery};
 }
 
-export function useTransferDebt() {
+export function useTransferDebt(onSuccessCallback?: () => void) {
 
   const queryClient = useQueryClient();
 
@@ -38,11 +39,14 @@ export function useTransferDebt() {
       return res.data;
     },
 
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["debtMatch"] });
-
-      toast.success("Debt transferred successfully! ");
-
+    onSuccess: async () => {
+      toast.success("Debt transferred successfully!");
+      await invalidateAfterTransferDebt(queryClient);
+      
+      // Call the optional callback (for navigation)
+      if (onSuccessCallback) {
+        onSuccessCallback();
+      }
     },
 
     onError: (error: AxiosError<any>) => {
@@ -60,9 +64,9 @@ export function usePayDebt() {
             const res = await api.post(`/debt/repay`, payload);
             return res.data;
         },
-        onSuccess: () => {
+        onSuccess: async () => {
             toast.success("Payment successful!");
-            queryClient.invalidateQueries({ queryKey: ["activeDebts"] });
+            await invalidateAfterPayment(queryClient);
         }
         ,
         onError: (error: AxiosError<any>) => {

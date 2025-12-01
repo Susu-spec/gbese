@@ -1,4 +1,4 @@
-import type { IdentityDocumentPayload, PersonalInfoPayload } from "@/features/kyc/types";
+import type { PersonalInfoPayload } from "@/features/kyc/types";
 import api from "@/lib/axios";
 import { useAppDispatch } from "@/store/store";
 import { useMutation } from "@tanstack/react-query";
@@ -30,9 +30,13 @@ export function useKyc() {
     const uploadDocument = useMutation<
         AxiosResponse<any>,
         AxiosError,
-        IdentityDocumentPayload>
+        FormData>
     ({
-        mutationFn: (data) => api.post("/document/upload", data),
+        mutationFn: (formData: FormData) => {
+            return api.post("/kyc/document/upload", formData, {
+                headers: { "Content-Type": "multipart/form-data" },
+            });
+        },
         onSuccess: () => {
             dispatch(completeStep2())
             toast.success("KYC information uploaded successfully! Redirecting to dashboard...")
