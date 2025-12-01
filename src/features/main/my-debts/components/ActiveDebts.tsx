@@ -28,7 +28,12 @@ export default function ActiveDebts() {
   const account = useSelector((state: RootState) => state.user?.account);
 
   const isLoading = acticeDebtsQuery.isPending;
-  const debts = acticeDebtsQuery.data?.data || [];
+  const allDebts = acticeDebtsQuery.data?.data || [];
+  
+  // Filter out paid debts (status is "paid" or remaining balance is 0)
+  const debts = allDebts.filter((debt: DebtObligation) => 
+    debt.status === "active" && Number(debt.remaining_balance) > 0
+  );
 
   const form = useForm({
      defaultValues: {
