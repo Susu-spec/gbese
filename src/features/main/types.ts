@@ -62,3 +62,10 @@ export interface TransactionDataType {
   amount: string,
   action: string
 }
+
+export interface WithdrawFundsValue {
+  amount: string,
+  bankName: string,
+  accountNumber: string,
+  reason?: string
+} 
