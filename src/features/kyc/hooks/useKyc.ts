@@ -1,7 +1,7 @@
 import type { PersonalInfoPayload } from "@/features/kyc/types";
 import api from "@/lib/axios";
 import { useAppDispatch } from "@/store/store";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { type AxiosError, type AxiosResponse } from "axios";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
@@ -10,6 +10,7 @@ import { completeStep1, completeStep2 } from "../kycSlice";
 export function useKyc() {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
+    const queryClient = useQueryClient();
 
      const uploadPersonalInformation = useMutation<
         AxiosResponse<any>,
@@ -39,7 +40,8 @@ export function useKyc() {
         },
         onSuccess: () => {
             dispatch(completeStep2())
-            toast.success("KYC information uploaded successfully! Verification processing...")
+            toast.success("KYC information uploaded successfully! Verification processing...");
+            queryClient.invalidateQueries({ queryKey: ["userProfile"] });
             navigate("/dashboard")
         },
         onError: (error: AxiosError) => toast.error(error.message)

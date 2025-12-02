@@ -8,8 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useApplyLoan } from "../hooks";
 import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
+import { KycProtectedButton } from "@/features/kyc/components/KycProtectedButton";
 
 const defaultValues = {
     amount: "",
@@ -168,9 +168,11 @@ export default function ApplyLoanForm() {
                     </FormFieldWrapper>
                 </FieldGroup>
 
-                <Button
+                <KycProtectedButton
+                    type="button"
                     variant={!form.state.isValid ? "secondary" : "default"} 
                     disabled={!form.state.isValid || applyLoan.isPending}
+                    onAllowed={() => form.handleSubmit()}
                     className="w-fit py-3 px-6 h-fit">
                         {applyLoan.isPending ?
                             <span className="flex items-center gap-1">
@@ -180,7 +182,7 @@ export default function ApplyLoanForm() {
                                 : 
                             "Submit application"
                         }
-                </Button>
+                </KycProtectedButton>
             </form>
         </div>
     )

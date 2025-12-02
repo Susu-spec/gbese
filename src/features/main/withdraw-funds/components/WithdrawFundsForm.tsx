@@ -8,17 +8,19 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import SuccessfulWithdrawalPrompt from "./SuccessfulWithdrawalPrompt";
 import type { WithdrawFundsValue } from "../../types";
+import { useWithdraw } from "../hooks";
 
 const defaultValues: WithdrawFundsValue = {
     amount: "",
     bankName: "",
+    bankCode: "",
     accountNumber: "",
     reason: ""
 }
 
 export default function WithdrawFundsForm() {
-    const [isPending, setIsPending] = useState(false)
     const [openSuccessful, setIsOpenSuccessful] = useState(false);
+    const withdrawFunds = useWithdraw();
     
     const form = useForm({
         defaultValues: defaultValues,
@@ -26,12 +28,17 @@ export default function WithdrawFundsForm() {
             onChange: withdrawFundsSchema,
             onSubmit: withdrawFundsSchema
         },
-        onSubmit: async () => {
-            setIsPending(true);
+        onSubmit: async ({ value }) => {
+            withdrawFunds.mutate({
+                amount: value.amount,
+                account_number: value.accountNumber,
+                bank_code: value.bankCode,
+                narration: value.reason
+            })
             setTimeout(() => {
-                setIsPending(false)
                 setIsOpenSuccessful(true);
-            }, 2000)
+            }, 3000)
+
         }
     })
 
@@ -82,6 +89,24 @@ export default function WithdrawFundsForm() {
                             />
                         )}
                     </FormFieldWrapper>
+                     <FormFieldWrapper
+                        form={form}
+                        label="Bank Code"
+                        name="bankCode"
+                    >
+                        {(field, isInvalid) => (
+                            <Input
+                                id={field.name}
+                                name={field.name}
+                                value={field.state.value}
+                                onBlur={field.handleBlur}
+                                onChange={(e) => field.handleChange(e.target.value)}
+                                type="text"
+                                placeholder="Enter your bank code"
+                                className={`${isInvalid ? 'border-red-500' : ''} text-gbese-black text-xs md:text-sm py-2 px-3 md:py-2.5 md:px-4 rounded-[.625rem]!`}
+                            />
+                        )}
+                    </FormFieldWrapper>
                     <FormFieldWrapper
                         form={form}
                         label="Account Number"
@@ -121,9 +146,9 @@ export default function WithdrawFundsForm() {
                 </FieldGroup>
                 <Button
                     variant={!form.state.isValid ? "secondary" : "default"} 
-                    disabled={!form.state.isValid || isPending}
+                    disabled={!form.state.isValid || withdrawFunds.isPending}
                     className="min-w-60 py-3 px-6 h-fit">
-                        {isPending ?
+                        {withdrawFunds.isPending ?
                             <span className="flex items-center gap-1">
                                 <span>Give us a second to process</span>
                                 <Spinner />

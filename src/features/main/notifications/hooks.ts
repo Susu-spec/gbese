@@ -19,7 +19,7 @@ export function useMarkAllRead() {
 
   return useMutation({
     mutationFn: async () => {
-      const res = await api.put("/notifications/mark-all-read");
+      const res = await api.put("/analytics/notifications/read-all");
       return res.data;
     },
 

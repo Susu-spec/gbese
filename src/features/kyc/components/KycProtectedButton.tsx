@@ -11,7 +11,7 @@ type ButtonBaseProps = React.ComponentProps<"button"> &
 };
 
 interface KycProtectedButtonProps extends ButtonBaseProps {
-  onAllowed: () => void;
+  onAllowed?: () => void;
 }
 
 
@@ -60,7 +60,11 @@ export function KycProtectedButton({
                 {...rest}
                 onClick={() => {
                     if (needsKyc) setOpen(true);
-                    else onAllowed();
+                    else {
+                        if(onAllowed) {
+                            onAllowed();
+                        }
+                    }
                 }}
             >
                 {children}
