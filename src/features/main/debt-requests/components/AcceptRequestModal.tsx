@@ -77,9 +77,9 @@ export function AcceptRequestModal({
         <Button
           onClick={onConfirm}
           disabled={isLoading}
-          className="bg-gbese-success hover:bg-gbese-success/90 text-white"
+          className="bg-primary-700 hover:bg-primary-800 text-white"
         >
-          Confirm & Continue
+          {isLoading ? "Confirming..." : "Confirm & Continue"}
         </Button>
       </div>
     </Modal>

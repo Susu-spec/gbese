@@ -40,7 +40,14 @@ export interface RawIncomingDebtRequestsResponse {
 // Helper to convert raw API debt request into UI DebtRequest type
 export function mapRawIncomingDebtRequest(raw: RawIncomingDebtRequest): DebtRequest {
   const requesterName = [raw.sender?.first_name, raw.sender?.last_name].filter(Boolean).join(" ") || "Unknown";
-  const amountNumber = Number(raw.debt?.remaining_balance ?? raw.debt?.principal_amount ?? 0);
+  // Prefer remaining_balance when it's a positive number; otherwise fall back to principal_amount
+  const remaining = raw.debt?.remaining_balance;
+  const principal = raw.debt?.principal_amount;
+  const remainingNum = remaining !== undefined && remaining !== null ? Number(remaining) : NaN;
+  const principalNum = principal !== undefined && principal !== null ? Number(principal) : NaN;
+  const amountNumber = Number.isFinite(remainingNum) && remainingNum > 0
+    ? remainingNum
+    : (Number.isFinite(principalNum) ? principalNum : 0);
   return {
     id: raw.id,
     requester_name: requesterName,

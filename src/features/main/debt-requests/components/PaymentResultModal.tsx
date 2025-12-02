@@ -19,21 +19,21 @@ export function PaymentResultModal({
     <Modal
       open={open}
       onClose={onClose}
-      className="w-full max-w-2xl rounded-xl p-6 md:p-10 flex flex-col items-center justify-center gap-4 md:gap-6"
+      className="w-full max-w-md p-6 md:p-8 flex flex-col items-center justify-center gap-4 md:gap-5"
     >
-      <div className="flex flex-col items-center gap-4 md:gap-6">
+      <div className="flex flex-col items-center gap-3 md:gap-4">
         {success ? (
-          <CheckCircle2 className="w-16 h-16 md:w-20 md:h-20 text-gbese-success" />
+          <CheckCircle2 className="w-12 h-12 md:w-14 md:h-14 text-gbese-success" />
         ) : (
-          <XCircle className="w-16 h-16 md:w-20 md:h-20 text-primary-400" />
+          <XCircle className="w-12 h-12 md:w-14 md:h-14 text-primary-400" />
         )}
         
         <div className="text-center">
-          <h2 className="font-sora font-semibold text-2xl md:text-3xl text-primary-900 mb-2">
+          <h2 className="font-sora font-semibold text-lg md:text-xl text-primary-900 mb-1.5 md:mb-2">
             {message || (success ? "Debt Accepted!" : "Action Failed")}
           </h2>
           {!message && (
-            <p className="text-sm md:text-base text-primary-700 px-4">
+            <p className="text-xs md:text-sm text-primary-700 px-2">
               {success
                 ? "The debt has been transferred to your obligations."
                 : "There was an issue processing your request. Please try again."}
@@ -45,8 +45,8 @@ export function PaymentResultModal({
           onClick={onClose}
           className={
             success
-              ? "bg-gbese-success hover:bg-gbese-success/90 text-white px-6 md:px-8 text-sm md:text-base w-full sm:w-auto"
-              : "bg-blue-600 hover:bg-blue-700 text-white px-6 md:px-8 text-sm md:text-base w-full sm:w-auto"
+              ? "bg-gbese-success hover:bg-gbese-success/90 text-white px-6 text-sm w-full sm:w-auto"
+              : "bg-blue-600 hover:bg-blue-700 text-white px-6 text-sm w-full sm:w-auto"
           }
         >
           Close
