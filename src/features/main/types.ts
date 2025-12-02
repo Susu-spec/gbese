@@ -72,10 +72,10 @@ export interface WithdrawFundsValue {
 
 
 export interface NotificationProps {
-  id: string;
-  type: string;
-  title: string;
-  message: string;
+  id?: string;
+  type?: string;
+  title?: string;
+  message?: string;
   created_at?: string;
-  is_read: boolean;
+  is_read?: boolean;
 }
