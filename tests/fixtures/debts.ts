@@ -31,19 +31,18 @@ export const createMockDebts = (count: number) => {
 };
 
 /**
- * Factory function to create debt request data
+ * Factory function to create debt request data (matches DebtRequest type)
  */
 export const createMockDebtRequest = (overrides = {}) => ({
     id: 'request-123',
-    fromUserId: 'user-456',
-    fromUserName: 'Requesting User',
-    toUserId: 'user-123',
-    toUserName: 'Test User',
+    requester_name: 'Requesting User',
+    requester_id: 'user-456',
+    requester_account_number: '1234567890',
     amount: 30000,
-    currency: 'NGN',
+    narration: 'Please accept this debt transfer',
+    due_date: '2024-12-31',
     status: 'pending' as const,
-    message: 'Please accept this debt transfer',
-    createdAt: '2024-01-15T10:00:00Z',
+    created_at: '2024-01-15T10:00:00Z',
     ...overrides,
 });
 
@@ -55,8 +54,8 @@ export const createMockDebtRequests = (count: number) => {
         createMockDebtRequest({
             id: `request-${index + 1}`,
             amount: (index + 1) * 15000,
-            fromUserName: `User ${index + 1}`,
-            message: `Debt transfer request ${index + 1}`,
+            requester_name: `User ${index + 1}`,
+            narration: `Debt transfer request ${index + 1}`,
         })
     );
 };
