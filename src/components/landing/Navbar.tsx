@@ -51,7 +51,7 @@ export default function Navbar() {
                         <Button
                             variant="ghost"
                             size="sm"
-                            className="text-gbese-white hover:text-primary-200 transition-colors"
+                            className="text-gbese-white hover:text-primary-800 hover:bg-gbese-white transition-colors"
                         >
                             Login
                         </Button>
