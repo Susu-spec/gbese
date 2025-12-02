@@ -3,24 +3,142 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import { useFundWallet } from "../hooks/useFundWallet";
 import type { PaymentMethod } from "../types";
 import { Spinner } from "@/components/ui/spinner";
+import { CardPaymentModal } from "./CardPaymentModal";
+import { DebtSelectionModal } from "./DebtSelectionModal";
+import { useAppSelector } from "@/store/store";
+import { depositFormSchema, DEPOSIT_LIMITS } from "../schemas";
+import { useDebt } from "../../my-debts/hook";
+import { toast } from "sonner";
+
+interface SelectedDebt {
+  obligation_id: string;
+  amount: number;
+}
 
 export function FundWalletForm() {
   const [amount, setAmount] = useState("");
   const [method, setMethod] = useState<PaymentMethod | "">("");
   const [attachDebt, setAttachDebt] = useState(false);
-  const { fundWallet } = useFundWallet();
+  const [showCardModal, setShowCardModal] = useState(false);
+  const [showDebtModal, setShowDebtModal] = useState(false);
+  const [selectedDebts, setSelectedDebts] = useState<SelectedDebt[]>([]);
+  const [amountError, setAmountError] = useState<string>("");
+  
+  const user = useAppSelector((state) => state.user.profile);
+  const isKycVerified = user.kyc_status === "verified";
+  const { fundWallet, fundWalletAndPayDebts } = useFundWallet();
+  const { acticeDebtsQuery } = useDebt();
+  
+  const activeDebts = acticeDebtsQuery.data?.data || [];
+  const isProcessing = fundWallet.isPending || fundWalletAndPayDebts.isPending;
+
+  const maxDeposit = isKycVerified
+    ? DEPOSIT_LIMITS.KYC.MAX_PER_DEPOSIT
+    : DEPOSIT_LIMITS.NON_KYC.MAX_PER_DEPOSIT;
+
+  function handleAmountChange(value: string) {
+    setAmount(value);
+    
+    const numValue = Number(value);
+    if (!value || value === "") {
+      setAmountError("");
+      return;
+    }
+    
+    if (numValue <= 0) {
+      setAmountError("Amount must be greater than zero");
+    } else if (numValue < 100) {
+      setAmountError("Amount must be at least ₦100");
+    } else if (numValue > maxDeposit) {
+      setAmountError(
+        isKycVerified
+          ? `Maximum deposit is ₦${maxDeposit.toLocaleString()} per transaction`
+          : `Non-KYC users can deposit up to ₦${maxDeposit.toLocaleString()} per transaction. Complete KYC for higher limits.`
+      );
+    } else {
+      setAmountError("");
+    }
+  }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    
+    const schema = depositFormSchema(isKycVerified);
+    const result = schema.safeParse({
+      amount: Number(amount),
+      payment_method: method,
+    });
+
+    if (!result.success) {
+      const firstError = result.error.issues[0];
+      toast.error(firstError.message);
+      return;
+    }
+
+    if (attachDebt && activeDebts.length > 0) {
+      setShowDebtModal(true);
+      return;
+    }
+  
+    if (method === "card") {
+      setShowCardModal(true);
+      return;
+    }
+
     fundWallet.mutate({
       amount: Number(amount),
       payment_method: method as PaymentMethod,
     });
     setAmount("");
+  }
+
+  function handleDebtSelection(debts: SelectedDebt[]) {
+    setSelectedDebts(debts);
+    setShowDebtModal(false);
+    
+    if (method === "card") {
+      setShowCardModal(true);
+    } else {
+      fundWalletAndPayDebts.mutate({
+        amount: Number(amount),
+        payment_method: method as PaymentMethod,
+        debts: debts,
+      });
+      setAmount("");
+      setMethod("");
+      setAttachDebt(false);
+      setSelectedDebts([]);
+    }
+  }
+
+  function handleCardPaymentSuccess() {
+    if (selectedDebts.length > 0) {
+      fundWalletAndPayDebts.mutate({
+        amount: Number(amount),
+        payment_method: "card",
+        debts: selectedDebts,
+      });
+    } else {
+      fundWallet.mutate({
+        amount: Number(amount),
+        payment_method: "card",
+      });
+    }
+    setAmount("");
+    setMethod("");
+    setAttachDebt(false);
+    setSelectedDebts([]);
   }
 
   return (
@@ -34,51 +152,81 @@ export function FundWalletForm() {
         <h2 className="h4">Details</h2>
         <form onSubmit={handleSubmit} className="flex flex-col gap-10">
           <div className="flex flex-col gap-10">
-            {/* Amount Field */}
+          
             <div className="flex flex-col gap-2">
-              <Label htmlFor="amount">Amount (₦)</Label>
+              <div className="flex items-center justify-between">
+                <Label htmlFor="amount">Amount (₦)</Label>
+                <span className="text-xs text-primary-600">
+                  Max: ₦{maxDeposit.toLocaleString()}
+                </span>
+              </div>
               <Input
                 id="amount"
                 type="number"
-                min={0}
+                min={100}
+                max={maxDeposit}
                 placeholder="Enter amount"
                 value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                className="h-12 md:h-14"
+                onChange={(e) => handleAmountChange(e.target.value)}
+                className={cn(
+                  "h-12 md:h-14",
+                  amountError && "border-red-500"
+                )}
                 required
-                disabled={fundWallet.isPending}
+                disabled={isProcessing}
               />
+              {amountError && (
+                <p className="text-sm text-red-600">{amountError}</p>
+              )}
+              {!isKycVerified && !amountError && (
+                <p className="text-xs text-primary-600">
+                  Complete KYC verification to deposit up to ₦{DEPOSIT_LIMITS.KYC.MAX_PER_DEPOSIT.toLocaleString()} per transaction
+                </p>
+              )}
             </div>
-            {/* Method Field */}
+            
             <div className="flex flex-col gap-2">
               <Label htmlFor="method">Payment Method</Label>
-              <select
-                id="method"
+              <Select
                 value={method}
-                onChange={(e) => setMethod(e.target.value as PaymentMethod | "")}
-                disabled={fundWallet.isPending}
-                className={cn(
-                  "h-12 md:h-14 rounded-md border border-primary-200 bg-white pr-10 md:pr-12 pl-3 text-sm",
-                  "focus:outline-none focus:ring-2 focus:ring-primary-300",
-                  "disabled:opacity-50 disabled:cursor-not-allowed"
-                )}
+                onValueChange={(value) => setMethod(value as PaymentMethod | "")}
+                disabled={isProcessing}
               >
-                <option value="">Select payment method</option>
-                <option value="bank_transfer">Bank Transfer</option>
-                <option value="card">Card</option>
-                <option value="ussd">USSD</option>
-              </select>
+                <SelectTrigger 
+                  className="w-full border border-input bg-transparent shadow-xs text-sm px-3"
+                  style={{ height: '3.5rem' }}
+                >
+                  <SelectValue placeholder="Select payment method" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="bank_transfer">Bank Transfer</SelectItem>
+                  <SelectItem value="card">Card</SelectItem>
+                  <SelectItem value="ussd">USSD</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
-            {/* Attach Debt Checkbox */}
             <div className="flex items-center gap-2">
-              <input
-                id="attachDebt"
-                type="checkbox"
-                checked={attachDebt}
-                onChange={(e) => setAttachDebt(e.target.checked)}
-                disabled={fundWallet.isPending}
-                className="size-5 md:size-6 rounded border-primary-200 text-primary-800 focus:ring-2 focus:ring-primary-400 bg-white"
-              />
+              <label className="relative flex items-center cursor-pointer">
+                <input
+                  id="attachDebt"
+                  type="checkbox"
+                  checked={attachDebt}
+                  onChange={(e) => setAttachDebt(e.target.checked)}
+                  disabled={isProcessing}
+                  className="peer size-5 md:size-6 appearance-none rounded border-2 border-primary-200 bg-white checked:border-primary-800 focus:ring-2 focus:ring-primary-400 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+                />
+                <svg
+                  className="absolute left-0 size-5 md:size-6 pointer-events-none hidden peer-checked:block text-black"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </label>
               <Label htmlFor="attachDebt" className="cursor-pointer">
                 Attach debt obligations
               </Label>
@@ -88,9 +236,9 @@ export function FundWalletForm() {
             <Button
               type="submit"
               className="min-w-36 md:min-w-40 h-11 md:h-12"
-              disabled={fundWallet.isPending || !amount || !method}
+              disabled={isProcessing || !amount || !method}
             >
-              {fundWallet.isPending ? (
+              {isProcessing ? (
                 <>
                   <Spinner className="size-4" />
                   <span>Processing...</span>
@@ -102,6 +250,21 @@ export function FundWalletForm() {
           </div>
         </form>
       </div>
+
+      <DebtSelectionModal
+        open={showDebtModal}
+        onClose={() => setShowDebtModal(false)}
+        debts={activeDebts}
+        onConfirm={handleDebtSelection}
+        isLoading={acticeDebtsQuery.isLoading}
+      />
+
+      <CardPaymentModal
+        open={showCardModal}
+        onClose={() => setShowCardModal(false)}
+        amount={Number(amount)}
+        onSuccess={handleCardPaymentSuccess}
+      />
     </Card>
   );
 }

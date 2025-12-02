@@ -54,9 +54,6 @@ export function WalletBalanceCard({ balance, isLoading }: WalletBalanceCardProps
             <span className="text-xl sm:text-2xl md:text-4xl font-semibold leading-7 md:leading-tight">••••••</span>
           )}
         </div>
-        <div className="border-b border-gbese-black w-16 md:w-20">
-          <p className="text-xs leading-4 whitespace-nowrap">Fund Wallet</p>
-        </div>
       </div>
     </Card>
   );
