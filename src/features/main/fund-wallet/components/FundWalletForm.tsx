@@ -18,8 +18,8 @@ import { CardPaymentModal } from "./CardPaymentModal";
 import { DebtSelectionModal } from "./DebtSelectionModal";
 import { useAppSelector } from "@/store/store";
 import { depositFormSchema, DEPOSIT_LIMITS } from "../schemas";
-import { AlertCircle } from "lucide-react";
 import { useDebt } from "../../my-debts/hook";
+import { toast } from "sonner";
 
 interface SelectedDebt {
   obligation_id: string;
@@ -32,8 +32,8 @@ export function FundWalletForm() {
   const [attachDebt, setAttachDebt] = useState(false);
   const [showCardModal, setShowCardModal] = useState(false);
   const [showDebtModal, setShowDebtModal] = useState(false);
-  const [validationError, setValidationError] = useState<string>("");
   const [selectedDebts, setSelectedDebts] = useState<SelectedDebt[]>([]);
+  const [amountError, setAmountError] = useState<string>("");
   
   const user = useAppSelector((state) => state.user.profile);
   const isKycVerified = user.kyc_status === "verified";
@@ -43,9 +43,36 @@ export function FundWalletForm() {
   const activeDebts = acticeDebtsQuery.data?.data || [];
   const isProcessing = fundWallet.isPending || fundWalletAndPayDebts.isPending;
 
+  const maxDeposit = isKycVerified
+    ? DEPOSIT_LIMITS.KYC.MAX_PER_DEPOSIT
+    : DEPOSIT_LIMITS.NON_KYC.MAX_PER_DEPOSIT;
+
+  function handleAmountChange(value: string) {
+    setAmount(value);
+    
+    const numValue = Number(value);
+    if (!value || value === "") {
+      setAmountError("");
+      return;
+    }
+    
+    if (numValue <= 0) {
+      setAmountError("Amount must be greater than zero");
+    } else if (numValue < 100) {
+      setAmountError("Amount must be at least ₦100");
+    } else if (numValue > maxDeposit) {
+      setAmountError(
+        isKycVerified
+          ? `Maximum deposit is ₦${maxDeposit.toLocaleString()} per transaction`
+          : `Non-KYC users can deposit up to ₦${maxDeposit.toLocaleString()} per transaction. Complete KYC for higher limits.`
+      );
+    } else {
+      setAmountError("");
+    }
+  }
+
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setValidationError("");
     
     const schema = depositFormSchema(isKycVerified);
     const result = schema.safeParse({
@@ -55,7 +82,7 @@ export function FundWalletForm() {
 
     if (!result.success) {
       const firstError = result.error.issues[0];
-      setValidationError(firstError.message);
+      toast.error(firstError.message);
       return;
     }
 
@@ -114,10 +141,6 @@ export function FundWalletForm() {
     setSelectedDebts([]);
   }
 
-  const maxDeposit = isKycVerified
-    ? DEPOSIT_LIMITS.KYC.MAX_PER_DEPOSIT
-    : DEPOSIT_LIMITS.NON_KYC.MAX_PER_DEPOSIT;
-
   return (
     <Card
       className={cn(
@@ -144,24 +167,18 @@ export function FundWalletForm() {
                 max={maxDeposit}
                 placeholder="Enter amount"
                 value={amount}
-                onChange={(e) => {
-                  setAmount(e.target.value);
-                  setValidationError("");
-                }}
+                onChange={(e) => handleAmountChange(e.target.value)}
                 className={cn(
                   "h-12 md:h-14",
-                  validationError && "border-red-500 focus:ring-red-500"
+                  amountError && "border-red-500"
                 )}
                 required
                 disabled={isProcessing}
               />
-              {validationError && (
-                <div className="flex items-start gap-2 text-sm text-red-600">
-                  <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
-                  <span>{validationError}</span>
-                </div>
+              {amountError && (
+                <p className="text-sm text-red-600">{amountError}</p>
               )}
-              {!isKycVerified && !validationError && (
+              {!isKycVerified && !amountError && (
                 <p className="text-xs text-primary-600">
                   Complete KYC verification to deposit up to ₦{DEPOSIT_LIMITS.KYC.MAX_PER_DEPOSIT.toLocaleString()} per transaction
                 </p>
