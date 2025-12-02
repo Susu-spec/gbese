@@ -147,7 +147,7 @@ export default function DebtRequestsPage() {
   };
 
   return (
-    <div className="flex flex-col gap-6 md:gap-8 pb-12 px-2 sm:px-3 md:px-0">
+    <div className="flex flex-col gap-4 md:gap-8 pb-12 px-2 sm:px-3 md:px-0">
       <header className="flex flex-col gap-2">
         <h1 className="font-sora font-semibold text-xl md:text-3xl leading-8 md:leading-10 text-primary-800">
           Debt Requests

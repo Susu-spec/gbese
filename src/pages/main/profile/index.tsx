@@ -34,32 +34,32 @@ const Profile = () => {
   const isKycVerified = user?.kyc_status === "verified";
 
   return (
-    <div className="w-full p-2">
-        <h2 className="py-2 text-3xl">Personal Information</h2>
+    <div className="w-full flex flex-col gap-4 md:gap-8">
+        <h1 className="text-xl md:text-3xl text-primary-800 font-semibold">Personal Information</h1>
 
         <div className="p-2 flex flex-col">
             <div className="w-full px-6 flex items-center bg-white gap-10 mb-4">
-            <div
+            <button
                 onClick={() => handleTabChange("personal-information")}
                 className={
                 tabValue === "personal-information"
-                    ? "border-b-2 border-primary-800 h-18 flex items-center"
+                    ? "border-b-2 border-primary-800 h-18 flex items-center font-semibold"
                     : ""
                 }
             >
                 <p>Personal</p>
-            </div>
+            </button>
 
-            <div
+            <button
                 onClick={() => handleTabChange("security-settings")}
                 className={
                 tabValue === "security-settings"
-                    ? "border-b-2 border-primary-800 h-18 flex items-center"
+                    ? "border-b-2 border-primary-800 h-18 flex items-center font-semibold"
                     : ""
                 }
             >
                 <p>Security</p>
-            </div>
+            </button>
             </div>
 
             {/* PERSONAL INFORMATION SECTION */}
@@ -94,14 +94,14 @@ const Profile = () => {
                     <InfoRow label="State" value={user?.state} />
                     <InfoRow label="Country" value={user?.country} />
                     <InfoRow label="Postal Code" value={user?.postal_code} />
-                    <InfoRow label="Occupation" value={user?.occupation} />
+                    {user?.occupation && <InfoRow label="Occupation" value={user?.occupation?.charAt(0)?.toUpperCase() + user?.occupation?.slice(1)} />}
 
                     <div className="flex justify-between w-full items-center">
                     <label className="w-2/3">KYC Status</label>
                     <Link to="/kyc/personal-info" className="w-1/3">
                         <button
                             disabled={isKycVerified}
-                            className={`w-full py-2 rounded text-sm ${
+                            className={`w-full max-w-fit py-2 rounded-4xl px-4 text-sm ${
                             isKycVerified
                                 ? "bg-green-200 text-green-700 cursor-not-allowed"
                                 : "bg-primary-800 text-white"

@@ -7,8 +7,8 @@ export default function CreditOptionsPage() {
     const { data, isLoading, isError, refetch } = useCreditProviders();
 
     return (
-        <div className="flex flex-col gap-6.5 lg:gap-10">
-            <div className="flex flex-col gap-1.5 md:gap-2">
+        <div className="flex flex-col gap-4 md:gap-8">
+            <div className="flex flex-col gap-1 md:gap-2">
                 <h1 className="font-sora text-primary-800 font-semibold text-xl md:text-3xl ">
                     Credit Options
                 </h1>

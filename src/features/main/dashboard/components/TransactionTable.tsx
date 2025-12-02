@@ -37,7 +37,7 @@ const columns: ColumnDef<TransactionData>[] = [
     header: 'Amount',
     cell: ({ row }) => {
       const amount = row.getValue('amount') as number;
-      return `₦${amount.toLocaleString()}`;
+      return `₦${(+amount).toLocaleString()}`;
     },
   },
   {
@@ -83,10 +83,10 @@ export function TableData() {
   // Loading state
   if (isLoading) {
     return (
-      <div className="space-y-2">
-        <Skeleton className="h-10 w-full" />
-        <Skeleton className="h-10 w-full" />
-        <Skeleton className="h-10 w-full" />
+      <div className="space-y-4 px-4">
+        <Skeleton className="h-5 w-full" />
+        <Skeleton className="h-5 w-full" />
+        <Skeleton className="h-5 w-full" />
       </div>
     );
   }

@@ -20,10 +20,10 @@ export default function MyDebtsPage() {
     }
 
     return (
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4 md:gap-8">
             <div className="flex flex-col gap-2">
-                <h1 className="text-3xl text-primary-800 font-semibold">My Debts - GBESE</h1>
-                <p>Track, Manage, and Transfer your debt in one place.</p>
+                <h1 className="text-xl md:text-3xl text-primary-800 font-semibold">My Debts - GBESE</h1>
+                <p className="text-sm md:text-base">Track, Manage, and Transfer your debt in one place.</p>
             </div>
             <div className="flex flex-col lg:flex-row md:flex-row gap-4">
                 <div className="lg:w-2/3 w-full bg-white p-8 rounded-xl shadow-md">
@@ -52,15 +52,15 @@ export default function MyDebtsPage() {
                 </div>
             </div>
 
-            <div className="">
-                <div className="w-full items-center flex justify-between mb-4">
-                    <button onClick={() => handleTabChange("active")} className={tabValue === "active" ? "border-b-2 border-primary-800 h-18 flex items-center " : ""}>
+            <div className="flex flex-col gap-5">
+                <div className="w-full items-center flex md:justify-between mb-4 gap-4 overflow-x-auto flex-nowrap whitespace-nowrap hide-scrollbar">
+                    <button onClick={() => handleTabChange("active")} className={`${tabValue === "active" ? "border-b-2 border-primary-800 h-18 flex items-center whitespace-nowrap font-semibold" : ""} text-sm md:text-base`}>
                         <p>Active Debts</p>
                     </button>
-                    <button onClick={() => handleTabChange("transferred")} className={tabValue === "transferred" ? "border-b-2 border-primary-800 h-18 flex items-center" : ""}>
+                    <button onClick={() => handleTabChange("transferred")} className={`${tabValue === "transferred" ? "border-b-2 border-primary-800 h-18 flex items-center whitespace-nowrap font-semibold" : ""} text-sm md:text-base`}>
                         <p>Transferred Debts</p>
                     </button>
-                    <button onClick={() => handleTabChange("history")} className={tabValue === "history" ? "border-b-2 border-primary-800 h-18 flex items-center" : ""}>
+                    <button onClick={() => handleTabChange("history")} className={`${tabValue === "history" ? "border-b-2 border-primary-800 h-18 flex items-center whitespace-nowrap font-semibold" : ""} text-sm md:text-base`}>
                         <p>Debt History</p>
                     </button>
                 </div>

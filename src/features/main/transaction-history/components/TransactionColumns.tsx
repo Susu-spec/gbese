@@ -6,9 +6,9 @@ import { format } from "date-fns";
 
 export const TransactionColumns: ColumnDef<TransactionDataType>[] = [
     {
-        accessorKey: "recipient.name",
+        accessorKey: "sender.name",
         header: "Name",
-        cell: ({ row }: { row: Row<TransactionDataType> }) => <span>{row.original.recipient?.name ?? "Account Name"}</span>
+        cell: ({ row }: { row: Row<TransactionDataType> }) => <span className="capitalize">{row.original.sender?.name ?? "Account Name"}</span>
     },
      {
         accessorKey: "completed_at",

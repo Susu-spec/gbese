@@ -109,12 +109,20 @@ html {
   overflow-x: hidden;
 }
 
+
 body {
   margin: 0;
   padding: 0;
   cursor: default;
   box-sizing: border-box;
   overflow-x: hidden;
+}
+
+* {
+  @apply appearance-none outline-none! ring-0;
+}
+*:focus {
+  @apply appearance-none outline-none! ring-0!;
 }
 
 a, button {

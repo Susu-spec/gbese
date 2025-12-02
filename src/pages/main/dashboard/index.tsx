@@ -52,9 +52,9 @@ export default function DashboardPage() {
 
 
     return (
-        <div className="flex flex-col gap-6">
-            <div className="mb-4 flex flex-col gap-2">
-                <h2 className="text-xl md:text-3xl font-semibold text-primary-800">How Far, {isLoading ? "..." : user?.first_name || "User"}!</h2>
+        <div className="flex flex-col gap-4 md:gap-8">
+            <div className="flex flex-col gap-2">
+                <h2 className="text-xl md:text-3xl font-semibold text-primary-800">How Far, {isLoading ? <span className="animate-pulse">...</span> : user?.first_name || "User"}!</h2>
                 <p className="text-sm md:text-base">Time to balance your gbese and stack some XP. No slackin’ today</p>
             </div>
             <div className="flex gap-3 w-full overflow-x-auto hide-scrollbar">
