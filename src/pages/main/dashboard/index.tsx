@@ -21,6 +21,7 @@ import { TableData } from "@/features/main/dashboard/components/TransactionTable
 import type { DebtRequest } from "@/features/main/dashboard/types";
 import DebtRequests from "@/features/main/dashboard/components/DebtRequest";
 import { Link, useNavigate } from "react-router";
+import { DebtRequestBarChart } from "@/features/main/dashboard/components/DebtBarChart";
 
 
 export default function DashboardPage() {
@@ -116,47 +117,49 @@ export default function DashboardPage() {
             </div>
 
             <div className="grid grid-cols-1 gap-2 lg:grid-cols-2 xl:grid-cols-3 lg:gap-3">
-                <Card className="xl:col-span-2">
-                    <CardHeader>
-                        <CardTitle>Activity Breakdown</CardTitle>
-                        <CardAction>
-                            <Select>
-                                <SelectTrigger className="w-[120px]">
-                                    <SelectValue placeholder="Monthly" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectGroup>
-                                        <SelectItem value="apple">Monthly</SelectItem>
-                                        <SelectItem value="banana">Weekly</SelectItem>
-                                        <SelectItem value="blueberry">Yearly</SelectItem>
-                                    </SelectGroup>
-                                </SelectContent>
-                                </Select>
-                        </CardAction>
-                    </CardHeader>
+                
+                    <Card className="xl:col-span-4">
+                        <CardHeader className="px-4">
+                            <CardTitle>Transaction History</CardTitle>
+                        </CardHeader>
+                        {!isLoading ? (
+                            <TableData/>
+                        ) : (      
+                            <div className="flex flex-col text-center items-center justify-center">
+                                <img src={WalletSvg} alt="Wallet-svg" />
+                                <p className="xl:w-92 md:w-72 w-64 text-gbese-grey-100">No transactions yet. Once you start flipping gbese, your history will appear here.</p>
+                            </div>
+                        )}
+                    </Card>
                     {!isLoading ? (
-                        <TableData/>
+                    <div className="xl:col-span-2">
+                        <DebtRequestBarChart />
+                    </div> 
                     ) : (
-                        <div className="flex flex-col text-center items-center justify-center">
-                            <img src={Analytics} alt="Analytics" />
-                            <p className="xl:w-92 md:w-72 w-64 text-gbese-grey-100">Your activity will show here once you start borrowing, repaying, or transferring gbese.</p>
-                        </div>
+                        <Card className="xl:col-span-2">
+                            <CardHeader>
+                                <CardTitle>Debt Requests</CardTitle>
+                                <CardAction>
+                                    <Select>
+                                        <SelectTrigger className="w-[120px]">
+                                            <SelectValue placeholder="Monthly" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectGroup>
+                                                <SelectItem value="apple">Monthly</SelectItem>
+                                                <SelectItem value="banana">Weekly</SelectItem>
+                                                <SelectItem value="blueberry">Yearly</SelectItem>
+                                            </SelectGroup>
+                                        </SelectContent>
+                                        </Select>
+                                </CardAction>
+                            </CardHeader>
+                            <div className="flex flex-col text-center items-center justify-center">
+                                <img src={Analytics} alt="Analytics" />
+                                <p className="xl:w-92 md:w-72 w-64 text-gbese-grey-100">Your activity will show here once you start borrowing, repaying, or transferring gbese.</p>
+                            </div>
+                        </Card>
                     )}
-                </Card>
-                <Card className="col-span-1 p-2">There is meant to be something here but I dont think I want to put any spinning thing here</Card>
-                <Card className="xl:col-span-2">
-                    <CardHeader>
-                        <CardTitle>Transaction History</CardTitle>
-                    </CardHeader>
-                    {!isLoading ? (
-                        <TableData/>
-                    ) : (      
-                        <div className="flex flex-col text-center items-center justify-center">
-                            <img src={WalletSvg} alt="Wallet-svg" />
-                            <p className="xl:w-92 md:w-72 w-64 text-gbese-grey-100">No transactions yet. Once you start flipping gbese, your history will appear here.</p>
-                        </div>
-                    )}
-                </Card>
                 <Card className="col-span-1 p-4 flex flex-col items-center justify-center">
                     {!isLoading && debtReq && debtReq.length > 0 ? (
                         <div className="flex flex-col gap-4">

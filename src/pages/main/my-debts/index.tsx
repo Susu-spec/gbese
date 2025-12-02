@@ -1,4 +1,3 @@
-import { KycProtectedButton } from "@/features/kyc/components/KycProtectedButton";
 import { useUser } from "@/features/main/dashboard/hooks/useUser";
 import ActiveDebts from "@/features/main/my-debts/components/ActiveDebts";
 import TransferredDebts from "@/features/main/my-debts/components/TransferredDebts";
@@ -29,13 +28,7 @@ export default function MyDebtsPage() {
                 <div className="lg:w-2/3 w-full bg-white p-8 rounded-xl shadow-md">
                     <h2 className="text-xl font-semibold mb-4">Total Outstanding</h2>
                     <div>
-                        <p className="text-xl text-primary-800">&#8358; {isLoading ? "0.00" : Number(account?.total_debt_obligation ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                        <div className="flex justify-end">
-                            <div className="flex gap-2">
-                                <KycProtectedButton className="p-2" onAllowed={() => {}}>Make Payment</KycProtectedButton>
-                                <KycProtectedButton variant="secondary" className="p-2" onAllowed={() => {}}>Transfer Debt</KycProtectedButton>
-                            </div>
-                        </div>
+                        <p className="text-xl md:text-3xl text-primary-800 font-semibold">&#8358; {isLoading ? "0.00" : Number(account?.total_debt_obligation ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     </div>
                 </div>
                 <div className="lg:w-1/3 w-full bg-[#EFE3FF] p-4 rounded-xl flex flex-col gap-4">

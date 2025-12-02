@@ -86,13 +86,17 @@ export type TransactionType = keyof typeof TRANSACTION_TYPES;
  * A lookup table that maps each transaction status to its
  * corresponding display color and text label.
  */
-export const TransactionStatusMap: Record<"completed" | "pending" | "failed", {
+export const TransactionStatusMap: Record<"completed" | "pending" | "failed" | "processing", {
   color: string,
   text: string
 }> = {
   completed: {
     color: "#34A67B",
     text: "Success"
+  },
+  processing: {
+    color: "#002824",
+    text: "Processing"
   },
   pending: {
     color: "#FFB300",

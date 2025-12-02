@@ -30,7 +30,7 @@ export const TransactionColumns: ColumnDef<TransactionDataType>[] = [
         header: "Status",
         cell: ({ row }: { row: Row<TransactionDataType> }) => {
             const status = row.getValue("status");
-            const { text, color } = TransactionStatusMap[status as "completed" | "pending" | "failed"]
+            const { text, color } = TransactionStatusMap[status as "completed" | "pending" | "failed" | "processing"]
 
             return (
                 <span style={{ color: color }} className="text-xs">{text}</span>
