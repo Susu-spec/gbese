@@ -9,7 +9,7 @@ export default function MainLayout() {
     // Warm and sync account balance globally for protected area
     useAccountBalance();
     return (
-        <SidebarProvider defaultOpen={true}>
+        <SidebarProvider>
             <DashboardSidebar />
             <main className="w-full bg-gbese-main-background overscroll-auto hide-scrollbar">
                 <ScrollToTop />

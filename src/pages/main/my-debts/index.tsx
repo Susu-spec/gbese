@@ -45,7 +45,7 @@ export default function MyDebtsPage() {
                         <p>Join our community debt redistribution program for potential debt reduction of 5-15%</p>
                         
                     </div>
-                    <button disabled className="w-full bg-gbese-white rounded-xl flex items-center gap-6 justify-center p-2">
+                    <button disabled className="w-full bg-gbese-white rounded-xl flex items-center gap-6 justify-center p-2 cursor-default">
                             <ArrowRight size={20}/>
                             <p className="font-semibold text-sm">Coming soon</p>
                         </button>
