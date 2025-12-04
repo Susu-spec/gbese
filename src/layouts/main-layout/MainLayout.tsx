@@ -14,7 +14,7 @@ export default function MainLayout() {
             <main className="w-full bg-gbese-main-background overscroll-auto hide-scrollbar">
                 <ScrollToTop />
                 <Header />
-                <div className="mx-auto max-w-7xl mt-30 md:mt-32 mb-10 px-6">
+                <div className="mx-auto max-w-7xl mt-20 md:mt-22 mb-10 px-6">
                     <Outlet />
                 </div>
             </main>

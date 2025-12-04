@@ -76,7 +76,7 @@
   --color-primary-950: #010B2A;
 
   /* Custom neutrals */
-  --color-gbese-background: #F9FAFB;
+  --color-gbese-background: #F0F3FF;
   --color-gbese-main-background: #F1F4FF;
   --color-gbese-neutrals-200: #CFD0D1;
   --color-gbese-grey-200: #D1D1D1;
@@ -265,6 +265,10 @@ input:-webkit-autofill::selection {
     background: transparent;
   }
 
+  .app-scale-wrapper {
+    transform: scale(0.9);
+    transform-origin: top center;
+  }
 
 
 }
