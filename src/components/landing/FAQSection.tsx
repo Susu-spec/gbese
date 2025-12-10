@@ -1,0 +1,48 @@
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion";
+import { faqs } from "./landingData";
+
+export default function FAQSection() {
+
+    return (
+        <section
+            id="faqs"
+            className="w-full bg-gbese-white border-t border-gbese-neutrals-200 py-20 px-5 md:py-20 md:px-20"
+        >
+            <div className="mx-auto flex max-w-screen-2xl flex-col items-center gap-7.5 md:gap-[4.938rem]">
+                <h2 className="font-sora font-semibold text-center text-primary-900 text-[1.75rem] leading-10 md:text-[3rem] md:leading-18 max-w-sm sm:max-w-md md:max-w-2xl">
+                    Got Gbese Questions?
+                </h2>
+
+                <p className="font-medium text-center text-lg leading-9 md:text-[1.5rem] md:leading-10.5 max-w-sm sm:max-w-md md:max-w-full md:-mt-12">
+                    All your burning questions answered. No long talk.
+                </p>
+
+                <Accordion
+                    type="single"
+                    collapsible
+                    className="w-full max-w-sm sm:max-w-xl md:max-w-7xl flex flex-col gap-4"
+                >
+                    {faqs.map((faq, index) => (
+                        <AccordionItem
+                            key={index}
+                            value={`item-${index}`}
+                            className="border border-gbese-neutrals-200 rounded-2xl md:rounded-lg p-2.5 md:px-10 mb-4 data-[state=closed]:bg-[rgba(242,242,242,1)] data-[state=open]:bg-gbese-lilac transition-all duration-300 hover:shadow-md"
+                        >
+                            <AccordionTrigger className="font-medium md:font-semibold hover:no-underline py-3 md:py-6 text-sm md:text-[1.5rem] leading-5 md:leading-10.5">
+                                {faq.question}
+                            </AccordionTrigger>
+                            <AccordionContent className="font-medium text-gbese-black/80 pb-3 md:pb-6 text-sm md:text-[1.5rem] leading-5 md:leading-10.5">
+                                {faq.answer}
+                            </AccordionContent>
+                        </AccordionItem>
+                    ))}
+                </Accordion>
+            </div>
+        </section>
+    );
+}

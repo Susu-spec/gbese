@@ -10,3 +10,4 @@ export { default as SchedulePaymentIcon } from "./SchedulePaymentIcon";
 export { default as TransactionHistoryIcon } from "./TransactionHistoryIcon";
 export { default as WealthIndexIcon } from "./WealthIndexIcon";
 export { default as WithdrawFundsIcon } from "./WithdrawFundsIcon";
+export { default as KycSidebarIcon } from "./KycSidebarIcon";

@@ -1,6 +1,138 @@
 import { clsx, type ClassValue } from "clsx"
+import { toast } from "sonner";
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function handleApiError(error: any) {
+  const status = error?.response?.status;
+  const message = error?.response?.data?.message;
+
+  if (message) {
+    toast.error(message);
+    return;
+  }
+
+  switch (status) {
+    case 400:
+      toast.error("Invalid email or password");
+      break;
+    case 401:
+      toast.error("Incorrect credentials");
+      break;
+    case 403:
+      toast.error("Account locked");
+      break;
+    case 404:
+      toast.error("Resource not found");
+      break;
+    case 500:
+      toast.error("Server error. Please try again later");
+      break;
+    default:
+      toast.error("Something went wrong");
+      break;
+  }
+}
+
+// Helper function to format date
+// Helper function to format date
+export const formatDate = (dateValue: string | number | Date): string => {
+  try {
+    const date = new Date(dateValue);
+
+    if (isNaN(date.getTime())) {
+      return "Invalid Date";
+    }
+
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
+  } catch (error) {
+    console.error("Date formatting error:", error);
+    return "Invalid Date";
+  }
+};
+
+/**
+ * Safely parse balance from API (handles string | number | null | undefined)
+ * Prevents runtime crashes from unexpected API data types
+ */
+export function parseBalance(value: string | number | null | undefined): number {
+  if (value === null || value === undefined || value === '') return 0;
+  const parsed = typeof value === 'string' ? parseFloat(value) : value;
+  return isNaN(parsed) ? 0 : parsed;
+}
+
+/**
+ * Transaction type mapping for consistent UI across features
+ * Use this when teammates implement withdrawal, debt payments, etc.
+ */
+export const TRANSACTION_TYPES = {
+  deposit: { label: 'Deposit', color: 'text-gbese-success' },
+  withdrawal: { label: 'Withdrawal', color: 'text-gbese-warning' },
+  debt_payment: { label: 'Debt Payment', color: 'text-primary-800' },
+  transfer: { label: 'Transfer', color: 'text-primary-600' },
+  refund: { label: 'Refund', color: 'text-gbese-success' },
+} as const;
+
+export type TransactionType = keyof typeof TRANSACTION_TYPES;
+
+/**
+ * A lookup table that maps each transaction status to its
+ * corresponding display color and text label.
+ */
+export const TransactionStatusMap: Record<"completed" | "pending" | "failed" | "processing", {
+  color: string,
+  text: string
+}> = {
+  completed: {
+    color: "#34A67B",
+    text: "Success"
+  },
+  processing: {
+    color: "#002824",
+    text: "Processing"
+  },
+  pending: {
+    color: "#FFB300",
+    text: "Pending"
+  },
+  failed: {
+    color: "",
+    text: "Failed"
+  }
+}
+
+
+/**
+ * A Timestamp formatter for generating "days" or "mins" or "secs"
+ */
+export function timeAgo(dateString: string) {
+  const date = new Date(dateString);
+  const now = new Date();
+  const diffMs = now.getTime() - date.getTime();
+
+  const seconds = Math.floor(diffMs / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const weeks = Math.floor(days / 7);
+  const months = Math.floor(days / 30);
+  const years = Math.floor(days / 365);
+
+  if (seconds < 10) return "just now";
+  if (seconds < 60) return `${seconds}s ago`;
+  if (minutes < 60) return `${minutes}m ago`;
+  if (hours < 24) return `${hours}h ago`;
+  if (days < 7) return `${days}d ago`;
+  if (weeks < 5) return `${weeks}w ago`;
+  if (months < 12) return `${months}mo ago`;
+  return `${years}y ago`;
+}
+
