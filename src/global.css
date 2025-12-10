@@ -83,6 +83,7 @@
   --color-gbese-neutrals-100: #8C8C8C;
   --color-gbese-neutrals-200: #B3B3B3;
   --color-gbese-neutrals-300: #EBF0FF;
+  --color-gbese-neutrals-400: #FAFBFF;
   --color-gbese-black: #111111;
   --color-gbese-white: #F9FAFB;
   --color-gbese-warning: #E17700;
@@ -97,6 +98,7 @@
   --color-gbese-grey-300: #111111CC;
   --color-gbese-grey-400: #6D6D6D;
   --color-gbese-grey-500: #D9D9D9;
+  --color-gbese-grey-600: #656565;
   --color-gbese-pari: #002824;
 
   --breakpoint-1000: 1000px;
