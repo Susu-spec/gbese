@@ -50,7 +50,7 @@ const NotificationTable = () => {
                     ))}
                 </div>
             ) : (
-                <div className="mx-auto flex justify-center items-center flex-col text-center">
+                <div className="mx-auto mb-10 flex justify-center items-center flex-col text-center">
                     <Bell size={200} fill="#ccc0c0ff" stroke="#ccc0c0ff" className="rotate-45"/>
                     <p>No Notifications</p>
                 </div>

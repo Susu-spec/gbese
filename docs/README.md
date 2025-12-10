@@ -1,6 +1,6 @@
 # Gbese - Peer-to-Peer Credit Transfer System
 
-![Cover Image](/src/assets/images/dashboard-image.png)
+![Cover Image](/src/assets/images/dashboard.png)
 
 ## Overview
 
