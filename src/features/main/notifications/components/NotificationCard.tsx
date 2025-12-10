@@ -1,3 +1,4 @@
+import { Separator } from "@/components/ui/separator";
 import type { NotificationProps } from "@/features/main/types";
 import { timeAgo } from "@/lib/utils";
 import { AlertCircle, ArrowUpRight } from "lucide-react";
@@ -46,21 +47,22 @@ const NotificationCard = ({
     const Icon = config.icon;
 
     return (
-        <div className="w-full">
-            <div className={`p-3 rounded-lg flex items-center gap-3  `}>
-                <div className={`p-2 ${config.background} rounded-full flex items-center justify-center`}>
-                <Icon className={`w-8 h-8 ${config.iconCol}`} />
-                </div>
+        <div className="w-full flex flex-col gap-2 lg:gap-6">
+          <div className={`p-3 rounded-lg flex gap-1 lg:gap-6  `}>
+              <div className={`p-2 ${config.background} rounded-full flex items-center justify-center w-fit h-fit`}>
+                <Icon className={`w-4 h-4 lg:w-8 lg:h-8 ${config.iconCol}`} />
+              </div>
 
-                <div className="flex flex-col gap-6 w-full">
-                    <div className="flex justify-between items-center">
-                        <h3 className="font-semibold text-2xl">{title}</h3>
-                        <p>{timeAgo(created_at!)}</p>
-                    </div>
-                    
-                    <p className="text-lg text-gray-600">{message}</p>
-                </div>
-            </div>
+              <div className="flex flex-col gap-1 lg:gap-2 w-full">
+                  <div className="flex justify-between items-center">
+                      <h3 className="font-semibold text-sm lg:text-2xl leading-9">{title}</h3>
+                      <p className="text-xs leading-6.75">{timeAgo(created_at!)}</p>
+                  </div>
+                  
+                  <p className="text-[.625rem] lg:text-lg text-gray-600 leading-[140%]">{message}</p>
+              </div>
+          </div>
+          <Separator className="text-gbese-neutrals-200" />
         </div>
     );
 };
