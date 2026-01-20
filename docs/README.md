@@ -2,8 +2,6 @@
 
 ![Cover Image](/src/assets/images/dashboard.png)
 
-# Gbese — Peer-to-Peer Credit Transfer Platform
-
 ## Overview
 
 Gbese is a peer-to-peer credit transfer platform that enables secure, consent-based debt transfers between verified users. The platform is designed to reduce friction in debt restructuring while maintaining **state consistency**, **transaction transparency**, and **audit-friendly tracking**.
@@ -103,18 +101,22 @@ This flow was intentionally designed to prevent financial inconsistencies during
 
 The project follows a structured testing approach to ensure reliability and correctness.
 
+### Test Directory Structure
+
+```text
 tests/
 ├── unit/
-│   ├── components/
-│   ├── features/
-│   ├── hooks/
-│   └── utils/
+│   ├── components/     # UI component tests
+│   ├── features/       # Feature-level logic tests
+│   ├── hooks/          # Custom hook tests
+│   └── utils/          # Utility function tests
 ├── setup/
-│   └── mocks/
+│   └── mocks/          # API and state mocks
 └── fixtures/
     ├── debts.ts
     ├── transactions.ts
     └── users.ts
+```
 
 
 Tests focus on:
