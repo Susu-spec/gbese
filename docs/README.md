@@ -207,7 +207,7 @@ Adopt a more flexible policy-based permission system.
 
 ---
 
-### 6. Test Coverage Scope
+### 4. Test Coverage Scope
 
 Testing focuses on unit and feature-level correctness rather than full end-to-end financial simulations.
 
